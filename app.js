@@ -20,7 +20,7 @@ var MovieInfo = require('./models/movieschema');
 
 
 //ROUTES TO MOVIE REVIEWS PAGE
-app.get("/moviereviews", function(req, res) {
+app.get("/", function(req, res) {
     MovieInfo.find({}, function(err, movieInfo) {
         if (err) {
             console.log(err);
@@ -53,7 +53,7 @@ app.post("/moviereviews", function(req, res) {
                 console.log(MovieInfo);
             }
             //redirect to movie review page 
-            res.redirect("/moviereviews");
+            res.redirect("/");
         });
 });
 
