@@ -17,10 +17,6 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 var MovieInfo = require('./models/movieschema');
 
-//MAIN HOMEPAGE
-app.get("/", function(req, res) {
-    res.render("landing");
-});
 
 
 //ROUTES TO MOVIE REVIEWS PAGE
