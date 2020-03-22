@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+    <div class="container " style="margin-top:150px; margin-bottom: 100px;">
+        <header class="jumbotron">
+            <div class="container" style="text-align: center;">
+                <h1 style="text-shadow:2px 4px 7px grey; font-weight:700;font-size:4em;">
+                    BETA-REVIEWS</h1>
+                <hr style="border-top: 1px solid black;width: 600px;">
+                <p style="text-shadow:1px 1px 3px grey;">Let know other your view time experience...</p>
+
+                <p>
+                    <a class="btn btn-success" href="/moviereviews/form">ADD A REVIEW</a>
+                </p>
+            </div>
+        </header>
+        <div class="row d-flex justify-content-start ">
+            <%MovieInfo.forEach(function(MovieInfo){%>
+                <div class=" col-sm-6 col-md-4  col-lg-3  ">
+                    <div class="card">
+                        <img class="card-img-top" src="<%=MovieInfo.image%>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%=MovieInfo.title%>
+                            </h5>
+                            <p class="card-text">Reviewed by -
+                                <%=MovieInfo.name%>
+                            </p>
+                            <a href="/moviereviews/<%=MovieInfo._id%>" class="btn btn-success">REVIEW</a>
+                        </div>
+                    </div>
+
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+
+
+    <%- include("partials/footer") %>
