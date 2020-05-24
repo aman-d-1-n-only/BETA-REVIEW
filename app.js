@@ -3,8 +3,22 @@ var app = express();
 
 
 var bodyParser = require("body-parser");
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose')
+
+app.use(require('express-session')({
+    secret: "Nauruto Uzumaki Jiraya Rasen Shuriken best",
+    resave: false,
+    saveUninitialized: false,
+}));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.set("view engine", "ejs");
 
@@ -15,8 +29,11 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Mongo Db connected"))
     .catch(err => console.log(err));
 
+//movie schema connection
 var MovieInfo = require('./models/movieschema');
 
+//user schema connection
+var User = require('./models/user');
 
 
 //ROUTES TO MOVIE REVIEWS PAGE
@@ -31,6 +48,12 @@ app.get("/", function(req, res) {
 
     });
 });
+
+//sign-up page route
+app.get('/register', function(req, res) {
+    res.render("register")
+})
+
 
 //ROUTES TO WHICH DATA IS POSTED FROM FORM
 app.post("/moviereviews", function(req, res) {
