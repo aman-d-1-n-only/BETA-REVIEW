@@ -28,10 +28,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 //ROUTES TO MOVIE REVIEWS PAGE
-app.get("/", function(req, res) {
+app.get("/", isLoggedIn, function(req, res) {
     MovieInfo.find({}, function(err, movieInfo) {
         if (err) {
             console.log(err);
@@ -45,21 +47,48 @@ app.get("/", function(req, res) {
 
 //sign-up page route
 app.get('/register', function(req, res) {
-    User.register(new User({ username: req.body.username }), function(err, user) {
-        if (err) {
-            console.log(err);
-        }
-
-        passport.authenticate("local")(req, res, function() {
-            res.redirect('/');
-        })
-    })
+    res.render('register')
 })
 
 //handling the user sign up
 app.post('/register', function(req, res) {
-    res.send("Register post route")
+
+    User.register(new User({ username: req.body.username }), req.body.password, function(err, user) {
+        if (err) {
+            console.log(err)
+        }
+        passport.authenticate('local')(req, res, function() {
+            res.redirect('/')
+        })
+    })
 })
+
+//login page route
+app.get('/login', function(req, res) {
+    res.render('login')
+})
+
+//login handling logic
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+}), function(req, res) {
+
+})
+
+//log out route
+app.get('/logout', function(req, res) {
+    req.logout();
+    res.send('You are logged out');
+})
+
+//middleware
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login')
+}
 
 
 //ROUTES TO WHICH DATA IS POSTED FROM FORM
