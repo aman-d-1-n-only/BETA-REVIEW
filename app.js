@@ -1,11 +1,22 @@
 var express = require("express");
-var app = express();
-
-
 var bodyParser = require("body-parser");
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-var passportLocalMongoose = require('passport-local-mongoose')
+var passportLocalMongoose = require('passport-local-mongoose');
+//movie schema connection
+var MovieInfo = require('./models/movieschema');
+//user schema connection
+var User = require('./models/user');
+
+//mongoose connection
+var mongoose = require("mongoose");
+var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Mongo Db connected"))
+    .catch(err => console.log(err));
+
+var app = express();
+app.set("view engine", "ejs");
 
 app.use(require('express-session')({
     secret: "Nauruto Uzumaki Jiraya Rasen Shuriken best",
@@ -19,22 +30,6 @@ app.use(passport.session());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
-app.set("view engine", "ejs");
-
-//mongoose connection
-var mongoose = require("mongoose");
-var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Mongo Db connected"))
-    .catch(err => console.log(err));
-
-//movie schema connection
-var MovieInfo = require('./models/movieschema');
-
-//user schema connection
-var User = require('./models/user');
-
 
 //ROUTES TO MOVIE REVIEWS PAGE
 app.get("/", function(req, res) {
@@ -51,7 +46,20 @@ app.get("/", function(req, res) {
 
 //sign-up page route
 app.get('/register', function(req, res) {
-    res.render("register")
+    User.register(new User({ username: req.body.username }), function(err, user) {
+        if (err) {
+            console.log(err);
+        }
+
+        passport.authenticate("local")(req, res, function() {
+            res.redirect('/');
+        })
+    })
+})
+
+//handling the user sign up
+app.post('/register', function(req, res) {
+    res.send("Register post route")
 })
 
 
