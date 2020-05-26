@@ -28,8 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+
 
 //ROUTES TO MOVIE REVIEWS PAGE
 app.get("/", function(req, res) {
