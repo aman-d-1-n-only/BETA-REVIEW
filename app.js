@@ -1,15 +1,16 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
-var passportLocalMongoose = require('passport-local-mongoose');
-//movie schema connection
-var MovieInfo = require('./models/movieschema');
-//user schema connection
-var User = require('./models/user');
+var express = require("express"),
+    bodyParser = require("body-parser"),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local'),
+    passportLocalMongoose = require('passport-local-mongoose'),
+    //movie schema connection
+    MovieInfo = require('./models/movieschema'),
+    //user schema connection
+    User = require('./models/user'),
+    seedDB = require('./seed.js')
 
 //mongoose connection
-var mongoose = require("mongoose");
+var mongoose = require("mongoose")
 var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Mongo Db connected"))
@@ -34,6 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 
 //ROUTES TO MOVIE REVIEWS PAGE
 app.get("/", isLoggedIn, function(req, res) {
+
     MovieInfo.find({}, function(err, movieInfo) {
         if (err) {
             console.log(err);
@@ -52,8 +54,8 @@ app.get('/register', function(req, res) {
 
 //handling the user sign up
 app.post('/register', function(req, res) {
-
-    User.register(new User({ username: req.body.username }), req.body.password, function(err, user) {
+    var newUser = new User({ username: req.body.username })
+    User.register(newUser, req.body.password, function(err, user) {
         if (err) {
             console.log(err)
         }
@@ -79,7 +81,8 @@ app.post('/login', passport.authenticate('local', {
 //log out route
 app.get('/logout', function(req, res) {
     req.logout();
-    res.send('You are logged out');
+    res.redirect('/')
+
 })
 
 //middleware
