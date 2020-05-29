@@ -7,8 +7,10 @@ var express = require("express"),
     MovieInfo = require('./models/movieschema'),
     //user schema connection
     User = require('./models/user'),
-    seedDB = require('./seed.js')
+    seedDB = require('./seed')
 
+
+seedDB();
 //mongoose connection
 var mongoose = require("mongoose")
 var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
@@ -127,10 +129,11 @@ app.get("/moviereviews/form", function(req, res) {
 
 //review page
 app.get("/moviereviews/:id", function(req, res) {
-    MovieInfo.findById(req.params.id, function(err, gotIt) {
+    MovieInfo.findById(req.params.id).populate("comments").exec(function(err, gotIt) {
         if (err) {
             console.log(err);
         } else {
+            console.log(gotIt)
             res.render("review", { MovieInfo: gotIt });
         }
     })

@@ -9,9 +9,16 @@
                 <p class="card-text">
                     <h6>REVIEW:</h6>
                     <%=MovieInfo.review%>
+                        <% MovieInfo.comments.forEach(function(comment){ %>
+                            <p>
+                                <strong> <%= comment.author %> </strong> -
+                                <%= comment.text %>
+                            </p>
+                            <% }) %>
                 </p>
                 <a href="/" class="btn btn-primary">GO BACK</a>
             </div>
         </div>
     </div>
+
     <%- include("partials/footer") %>

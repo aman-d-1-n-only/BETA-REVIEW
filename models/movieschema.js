@@ -7,7 +7,11 @@ const movieSchema = new Schema({
     name: String,
     title: String,
     image: String,
-    review: String
+    review: String,
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 });
 
 module.exports = mongoose.model('MovieInfo', movieSchema);

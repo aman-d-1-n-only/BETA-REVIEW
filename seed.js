@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var MovieInfo = require('./models/movieschema')
-var comment = require('./models/comment')
+var Comment = require('./models/comment')
 
 
 var data = [{
@@ -27,7 +27,7 @@ function seedDB() {
             if (err) {
                 console.log(err)
             } else {
-                console.log("added a campground");
+                console.log("added a movieReview");
                 //create a comment
                 Comment.create({
                     text: "This place is great, but I wish there was internet",
