@@ -1,7 +1,6 @@
 var mongoose = require("mongoose");
-var MovieInfo = require('./models/movieschema')
-var Comment = require('./models/comment')
-
+var MovieInfo = require("./models/movieschema");
+var Comment = require("./models/comment");
 
 var data = [{
         name: "Cloud's Rest",
@@ -21,30 +20,43 @@ var data = [{
 ]
 
 function seedDB() {
-    //add a few campgrounds
-    data.forEach(function(seed) {
-        MovieInfo.create(seed, function(err, campground) {
+    //Remove all campgrounds
+    MovieInfo.remove({}, function(err) {
+        if (err) {
+            console.log(err);
+        }
+        console.log("removed campgrounds!");
+        Comment.remove({}, function(err) {
             if (err) {
-                console.log(err)
-            } else {
-                console.log("added a movieReview");
-                //create a comment
-                Comment.create({
-                    text: "This place is great, but I wish there was internet",
-                    author: "Homer"
-                }, function(err, comment) {
+                console.log(err);
+            }
+            console.log("removed comments!");
+            //add a few campgrounds
+            data.forEach(function(seed) {
+                MovieInfo.create(seed, function(err, movie) {
                     if (err) {
-                        console.log(err);
+                        console.log(err)
                     } else {
-                        campground.comments.push(comment);
-                        campground.save();
-                        console.log("Created new comment");
+                        console.log("added a campground");
+                        //create a comment
+                        Comment.create({
+                            text: "This place is great, but I wish there was internet",
+                            author: "Homer"
+                        }, function(err, comment) {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                movie.comments.push(comment);
+                                movie.save();
+                                console.log("Created new comment");
+                            }
+                        });
                     }
                 });
-            }
+            });
         });
     });
-
+    //add a few comments
 }
 
 module.exports = seedDB;

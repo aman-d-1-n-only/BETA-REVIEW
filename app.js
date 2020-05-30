@@ -2,15 +2,19 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose'),
-    //movie schema connection
-    MovieInfo = require('./models/movieschema'),
-    //user schema connection
-    User = require('./models/user'),
-    seedDB = require('./seed')
+    passportLocalMongoose = require('passport-local-mongoose');
 
 
+//movie schema connection
+var MovieInfo = require('./models/movieschema');
+
+//user schema connection
+var User = require('./models/user');
+
+//seed.js file
+var seedDB = require('./seed')
 seedDB();
+
 //mongoose connection
 var mongoose = require("mongoose")
 var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
@@ -42,7 +46,7 @@ app.get("/", isLoggedIn, function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", { MovieInfo: movieInfo });
+            res.render("MovieReviews/index", { MovieInfo: movieInfo });
         }
 
 
@@ -54,7 +58,7 @@ app.get('/register', function(req, res) {
     res.render('register')
 })
 
-//handling the user sign up
+//sign-up POST route
 app.post('/register', function(req, res) {
     var newUser = new User({ username: req.body.username })
     User.register(newUser, req.body.password, function(err, user) {
@@ -72,7 +76,7 @@ app.get('/login', function(req, res) {
     res.render('login')
 })
 
-//login handling logic
+//login POST route
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
@@ -95,8 +99,12 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login')
 }
 
+//form for adding review
+app.get("/moviereviews/form", function(req, res) {
+    res.render("MovieReviews/new");
+});
 
-//ROUTES TO WHICH DATA IS POSTED FROM FORM
+//POST route of form for adding review
 app.post("/moviereviews", function(req, res) {
     var name = req.body.name;
     var title = req.body.title;
@@ -107,9 +115,8 @@ app.post("/moviereviews", function(req, res) {
             title: title,
             image: image,
             review: review
-
-
         },
+
         function(err, MovieInfo) {
             if (err) {
                 console.log(err);
@@ -122,22 +129,24 @@ app.post("/moviereviews", function(req, res) {
 });
 
 
-//FORM ROUTES
-app.get("/moviereviews/form", function(req, res) {
-    res.render("form");
-});
 
-//review page
+
+// show page for each review
 app.get("/moviereviews/:id", function(req, res) {
-    MovieInfo.findById(req.params.id).populate("comments").exec(function(err, gotIt) {
+    MovieInfo.findById(req.params.id).populate('comments').exec(function(err, review) {
         if (err) {
             console.log(err);
         } else {
-            console.log(gotIt)
-            res.render("review", { MovieInfo: gotIt });
+            console.log(review)
+            res.render("MovieReviews/show", { MovieInfo: review });
         }
     })
 
+})
+
+//comments form route
+app.get('/moviereviews/:id/comments/new', function(req, res) {
+    res.render("Comments/new")
 })
 
 

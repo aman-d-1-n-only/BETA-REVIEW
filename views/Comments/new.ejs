@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+
+    <div class="container text-center  " style="margin-top:100px; width:600px;">
+        <h1>ADD A COMMENT !!!</h1>
+
+
+        <form action="/moviereviews/:id/comments" method="POST">
+            <div class="container " style="width:400px;">
+                <div class="row d-flex align-content-around " style="height: 400px;">
+
+                    <input class="form-control" type="text" name="author" placeholder="User Name ">
+
+                    <textarea class="form-control" name="review" rows="10" placeholder="Write your comment :)"></textarea>
+
+
+
+                    <input class=" form-control btn btn-large btn-success" type="submit">
+
+                    <a href="/moviereviews/:id" class=" form-control btn btn-large btn-success pl-2">Go back</a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <%- include("../partials/footer") %>
