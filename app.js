@@ -8,6 +8,9 @@ var express = require("express"),
 //movie schema connection
 var MovieInfo = require('./models/movieschema');
 
+//comments schema
+var Comment = require('./models/comment')
+
 //user schema connection
 var User = require('./models/user');
 
@@ -146,10 +149,35 @@ app.get("/moviereviews/:id", function(req, res) {
 
 //comments form route
 app.get('/moviereviews/:id/comments/new', function(req, res) {
-    res.render("Comments/new")
+    MovieInfo.findById(req.params.id, function(err, review) {
+        if (err) {
+            console.log(err)
+        } else {
+            res.render("Comments/new", { MovieInfo: review });
+        }
+    })
+
 })
 
-
+//comments POST route
+app.post('/moviereviews/:id/comments', function(req, res) {
+    MovieInfo.findById(req.params.id, function(err, movie) {
+        if (err) {
+            console.log(err)
+            res.redirect('/')
+        } else {
+            Comment.create(req.body.comment, function(err, comment) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    movie.comments.push(comment);
+                    movie.save();
+                    res.redirect('/moviereviews/' + movie._id)
+                }
+            })
+        }
+    })
+})
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is listening..");
