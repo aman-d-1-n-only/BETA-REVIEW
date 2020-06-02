@@ -1,5 +1,5 @@
 <%- include("../partials/header") %>
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 100px;margin-bottom:100px">
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">Yelcamp</p>
@@ -11,24 +11,28 @@
             </div>
             <div class="col-md-9">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="<%=MovieInfo.image%>" alt="Card image cap">
+                    <img src="<%=MovieInfo.image%>" style="margin : 0 auto" class="img-thumbnail">
                     <div class="caption-full">
-                        <h4 class="pull-right">$45 per ngt</h4>
                         <h4>
                             <a href="">
                                 <%=MovieInfo.title%>
                             </a>
                         </h4>
+                        <h4 class="text-right">9.00$ / night</h4>
                         <p>
                             <%=MovieInfo.review%>
                         </p>
                     </div>
                 </div>
+
+
+
+
                 <div class="well">
-                    <div class="text-rigth">
+                    <div class="text-right">
                         <a href="/moviereviews/<%= MovieInfo._id %>/comments/new" class="btn btn-success"> + Comment</a>
                     </div>
-
+                    <hr>
                     <% MovieInfo.comments.forEach(function(comment){ %>
                         <div class="row">
                             <div class="col-md-12">
@@ -40,13 +44,12 @@
                                     </p>
                             </div>
                         </div>
-
                         <% }) %>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container " style="margin-top: 100px;margin-left: auto; margin-bottom: 100px;">
+    <!-- <div class="container " style="margin-top: 100px;margin-left: auto; margin-bottom: 100px;">
         <div class="card " style="width: 60%">
             <img class="card-img-top" src="<%=MovieInfo.image%>" alt="Card image cap">
             <div class="card-body">
@@ -67,6 +70,6 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <%- include("../partials/footer") %>
