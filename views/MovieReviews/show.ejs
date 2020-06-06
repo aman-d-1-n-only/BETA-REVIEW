@@ -11,22 +11,26 @@
             </div>
             <div class="col-md-9">
                 <div id="thumbnail" style="border : 1px solid grey; border-radius: 5px ; margin-bottom: 20px;">
-                    <img src="<%=MovieInfo.image%>" class="img-responsive" />
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4>
-                                <a href="">
-                                    <%=MovieInfo.title%>
-                                </a>
-                            </h4>
+                    <img src="<%=MovieInfo.image%>" style="width : 100%" class="img-responsive" />
+                    <div id="style" style="margin : 9px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>
+                                    <a href="">
+                                        <%=MovieInfo.title%>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="text-right">9.00$ / night</h4>
+                            </div>
+
                         </div>
-                        <div class="col-md-6">
-                            <h4 class="text-right">9.00$ / night</h4>
-                        </div>
+
+                        <p>
+                            <%=MovieInfo.review%>
+                        </p>
                     </div>
-                    <p>
-                        <%=MovieInfo.review%>
-                    </p>
                 </div>
 
                 <div class="jumbotron">

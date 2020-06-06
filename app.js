@@ -40,18 +40,23 @@ app.use(passport.session());
 
 app.use(express.static(__dirname + "/public"));
 
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+})
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //ROUTES TO MOVIE REVIEWS PAGE
-app.get("/", isLoggedIn, function(req, res) {
+app.get("/", function(req, res) {
 
     MovieInfo.find({}, function(err, movieInfo) {
         if (err) {
             console.log(err);
         } else {
-            res.render("MovieReviews/index", { MovieInfo: movieInfo });
+            res.render("MovieReviews/index", { MovieInfo: movieInfo, currentUser: req.user });
         }
 
 
@@ -105,12 +110,12 @@ function isLoggedIn(req, res, next) {
 }
 
 //form for adding review
-app.get("/moviereviews/form", function(req, res) {
+app.get("/moviereviews/form", isLoggedIn, function(req, res) {
     res.render("MovieReviews/new");
 });
 
 //POST route of form for adding review
-app.post("/moviereviews", function(req, res) {
+app.post("/moviereviews", isLoggedIn, function(req, res) {
     var name = req.body.name;
     var title = req.body.title;
     var image = req.body.url;
@@ -150,7 +155,7 @@ app.get("/moviereviews/:id", function(req, res) {
 })
 
 //comments form route
-app.get('/moviereviews/:id/comments/new', function(req, res) {
+app.get('/moviereviews/:id/comments/new', isLoggedIn, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, review) {
         if (err) {
             console.log(err)
@@ -162,7 +167,7 @@ app.get('/moviereviews/:id/comments/new', function(req, res) {
 })
 
 //comments POST route
-app.post('/moviereviews/:id/comments', function(req, res) {
+app.post('/moviereviews/:id/comments', isLoggedIn, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, movie) {
         if (err) {
             console.log(err)
