@@ -1,27 +1,21 @@
 <%- include("../partials/header") %>
 
-    <div class="container text-center  " style="margin-top:100px; width:600px;">
+    <div class="container text-center" style="margin-top: 100px; width: 600px;">
         <h1>ADD A COMMENT TO
             <%=MovieInfo.title %>
         </h1>
 
-
         <form action="/moviereviews/<%= MovieInfo._id %>/comments" method="POST">
-            <div class="container " style="width:400px;">
-                <div class="row d-flex align-content-around " style="height: 400px;">
-
-                    <input class="form-control" type="text" name="comment[author]" placeholder="author">
-
+            <div class="container" style="width: 400px;">
+                <div class="row d-flex align-content-around" style="height: 400px;">
                     <textarea class="form-control" name="comment[text]" rows="10" placeholder="Write your comment :)"></textarea>
 
+                    <input class="form-control btn btn-large btn-success" type="submit" />
 
-
-                    <input class=" form-control btn btn-large btn-success" type="submit">
-
-                    <a href="/moviereviews/<%= MovieInfo._id %>" class=" form-control btn btn-large btn-success pl-2">Go back</a>
-
-                </div>
-            </div>
-        </form>
+                    <a href="/moviereviews/<%= MovieInfo._id %>" class="form-control btn btn-large btn-success pl-2">Go back</a
+        >
+      </div>
     </div>
-    <%- include("../partials/footer") %>
+  </form>
+</div>
+<%- include("../partials/footer") %>

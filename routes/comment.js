@@ -26,6 +26,12 @@ router.post('/', isLoggedIn, function(req, res) {
                 if (err) {
                     console.log(err);
                 } else {
+                    //add username and it's id to commment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
+
+                    //then save the comment 
                     movie.comments.push(comment);
                     movie.save();
                     res.redirect('/moviereviews/' + movie._id)

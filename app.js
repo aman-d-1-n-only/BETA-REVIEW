@@ -19,7 +19,7 @@ var User = require('./models/user');
 
 //seed.js file
 var seedDB = require('./seed')
-seedDB();
+    //seedDB(); //seed the database
 
 //mongoose connection
 var mongoose = require("mongoose")
@@ -54,7 +54,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use("/moviereviews", moviereviewsRoutes);
 app.use(authRoutes);
-app.use('/moviereviews/: id/comments', commentRoutes);
+app.use('/moviereviews/:id/comments', commentRoutes);
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server is listening..");
