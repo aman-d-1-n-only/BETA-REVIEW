@@ -20,11 +20,17 @@ router.post("/", isLoggedIn, function(req, res) {
     var title = req.body.title;
     var image = req.body.url;
     var review = req.body.review;
+    var author = {
+        id: req.user._id,
+        username: req.user.username,
+    }
     MovieInfo.create({
             name: name,
             title: title,
             image: image,
-            review: review
+            review: review,
+            author: author,
+
         },
 
         function(err, MovieInfo) {
