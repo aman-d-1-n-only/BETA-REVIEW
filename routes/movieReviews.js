@@ -76,7 +76,15 @@ router.get('/:id/edit', function(req, res) {
 
 });
 //updating campground route
-
+router.put('/:id', function(req, res) {
+    MovieInfo.findByIdAndUpdate(req.params.id, req.body.Movie, function(err, editedReview) {
+        if (err) {
+            res.redirect('/moviereviews')
+        } else {
+            res.redirect('/moviereviews/' + req.params.id)
+        }
+    })
+});
 
 //middleware
 function isLoggedIn(req, res, next) {
