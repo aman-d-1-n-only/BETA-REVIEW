@@ -25,7 +25,7 @@ router.post("/", isLoggedIn, function(req, res) {
         username: req.user.username,
     }
     MovieInfo.create({
-            name: name,
+
             title: title,
             image: image,
             review: review,
@@ -63,6 +63,20 @@ router.get("/:id", function(req, res) {
     })
 
 })
+
+//editing campground route
+router.get('/:id/edit', function(req, res) {
+    MovieInfo.findById(req.params.id, function(err, editReview) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("MovieReviews/edit", { Review: editReview });
+        }
+    })
+
+});
+//updating campground route
+
 
 //middleware
 function isLoggedIn(req, res, next) {

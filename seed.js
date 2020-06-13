@@ -20,7 +20,7 @@ var data = [{
 ]
 
 function seedDB() {
-    //Remove all campgrounds
+    // Remove all campgrounds
     MovieInfo.remove({}, function(err) {
         // if (err) {
         //     console.log(err);

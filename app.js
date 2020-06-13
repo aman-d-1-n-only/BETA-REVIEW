@@ -2,7 +2,8 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose');
+    passportLocalMongoose = require('passport-local-mongoose'),
+    methodOverride = require('method-override');
 
 var moviereviewsRoutes = require("./routes/movieReviews"),
     commentRoutes = require("./routes/comment"),
@@ -47,6 +48,8 @@ app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
     next();
 })
+
+app.use(methodOverride("_method"));
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
