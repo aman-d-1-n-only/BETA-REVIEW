@@ -30,20 +30,29 @@
                         <p>
                             <%=MovieInfo.review%>
                         </p>
+
                         <div class="row">
+                            <div class="col-md-12 text-right">
+
+                                <strong><em>Reviewed By - </em></strong>
+                                <span style="color:darkgreen"><b><%=MovieInfo.author.username%></b></span>
+                            </div>
+                        </div>
+                        <div class="row py-2">
 
                             <div class="col-md-6">
                                 <span class="text-right">
-                                        <a href="/moviereviews/<%= MovieInfo._id %>/edit" class="btn btn-success">EDIT REVIEW </a>
-                                    </span>
+                                    <a href="/moviereviews/<%= MovieInfo._id %>/edit" class="btn btn-warning btn-sm">EDIT REVIEW </a>
+                                </span>
 
                             </div>
 
                             <div class="col-md-6 text-right">
-                                <strong><em>Reviewed By - </em></strong>
-                                <span style="color:darkgreen"><b><%=MovieInfo.author.username%></b></span>
-
+                                <form action="/moviereviews/<%=MovieInfo._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger btn-sm"> Delete </button>
+                                </form>
                             </div>
+
                         </div>
 
 

@@ -86,6 +86,16 @@ router.put('/:id', function(req, res) {
     })
 });
 
+//Destroying a campground
+router.delete('/:id', function(req, res) {
+    MovieInfo.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            res.redirect('/moviereviews');
+        } else {
+            res.redirect('/moviereviews');
+        }
+    })
+});
 //middleware
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
