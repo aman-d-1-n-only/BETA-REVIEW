@@ -65,29 +65,26 @@ router.get("/:id", function(req, res) {
 })
 
 //editing campground route
-router.get('/:id/edit', function(req, res) {
+router.get('/:id/edit', reviewAuthorization, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, editReview) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("MovieReviews/edit", { Review: editReview });
-        }
+        res.render("MovieReviews/edit", { Review: editReview });
     })
-
 });
 //updating campground route
-router.put('/:id', function(req, res) {
+router.put('/:id', reviewAuthorization, function(req, res) {
+
     MovieInfo.findByIdAndUpdate(req.params.id, req.body.Movie, function(err, editedReview) {
         if (err) {
             res.redirect('/moviereviews')
         } else {
+
             res.redirect('/moviereviews/' + req.params.id)
         }
     })
 });
 
 //Destroying a campground
-router.delete('/:id', function(req, res) {
+router.delete('/:id', reviewAuthorization, function(req, res) {
     MovieInfo.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             res.redirect('/moviereviews');
@@ -102,6 +99,27 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect('/login')
+}
+
+//authorization for editing deleting review
+function reviewAuthorization(req, res, next) {
+    //is user logged in or not !!!
+    if (req.isAuthenticated()) {
+        MovieInfo.findById(req.params.id, function(err, editReview) {
+            if (err) {
+                res.redirect('back');
+            } else {
+                //does user own the review
+                if (editReview.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.redirect('back');
+                }
+            }
+        })
+    } else {
+        res.redirect('back');
+    }
 }
 
 module.exports = router;
