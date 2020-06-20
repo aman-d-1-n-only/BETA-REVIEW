@@ -64,16 +64,16 @@ router.get("/:id", function(req, res) {
 
 })
 
-//editing campground route
+//Review Edit route
 router.get('/:id/edit', reviewAuthorization, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, editReview) {
         res.render("MovieReviews/edit", { Review: editReview });
     })
 });
-//updating campground route
+//Review Update route
 router.put('/:id', reviewAuthorization, function(req, res) {
 
-    MovieInfo.findByIdAndUpdate(req.params.id, req.body.Movie, function(err, editedReview) {
+    MovieInfo.findByIdAndUpdate(req.params.id, req.body.Movie, function(err, updatedReview) {
         if (err) {
             res.redirect('/moviereviews')
         } else {
@@ -83,7 +83,7 @@ router.put('/:id', reviewAuthorization, function(req, res) {
     })
 });
 
-//Destroying a campground
+//Destroying a Review
 router.delete('/:id', reviewAuthorization, function(req, res) {
     MovieInfo.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
