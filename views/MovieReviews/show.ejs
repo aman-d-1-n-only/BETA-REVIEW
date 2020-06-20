@@ -74,7 +74,8 @@
                                 <strong><%= comment.author.username %> </strong>
                             </div>
                             <div class="col-md-6 text-right">
-                                <span>10 days ago</span>
+                                <span class="px-2">10 days ago  </span>
+                                <a href="<%=MovieInfo._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
                             </div>
 
 
@@ -84,6 +85,7 @@
                                 <p>
                                     <%= comment.text %>
                                 </p>
+
                             </div>
 
                         </div>
