@@ -74,8 +74,12 @@
                                 <strong><%= comment.author.username %> </strong>
                             </div>
                             <div class="col-md-6 text-right">
-                                <span class="px-2">10 days ago  </span>
+
                                 <a href="<%=MovieInfo._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
+                                <form style=" display: inline;" action="/moviereviews/<%=MovieInfo._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger btn-sm"> Delete </button>
+                                </form>
+                                <span class="px-2">10 days ago </span>
                             </div>
 
 
