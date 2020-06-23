@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
+var middleware = require('../middleware/index');
 
 //sign-up page route
 router.get('/register', function(req, res) {
@@ -42,12 +43,6 @@ router.get('/logout', function(req, res) {
 
 })
 
-//middleware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login')
-}
+
 
 module.exports = router;

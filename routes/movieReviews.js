@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var MovieInfo = require('../models/movieschema')
+var middleware = require('../middleware/index')
 
 //ROUTES TO MOVIE REVIEWS PAGE
 router.get("/", function(req, res) {
@@ -15,7 +16,7 @@ router.get("/", function(req, res) {
 });
 
 //POST route of form for adding review
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
     var name = req.body.name;
     var title = req.body.title;
     var image = req.body.url;
@@ -46,7 +47,7 @@ router.post("/", isLoggedIn, function(req, res) {
 
 
 //form for adding review
-router.get("/form", isLoggedIn, function(req, res) {
+router.get("/form", middleware.isLoggedIn, function(req, res) {
     res.render("MovieReviews/new");
 });
 
@@ -65,13 +66,13 @@ router.get("/:id", function(req, res) {
 })
 
 //Review Edit route
-router.get('/:id/edit', reviewAuthorization, function(req, res) {
+router.get('/:id/edit', middleware.reviewAuthorization, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, editReview) {
         res.render("MovieReviews/edit", { Review: editReview });
     })
 });
 //Review Update route
-router.put('/:id', reviewAuthorization, function(req, res) {
+router.put('/:id', middleware.reviewAuthorization, function(req, res) {
 
     MovieInfo.findByIdAndUpdate(req.params.id, req.body.Movie, function(err, updatedReview) {
         if (err) {
@@ -84,7 +85,7 @@ router.put('/:id', reviewAuthorization, function(req, res) {
 });
 
 //Destroying a Review
-router.delete('/:id', reviewAuthorization, function(req, res) {
+router.delete('/:id', middleware.reviewAuthorization, function(req, res) {
     MovieInfo.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             res.redirect('/moviereviews');
@@ -93,33 +94,8 @@ router.delete('/:id', reviewAuthorization, function(req, res) {
         }
     })
 });
-//middleware
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/login')
-}
 
-//authorization for editing deleting review
-function reviewAuthorization(req, res, next) {
-    //is user logged in or not !!!
-    if (req.isAuthenticated()) {
-        MovieInfo.findById(req.params.id, function(err, editReview) {
-            if (err) {
-                res.redirect('back');
-            } else {
-                //does user own the review
-                if (editReview.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.redirect('back');
-                }
-            }
-        })
-    } else {
-        res.redirect('back');
-    }
-}
+
+
 
 module.exports = router;
