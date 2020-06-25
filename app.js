@@ -3,7 +3,8 @@ var express = require("express"),
     passport = require('passport'),
     LocalStrategy = require('passport-local'),
     passportLocalMongoose = require('passport-local-mongoose'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+    flash = require('connect-flash');
 
 var moviereviewsRoutes = require("./routes/movieReviews"),
     commentRoutes = require("./routes/comment"),
@@ -41,6 +42,7 @@ app.use(require('express-session')({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(express.static(__dirname + "/public"));
 
