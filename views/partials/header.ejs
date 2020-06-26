@@ -45,6 +45,22 @@
             </ul>
         </div>
     </nav>
+    <div class="container">
+        <% if(error && error.length > 0){%>
+            <h1 style="margin-top: 150px;">
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            </h1>
+            <%}%>
+                <% if(success && success.length > 0){%>
+                    <h1 style="margin-top: 150px;">
+                        <div class="alert alert-success" role="alert">
+                            <%= success %>
+                        </div>
+                    </h1>
+                    <%}%>
+    </div>
 </body>
 
 </html>
