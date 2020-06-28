@@ -9,17 +9,20 @@ middlewareObj.reviewAuthorization = function(req, res, next) {
     if (req.isAuthenticated()) {
         MovieInfo.findById(req.params.id, function(err, editReview) {
             if (err) {
+                req.flash("error", "Review not found.")
                 res.redirect('back');
             } else {
                 //does user own the review
                 if (editReview.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "Your permission is denied.")
                     res.redirect('back');
                 }
             }
         })
     } else {
+        req.flash("error", "You need to be logged in.")
         res.redirect('back');
     }
 }
@@ -29,17 +32,20 @@ middlewareObj.commentAuthorization = function(req, res, next) {
     if (req.isAuthenticated()) {
         Comment.findById(req.params.comment_id, function(err, foundComment) {
             if (err) {
+                req.flash("error", "Comment not found.")
                 res.redirect('back');
             } else {
                 //does user own the Comment
                 if (foundComment.author.id.equals(req.user._id)) {
                     next();
                 } else {
+                    req.flash("error", "Your permission is denied.")
                     res.redirect('back');
                 }
             }
         })
     } else {
+        req.flash("error", "You need to be logged in.")
         res.redirect('back');
     }
 }

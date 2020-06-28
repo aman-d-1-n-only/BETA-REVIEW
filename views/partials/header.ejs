@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BETA-REVIEWS</title>
+    <link rel="shortcut icon" type="image/png" href="/Beta-Review.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" href="/stylesheet/main.css" />
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css" />
@@ -47,14 +48,14 @@
     </nav>
     <div class="container">
         <% if(error && error.length > 0){%>
-            <h1 style="margin-top: 150px;">
+            <h1 style="margin-top: 100px;">
                 <div class="alert alert-danger" role="alert">
                     <%= error %>
                 </div>
             </h1>
             <%}%>
                 <% if(success && success.length > 0){%>
-                    <h1 style="margin-top: 150px;">
+                    <h1 style="margin-top: 100px;">
                         <div class="alert alert-success" role="alert">
                             <%= success %>
                         </div>

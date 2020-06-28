@@ -8,7 +8,8 @@ var middleware = require('../middleware/index')
 router.get('/new', middleware.isLoggedIn, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, review) {
         if (err) {
-            console.log(err)
+
+            console.log(err);
         } else {
             res.render("Comments/new", { MovieInfo: review });
         }
@@ -20,6 +21,7 @@ router.get('/new', middleware.isLoggedIn, function(req, res) {
 router.post('/', middleware.isLoggedIn, function(req, res) {
     MovieInfo.findById(req.params.id, function(err, movie) {
         if (err) {
+            req.flash("error", "Something went wrong.")
             console.log(err)
             res.redirect('/moviereviews')
         } else {
@@ -36,6 +38,7 @@ router.post('/', middleware.isLoggedIn, function(req, res) {
                     //then save the comment 
                     movie.comments.push(comment);
                     movie.save();
+                    req.flash("success", "You successfully added the comment.")
                     res.redirect('/moviereviews/' + movie._id)
                 }
             })
@@ -72,6 +75,7 @@ router.delete("/:comment_id", middleware.commentAuthorization, function(req, res
         if (err) {
             res.redirect('back');
         } else {
+            req.flash("success", "You successfully deletd comment.")
             res.redirect('/moviereviews/' + req.params.id);
         }
     })

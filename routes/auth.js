@@ -15,9 +15,13 @@ router.post('/register', function(req, res) {
     console.log(req.body.username);
     User.register(newUser, req.body.password, function(err, user) {
         if (err) {
-            console.log(err)
+            req.flash("error", err.message);
+            res.redirect('/register');
+            console.log(err.message)
+
         }
         passport.authenticate('local')(req, res, function() {
+            req.flash("success", "Welcome to BETA-REVIEW " + user.username)
             res.redirect('/moviereviews')
         })
     })
