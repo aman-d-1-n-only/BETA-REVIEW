@@ -1,4 +1,4 @@
-var MovieInfo = require('../models/movieschema')
+var Review = require('../models/review')
 var Comment = require('../models/comment')
 
 // All middleware goes here
@@ -7,7 +7,7 @@ var middlewareObj = {};
 middlewareObj.reviewAuthorization = function(req, res, next) {
     //is user logged in or not !!!
     if (req.isAuthenticated()) {
-        MovieInfo.findById(req.params.id, function(err, editReview) {
+        Review.findById(req.params.id, function(err, editReview) {
             if (err) {
                 req.flash("error", "Review not found.")
                 res.redirect('back');

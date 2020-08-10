@@ -1,12 +1,11 @@
 var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose')
-    //is use to store schema constructor that will be used to make schema
-const Schema = mongoose.Schema;
+
 
 //creating a schema
-const userSchema = new Schema({
-    username: String,
-    password: String,
+var userSchema = new Schema({
+
 
 });
 

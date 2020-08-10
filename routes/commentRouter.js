@@ -1,14 +1,14 @@
 var express = require('express');
-var router = express.Router({ mergeParams: true });
+var commentRouter = express.Router({ mergeParams: true });
+
 var Comment = require('../models/comment')
-var MovieInfo = require('../models/movieschema')
+var Review = require('../models/review')
 var middleware = require('../middleware/index')
 
 //comments form route
-router.get('/new', middleware.isLoggedIn, function(req, res) {
-    MovieInfo.findById(req.params.id, function(err, review) {
+commentRouter.get('/new', middleware.isLoggedIn, function(req, res) {
+    Review.findById(req.params.id, function(err, review) {
         if (err) {
-
             console.log(err);
         } else {
             res.render("Comments/new", { MovieInfo: review });
@@ -18,8 +18,8 @@ router.get('/new', middleware.isLoggedIn, function(req, res) {
 })
 
 //comments POST route
-router.post('/', middleware.isLoggedIn, function(req, res) {
-    MovieInfo.findById(req.params.id, function(err, movie) {
+commentRouter.post('/', middleware.isLoggedIn, function(req, res) {
+    Review.findById(req.params.id, function(err, movie) {
         if (err) {
             req.flash("error", "Something went wrong.")
             console.log(err)
@@ -47,7 +47,7 @@ router.post('/', middleware.isLoggedIn, function(req, res) {
 })
 
 //Comment Edit Route
-router.get("/:comment_id/edit", middleware.commentAuthorization, function(req, res) {
+commentRouter.get("/:comment_id/edit", middleware.commentAuthorization, function(req, res) {
     Comment.findById(req.params.comment_id, function(err, foundComment) {
         if (err) {
             res.redirect("back");
@@ -59,7 +59,7 @@ router.get("/:comment_id/edit", middleware.commentAuthorization, function(req, r
 })
 
 //Comment Update Route
-router.put("/:comment_id", middleware.commentAuthorization, function(req, res) {
+commentRouter.put("/:comment_id", middleware.commentAuthorization, function(req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
         if (err) {
             res.redirect('back');
@@ -70,7 +70,7 @@ router.put("/:comment_id", middleware.commentAuthorization, function(req, res) {
 })
 
 //COMMENT DESTROY ROUTE
-router.delete("/:comment_id", middleware.commentAuthorization, function(req, res) {
+commentRouter.delete("/:comment_id", middleware.commentAuthorization, function(req, res) {
     Comment.findByIdAndRemove(req.params.comment_id, function(err) {
         if (err) {
             res.redirect('back');
@@ -84,4 +84,4 @@ router.delete("/:comment_id", middleware.commentAuthorization, function(req, res
 
 
 
-module.exports = router;
+module.exports = commentRouter;

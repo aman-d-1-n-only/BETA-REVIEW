@@ -1,51 +1,58 @@
-var express = require("express"),
-    bodyParser = require("body-parser"),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose'),
-    methodOverride = require('method-override'),
-    flash = require('connect-flash');
+//Node Modules
+var express = require("express");
+var path = require('path');
+var logger = require('morgan');
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var passport = require('passport');
+var LocalStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose');
+var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+var methodOverride = require('method-override');
+var flash = require('connect-flash');
 
-var moviereviewsRoutes = require("./routes/movieReviews"),
-    commentRoutes = require("./routes/comment"),
-    authRoutes = require("./routes/auth");
+//Routes
+var reviewRouter = require("./routes/reviewRouter");
+var commentRouter = require("./routes/commentRouter");
+var userRouter = require("./routes/userRouter");
 
-//movie schema connection
-var MovieInfo = require('./models/movieschema');
+//Dependencies File
+var config = require('./config');
+var authenticate = require('./authenticate');
 
-//comments schema
+//Model 
+var MovieInfo = require('./models/review');
 var Comment = require('./models/comment')
-
-//user schema connection
 var User = require('./models/user');
 
-//seed.js file
-var seedDB = require('./seed')
-    //seedDB(); //seed the database
-
 //mongoose connection
-var mongoose = require("mongoose")
-var url = "mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Mongo Db connected"))
+var url = config.mongoUrl;
+var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.set('useCreateIndex', true);
+connect
+    .then(() => console.log("Connected to server successfully."))
     .catch(err => console.log(err));
 
 var app = express();
-app.set("view engine", "ejs");
+app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
-app.use(require('express-session')({
-    secret: "Nauruto Uzumaki Jiraya Rasen Shuriken best",
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(session({
+    name: 'session-id',
+    secret: config.secretKey,
     resave: false,
     saveUninitialized: false,
+    store: new FileStore()
 }));
 
-app.use(flash());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-app.use(express.static(__dirname + "/public"));
 
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
@@ -56,14 +63,12 @@ app.use(function(req, res, next) {
 
 app.use(methodOverride("_method"));
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use(express.static(__dirname + "/public"));
 
-app.use("/moviereviews", moviereviewsRoutes);
-app.use(authRoutes);
-app.use('/moviereviews/:id/comments', commentRoutes);
+app.use('/reviews', reviewRouter);
+app.use('/', userRouter);
+app.use('/reviews/:reviewId/comments', commentRouter);
 
 app.listen(process.env.PORT || 3000, function() {
-    console.log("Server is listening..");
+    console.log('Connected to server successfully.');
 });
