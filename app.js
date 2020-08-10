@@ -31,7 +31,7 @@ var url = config.mongoUrl;
 var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 connect
-    .then(() => console.log("Connected to server successfully."))
+    .then(() => console.log("Connected to database"))
     .catch(err => console.log(err));
 
 var app = express();

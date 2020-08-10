@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 //creating a schema
 const reviewSchema = new Schema({
-    name: {
-        type: String,
-        default: '',
-    },
     title: {
         type: String,
         required: true,

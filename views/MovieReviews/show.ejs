@@ -42,13 +42,13 @@
                             <%if(currentUser && MovieInfo.author.id.equals(currentUser._id)){%>
                                 <div class="col-md-6">
                                     <span class="text-right">
-                                    <a href="/moviereviews/<%= MovieInfo._id %>/edit" class="btn btn-warning btn-sm">EDIT REVIEW </a>
+                                    <a href="/reviews/<%= MovieInfo._id %>/edit" class="btn btn-warning btn-sm">EDIT REVIEW </a>
                                 </span>
 
                                 </div>
 
                                 <div class="col-md-6 text-right">
-                                    <form action="/moviereviews/<%=MovieInfo._id%>?_method=DELETE" method="POST">
+                                    <form action="/reviews/<%=MovieInfo._id%>?_method=DELETE" method="POST">
                                         <button class="btn btn-danger btn-sm"> Delete </button>
                                     </form>
                                 </div>
@@ -63,7 +63,7 @@
                 <div class="jumbotron">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <a href="/moviereviews/<%= MovieInfo._id %>/comments/new" class="btn btn-success">ADD NEW COMMENT </a>
+                            <a href="/reviews/<%= MovieInfo._id %>/comments/new" class="btn btn-success">ADD NEW COMMENT </a>
 
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <div class="col-md-6 text-right">
                                 <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
                                     <a href="<%=MovieInfo._id%>/comments/<%=comment._id%>/edit" class="btn btn-sm btn-warning">EDIT</a>
-                                    <form style=" display: inline;" action="/moviereviews/<%=MovieInfo._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                    <form style=" display: inline;" action="/reviews/<%=MovieInfo._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                         <button class="btn btn-danger btn-sm"> Delete </button>
                                     </form>
                                     <%}%>

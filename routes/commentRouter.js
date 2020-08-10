@@ -7,10 +7,12 @@ var middleware = require('../middleware/index')
 
 //comments form route
 commentRouter.get('/new', middleware.isLoggedIn, function(req, res) {
-    Review.findById(req.params.id, function(err, review) {
+    Review.findById(req.params.reviewId, function(err, review) {
         if (err) {
+            console.log(review);
             console.log(err);
         } else {
+            console.log(review);
             res.render("Comments/new", { MovieInfo: review });
         }
     })
@@ -19,11 +21,11 @@ commentRouter.get('/new', middleware.isLoggedIn, function(req, res) {
 
 //comments POST route
 commentRouter.post('/', middleware.isLoggedIn, function(req, res) {
-    Review.findById(req.params.id, function(err, movie) {
+    Review.findById(req.params.reviewId, function(err, movie) {
         if (err) {
             req.flash("error", "Something went wrong.")
             console.log(err)
-            res.redirect('/moviereviews')
+            res.redirect('/reviews')
         } else {
             Comment.create(req.body.comment, function(err, comment) {
                 if (err) {
@@ -39,7 +41,7 @@ commentRouter.post('/', middleware.isLoggedIn, function(req, res) {
                     movie.comments.push(comment);
                     movie.save();
                     req.flash("success", "You successfully added the comment.")
-                    res.redirect('/moviereviews/' + movie._id)
+                    res.redirect('/reviews/' + movie._id)
                 }
             })
         }
@@ -52,7 +54,7 @@ commentRouter.get("/:comment_id/edit", middleware.commentAuthorization, function
         if (err) {
             res.redirect("back");
         } else {
-            res.render('Comments/edit', { MovieInfo_id: req.params.id, comment: foundComment });
+            res.render('Comments/edit', { MovieInfo_id: req.params.reviewId, comment: foundComment });
         }
     });
 
@@ -64,7 +66,7 @@ commentRouter.put("/:comment_id", middleware.commentAuthorization, function(req,
         if (err) {
             res.redirect('back');
         } else {
-            res.redirect('/moviereviews/' + req.params.id);
+            res.redirect('/moviereviews/' + req.params.reviewId);
         }
     })
 })
@@ -76,7 +78,7 @@ commentRouter.delete("/:comment_id", middleware.commentAuthorization, function(r
             res.redirect('back');
         } else {
             req.flash("success", "You successfully deletd comment.")
-            res.redirect('/moviereviews/' + req.params.id);
+            res.redirect('/moviereviews/' + req.params.reviewId);
         }
     })
 })
