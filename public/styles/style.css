@@ -13,7 +13,6 @@ body {
 
 a {
     text-decoration: none;
-    color: #32cd32 !important;
 }
 
 
@@ -39,6 +38,10 @@ a {
     padding: 2rem;
     font-size: 2rem;
     border-right: 1px solid slategray;
+}
+
+.nav .nav-content .nav-brand a {
+    color: #32cd32 !important;
 }
 
 .nav .nav-content button {
@@ -91,6 +94,25 @@ a {
 
 #item2 {
     grid-column: 2/3;
+    padding: 2rem 0;
+}
+
+#result {
+    max-width: 400px;
+    cursor: pointer;
+    overflow-y: auto;
+    max-height: 400px;
+    box-sizing: border-box;
+    margin: 2rem auto;
+}
+
+.link-class:hover {
+    background-color: #f1f1f1;
+}
+
+#search {
+    width: 400px;
+    margin: 0 auto;
 }
 
 .search {
