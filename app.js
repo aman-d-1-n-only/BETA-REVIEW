@@ -31,7 +31,9 @@ var url = config.mongoUrl;
 var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 connect
-    .then(() => console.log("Connected to database"))
+    .then((db) => {
+        console.log("Connected to database");
+    })
     .catch(err => console.log(err));
 
 var app = express();
@@ -63,8 +65,11 @@ app.use(function(req, res, next) {
 
 app.use(methodOverride("_method"));
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+    res.render('main');
+});
 app.use('/reviews', reviewRouter);
 app.use('/', userRouter);
 app.use('/reviews/:reviewId/comments', commentRouter);

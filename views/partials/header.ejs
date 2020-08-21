@@ -4,48 +4,46 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BETA-REVIEWS</title>
-    <link rel="shortcut icon" type="image/png" href="/Beta-Review.png" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/stylesheet/main.css" />
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
+    <title>BETA REVIEWS</title>
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" type="image/png" href="images/Beta-Review.png" />
+    <!-- Bootstrap Css CDN File -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Semantic Css CDN File -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <!-- Custom Css File -->
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-0" style="background-color: black;">
-        <a class="navbar-brand" href="/"><img src="https://png.pngtree.com/png-clipart/20190604/original/pngtree-cinema-element-png-image_1000887.jpg" class="rounded" width="70" height="70" alt="" />
-            <span style="color: grey;">BETA-REVIEWS</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <% if(!currentUser){ %>
-                    <li class="nav-item active px-2 py-2">
-                        <a class="btn btn-success" href="/signup">Register</a>
-                    </li>
-                    <li class="nav-item active px-2 py-2">
-                        <a class="btn btn-success" href="/login">Log-In</a>
-                    </li>
-                    <% }else { %>
-                        <li class="nav-item active px-2 py-2">
-                            <a href="#">
-                                <h4 style="color: grey;">
-                                    Signed In As :
-                                    <%= currentUser.username %>
-                                </h4>
-                            </a>
-                        </li>
-                        <li class="nav-item active px-2 py-2">
-                            <a class="btn btn-success" href="/logout">Log-out</a>
-                        </li>
-                        <% } %>
-            </ul>
+    <div class="nav">
+        <div class="nav-content">
+            <div class="nav-brand">
+                <a href="/">BETA REVIEW</a>
+            </div>
+            <button id="menu-toggle" class="ui inverted green button">
+                <i class="align justify icon"></i>
+            </button>
         </div>
-    </nav>
+    </div>
+    <div class="ui right sidebar inverted vertical menu">
+        <% if(!currentUser){ %>
+            <a href="/signup" class="item">Sign Up</a>
+            <a href="/login" class="item">Login</a>
+            <% }else { %>
+                <a href="#" class="item">
+                    <h4 style="color: grey;">
+                        Signed In As :
+                        <span style="color:#32CD32;"><%= currentUser.username %></span>
+                    </h4>
+                </a>
+                <a href="/logout" class="item">Logout</a>
+                <% } %>
+                    <div class="pusher">
+
+                    </div>
+    </div>
     <div class="container">
         <% if(error && error.length > 0){%>
             <h1 style="margin-top: 100px;">

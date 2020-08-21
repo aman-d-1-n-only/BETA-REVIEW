@@ -1,21 +1,21 @@
 <%- include("partials/header") %>
-
-    <div class="container text-center" style="margin-top: 100px; width: 600px;">
-        <h1>Log-in Page</h1>
-
-        <form action="/login" method="POST">
-            <div class="container" style="width: 400px;">
-                <div class="row d-flex align-content-around" style="height: 200px;">
-                    <input class="form-control" type="text" name="username" placeholder="User Name " />
-
-                    <input class="form-control" type="password" name="password" placeholder="password" />
-
-                    <input class="form-control btn btn-large btn-success" type="submit" />
-
-                    <a href="/reviews" class="form-control btn btn-large btn-success pl-2">Go back</a
-        >
-      </div>
+    <div class="background">
+        <div class="foreground">
+            <form action="/login" method="POST" class="ui form">
+                <div class="field">
+                    <label>User Name</label>
+                    <input type="text" name="user-name" placeholder="User Name">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="password">
+                </div>
+                <div class="flex-row">
+                    <button class="ui inverted green button">Log In</button>
+                    <a class="ui teal basic button" href="/signup">Sign Up</a>
+                </div>
+            </form>
+        </div>
     </div>
-  </form>
-</div>
-<%- include("partials/footer") %>
+
+    <%- include("partials/footer") %>
