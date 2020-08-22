@@ -125,6 +125,36 @@ a {
     margin: 0 auto;
     margin-bottom: 10rem;
     text-align: center;
+    box-shadow: 2px 2px 3px 2px grey;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.overview {
+    height: 100%;
+    padding: 1rem;
+    overflow: auto !important;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.overview #def {
+    font-weight: 900;
+}
+
+.overview .tag {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.overview .tag .tags {
+    color: whitesmoke;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0.4rem 1rem;
+    margin: 0.4rem 0.6rem;
+    border-radius: 3rem;
 }
 
 .post-heading {
@@ -181,7 +211,7 @@ a {
     background-image: url("../images/theater.jpg");
     height: 90vh;
     background-size: cover;
-    padding: 13.5rem 0;
+    padding: 13rem 0;
 }
 
 .foreground {

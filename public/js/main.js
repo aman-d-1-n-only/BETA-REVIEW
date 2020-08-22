@@ -9,7 +9,7 @@ $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
         stagePadding: 50,
         loop: true,
-        margin: 10,
+        margin: 20,
         nav: true,
         responsive: {
             0: {
@@ -23,6 +23,12 @@ $(document).ready(function() {
             }
         }
     });
+
+    //Movie Dialog
+    $('#more-movie-info').click(() => {
+        $('.ui.modal').modal('show');
+    });
+
 
     // Set Up of autocomplete search bar
     $('#search').keyup(function() {

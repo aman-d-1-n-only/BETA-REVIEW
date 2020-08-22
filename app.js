@@ -11,6 +11,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+var axios = require('axios');
 
 //Routes
 var reviewRouter = require("./routes/reviewRouter");
@@ -20,6 +21,7 @@ var userRouter = require("./routes/userRouter");
 //Dependencies File
 var config = require('./config');
 var authenticate = require('./authenticate');
+var need = require('./need');
 
 //Model 
 var MovieInfo = require('./models/review');
@@ -68,8 +70,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('main');
+    res.render('main', { treMovies: need.treMovies, treShows: need.treShows });
 });
+
 app.use('/reviews', reviewRouter);
 app.use('/', userRouter);
 app.use('/reviews/:reviewId/comments', commentRouter);

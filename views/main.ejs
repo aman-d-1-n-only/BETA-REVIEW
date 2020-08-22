@@ -12,272 +12,108 @@
         <div id="item2">
             <h2>Add a review</h2>
             <div style="text-align:center">
-                <input type="text" name="search" id="search" placeholder="Search movies , tv shows" class="form-control" />
+                <input type="text" name="search" id="search" placeholder="Search movies,tv shows" class="form-control" />
             </div>
             <div class="results">
                 <ul class="list-group" id="result"></ul>
             </div>
         </div>
     </div>
-    <div id="post">
-        <div class="post-heading">
-            <h1>POPULAR REVIEWS</h1>
+    <div class="post-collection">
+        <div id="post">
+            <div class="post-heading">
+                <h1>Trending Movies</h1>
+                <hr>
+            </div>
+            <div class="owl-carousel owl-theme">
+                <%treMovies.forEach(function(movie){%>
+                    <div class="item">
+                        <div class="ui card">
+                            <div class="image">
+                                <div class="ui move up reveal">
+                                    <div class="visible content">
+                                        <img src="https://image.tmdb.org/t/p/w500/<%=movie.poster_path%>">
+                                    </div>
+                                    <div class="hidden content overview">
+                                        <div class="description ">
+                                            <p><span id="def"> Overview :</span>
+                                                <%=movie.overview%>
+                                            </p>
+                                        </div>
+                                        <div class="tag">
+                                            <%movie.genre_ids.forEach(function(genre){%>
+                                                <span class="tags"><%=genre%></span>
+                                                <% }); %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="content">
+                                <a class="header" id="more-movie-info">
+                                    <%=movie.title%>
+                                </a>
+                                <div class="meta">
+                                    <span class="date">Released  :<%=movie.release_date%></span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <i class="thumbs up icon"></i>
+                                <%=movie.vote_average*10%>%
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
         </div>
-        <div class="owl-carousel owl-theme">
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
+
+        <div id="post">
+            <div class="post-heading">
+                <h1>Trending Tv Shows</h1>
+                <hr>
             </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
+            <div class="owl-carousel owl-theme">
+                <%treShows.forEach(function(show){%>
+                    <div class="item">
+                        <div class="ui card">
+                            <div class="image">
+                                <div class="ui move up reveal">
+                                    <div class="visible content">
+                                        <img src="https://image.tmdb.org/t/p/w500/<%=show.poster_path%>">
+                                    </div>
+                                    <div class="hidden content overview">
+                                        <div class="description">
+                                            <p><span id="def"> Overview :</span>
+                                                <%=show.overview%>
+                                            </p>
+                                        </div>
+                                        <div class="tag">
+                                            <%show.genre_ids.forEach(function(genre){%>
+                                                <span class="tags"><%=genre%></span>
+                                                <% }); %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <a class="header" id="more-info">
+                                    <%=show.original_name%>
+                                </a>
+                                <div class="meta">
+                                    <span class="date">First Aired On : <%=show.first_air_date%></span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <i class="thumbs up icon"></i>
+                                <%=show.vote_average*10%>%
+                            </div>
                         </div>
                     </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ui card">
-                    <div class="image">
-                        <img src="images/streaming services.jpg">
-                    </div>
-                    <div class="content">
-                        <a class="header">Kristy</a>
-                        <div class="meta">
-                            <span class="date">Joined in 2013</span>
-                        </div>
-                        <div class="description">
-                            Kristy is an art director living in New York.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <a>
-                            <i class="user icon"></i> 22 Friends
-                        </a>
-                    </div>
-                </div>
+                    <% }); %>
             </div>
         </div>
     </div>
+
     <div class="footer">
         <div class="footer-about">
             <h1>About Us</h1>
