@@ -16,13 +16,14 @@ userRouter.route('/signup')
         User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
             if (err) {
                 req.flash("error", err.message);
-                res.redirect('/signup');
                 console.log(err.message);
+                return res.redirect('/signup');
+
             }
             passport.authenticate('local')(req, res, () => {
-                req.flash("success", "Welcome to Beta-Review " + user.username);
-                res.redirect('/reviews');
-            })
+                req.flash("success", `Hello ${user.username} | Welcome to Beta Review | Start Reviewing `);
+                res.redirect('/');
+            });
         });
     });
 
@@ -33,19 +34,19 @@ userRouter.route('/login')
         res.render('login');
     })
     .post(passport.authenticate('local', {
-        successRedirect: '/reviews',
+        successRedirect: '/',
+        successFlash: { type: 'success', message: 'Welcome Back ! Successfully logged in.' },
         failureRedirect: '/login',
-    }), function(req, res) {
-
-    })
+        failureFlash: { type: 'error', message: 'Invalid username or password.' },
+    }), (req, res) => {});
 
 //log out route
 userRouter.get('/logout', (req, res) => {
     req.logout();
-    req.flash("success", "Logged you out !!");
+    req.flash("success", "Sucessfully logged you out !!");
     res.redirect('/reviews');
 
-})
+});
 
 
 

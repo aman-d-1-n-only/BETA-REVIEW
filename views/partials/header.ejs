@@ -46,20 +46,20 @@
                     <div class="pusher">
                     </div>
     </div>
-    <div class="container">
+    <div class="flash container">
         <% if(error && error.length > 0){%>
-            <h1 style="margin-top: 100px;">
-                <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert">
+                <h2>
                     <%= error %>
-                </div>
-            </h1>
+                </h2>
+            </div>
             <%}%>
-                <% if(success && success.length > 0){%>
-                    <h1 style="margin-top: 100px;">
-                        <div class="alert alert-success" role="alert">
+                <%if(success && success.length > 0){%>
+                    <div class="alert alert-success" role="alert">
+                        <h2>
                             <%= success %>
-                        </div>
-                    </h1>
+                        </h2>
+                    </div>
                     <%}%>
     </div>
 </body>
