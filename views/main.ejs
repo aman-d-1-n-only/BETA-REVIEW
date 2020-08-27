@@ -8,16 +8,62 @@
         </div>
     </div>
     <div class="review">
-        <div id="item1"></div>
+        <div id="item1">
+            <div class="jumbotron">
+                <div class="review-heading">
+                    <h2>Add a review</h2>
+                </div>
+                <div class="review-instruction">
+                    <ul>
+                        <li>Search a movie or tv shows</li>
+                        <li>Write a review</li>
+                        <li>Submit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div id="item2">
-            <h2>ADD REVIEW</h2>
+            <!-- <h2>ADD REVIEW</h2>
             <div class="search-bar">
-                <input type="text" name="search" id="search" placeholder="Search movies,tv shows" class="form-control" />
-                <button> <i class="icon plus"></i>Add</button>
+                <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" />
+                <button>Next</button>
             </div>
             <div class="results">
                 <ul class="list-group" id="result"></ul>
-            </div>
+            </div> -->
+            <form class="msf">
+                <div class="msf-header">
+                    <div class="row text-center">
+                        <div class="msf-step col-md-4"><i class="film icon"></i><span>Movie & Tv Show</span></div>
+                        <div class="msf-step col-md-4"><i class="comment alternate icon"></i><span>Review Info</span></div>
+                        <div class="msf-step col-md-4"><i class="paper plane icon"></i><span>Verify</span></div>
+                    </div>
+                </div>
+
+                <div class="msf-content">
+                    <div class="msf-view">
+                        <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" />
+                        <div class="results">
+                            <ul class="list-group" id="result"></ul>
+                        </div>
+                    </div>
+                    <div class="msf-view">
+                        <textarea name="review" id="review-info" placeholder="Write a review......" cols="10" rows="20"></textarea>
+                    </div>
+                    <div class="msf-view">
+                        <div class="submit-msg">
+                            <span>  You finally submitted the review.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="msf-navigation">
+                    <button type="button" data-type="back" class="btn btn-outline-dark msf-nav-button"><i class="fa fa-chevron-left"></i> Back </button>
+                    <button type="button" data-type="next" class="btn  btn-outline-dark msf-nav-button">Next <i class="fa fa-chevron-right"></i></button>
+                    <button type="submit" data-type="submit" class="btn btn-outline-dark msf-nav-button">Submit</button>
+                </div>
+            </form>
+
         </div>
     </div>
     <div class="post-collection">

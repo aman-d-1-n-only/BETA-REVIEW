@@ -5,6 +5,15 @@ body {
     overflow-x: hidden;
 }
 
+:root {
+    --Amatic: "Amatic SC", cursive;
+    --Anton: "Anton", sans-serif;
+    --Arch: "Architects Daughter", cursive;
+    --Great: "Great Vibes", cursive;
+    --Kaushan: "Kaushan Script", cursive;
+    --Sacrmento: "Sacramento", cursive;
+}
+
 body::-webkit-scrollbar {
     width: 1rem;
 }
@@ -103,6 +112,7 @@ a {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 90vh;
     text-align: center;
 }
 
@@ -111,30 +121,79 @@ a {
 }
 
 #item1 {
+    grid-row: 1/2;
     grid-column: 1/2;
-    background: url("../images/popcorn.jpg");
+    background-image: url("../images/popcorn.jpg");
     background-size: cover;
-    background-position: left;
+}
+
+.jumbotron {
+    width: 40vw;
+    margin: 30vh auto;
+    height: 30vh;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr;
+    text-align: left !important;
+}
+
+.review-heading {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    text-align: center;
+    padding: 1rem;
+}
+
+.review-instruction {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.review-instruction ul {
+    display: block;
+    margin: 1rem;
+    list-style-type: circle;
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 #item2 {
+    grid-row: 1/2;
     grid-column: 2/3;
     padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
 }
 
-#item2 .search-bar {
-    width: 40rem;
+.msf-header {
+    grid-column: 1/1;
+    grid-row: 1/2;
+    padding: 0 auto;
+    text-align: center !important;
+}
+
+.msf-content {
+    grid-column: 1/1;
+    grid-row: 2/3;
+}
+
+.msf-navigation {
+    grid-column: 1/1;
+    grid-row: 3/4;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 2rem auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
 }
 
-#item2 .search-bar button {
+.msf-navigation button {
     display: block;
     border-radius: 100px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 0.4rem 1rem;
+    padding: 1rem 1rem;
     width: 7rem;
     border: none;
 }
@@ -142,22 +201,42 @@ a {
 #item2 #search {
     border-radius: 100px;
     height: 3rem;
-    width: 30rem;
+    width: 35vw;
+    margin: 0 auto;
     border: none;
 }
 
 #result {
-    max-width: 40rem;
+    width: 35vw;
     cursor: pointer;
     overflow-y: auto;
-    max-height: 400px;
+    max-height: 40vh;
     box-sizing: border-box;
-    margin: 2rem auto;
+    margin: 3vh auto;
     border-radius: 10px;
 }
 
 .link-class:hover {
     background-color: #f1f1f1;
+}
+
+textarea {
+    outline: none;
+    padding: 1rem;
+    box-shadow: 2px 2px 4px 3px grey;
+    margin: 0 auto;
+    width: 40vw;
+    height: 60vh;
+    border: none !important;
+    font-size: 1.5rem;
+    font-family: var(--Anton);
+}
+
+.submit-msg {
+    height: 40vh;
+    padding: 17vh 0;
+    font-size: 2rem;
+    text-align: center;
 }
 
 #post {
@@ -303,6 +382,19 @@ label {
         grid-column: 1/2;
         grid-row: 2/3;
     }
+    #item2 #search {
+        width: 60vw;
+    }
+    #result {
+        width: 60vw;
+    }
+    .jumbotron {
+        width: 60vw;
+    }
+    textarea {
+        width: 80vw;
+        height: 50vh;
+    }
 }
 
 
@@ -331,14 +423,14 @@ label {
     #item2 .search-bar {
         width: 26rem;
     }
-    #item2 .search-bar button {
-        width: 6rem;
-    }
     #item2 #search {
-        width: 18rem;
+        width: 60vw;
     }
     #result {
-        max-width: 26rem;
+        width: 60vw;
+    }
+    .submit-msg {
+        font-size: 1rem;
     }
 }
 
@@ -348,7 +440,7 @@ label {
 
 /*......................................View Port less than 425px.........................................*/
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 426px) {
     .foreground {
         width: 300px;
         margin: 0 auto;
@@ -361,22 +453,28 @@ label {
         justify-content: center;
         margin: 1rem auto;
     }
-    #item2 .search-bar button {
-        width: 6rem;
-        height: 3rem;
-    }
     #item2 #search {
-        width: 18rem;
+        width: 80vw;
     }
     #result {
-        max-width: 20rem;
-        margin: 1rem auto;
+        width: 80vw;
+        margin: 3vh auto;
     }
     .nav .nav-content .nav-brand {
         font-size: 1rem;
     }
     .nav .nav-content i {
         margin: 0.5px !important;
+    }
+    .jumbotron {
+        width: 80vw;
+    }
+    .review-instruction ul {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+    .review-heading {
+        padding: 0.5rem;
     }
 }
 

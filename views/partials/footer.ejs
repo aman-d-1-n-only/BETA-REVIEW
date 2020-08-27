@@ -7,6 +7,31 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 <!-- Axios CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!--Multi-Step-Form js file -->
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.validate.unobtrusive.min.js"></script>
+<script src="js/multi-step-form.js"></script>
+<script type="text/javascript">
+    $(".msf:first").multiStepForm({
+        activeIndex: 0,
+        allowClickNavigation: true,
+        allowUnvalidatedStep: false,
+        hideBackButton: false,
+        validate: {
+            rules: {
+                name: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        }
+    });
+    $(document).on("msf:viewChanged", function(event, data) {
+        var progress = Math.round((data.currentIndex / data.totalSteps) * 100);
+        $(".progress-bar").css("width", progress + "%").attr('aria-valuenow', progress);
+    });
+</script>
 <!-- Owl Carousel Js -->
 <script src="js/owl.carousel.min.js"></script>
 <!-- Custom Js file -->

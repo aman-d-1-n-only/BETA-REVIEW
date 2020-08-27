@@ -20,6 +20,7 @@ reviewRouter.route('/')
         });
     })
     .post(middleware.isLoggedIn, (req, res) => {
+        console.log(req.body);
         var name = req.body.name;
         var title = req.body.title;
         var image = req.body.url;
