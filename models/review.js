@@ -15,6 +15,9 @@ const reviewSchema = new Schema({
         type: String,
         required: true,
     },
+    tmdb_id: {
+        type: Number
+    },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +29,8 @@ const reviewSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
     }]
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Review', reviewSchema);

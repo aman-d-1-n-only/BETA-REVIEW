@@ -1,11 +1,14 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var axios = require('axios');
 
 var reviewRouter = express.Router();
 reviewRouter.use(bodyParser.json());
 
 var Review = require('../models/review');
-var middleware = require('../middleware/index')
+var middleware = require('../middleware/index');
+var config = require('../config');
+const { default: Axios } = require('axios');
 
 
 reviewRouter.route('/')
@@ -20,30 +23,55 @@ reviewRouter.route('/')
         });
     })
     .post(middleware.isLoggedIn, (req, res) => {
-        console.log(req.body);
-        var name = req.body.name;
-        var title = req.body.title;
-        var image = req.body.url;
-        var review = req.body.review;
-        var author = {
-            id: req.user._id,
-            username: req.user.username,
-        }
-        Review.create({
-            title: title,
-            image: image,
-            review: review,
-            author: author,
-        }, (err, MovieInfo) => {
-            if (err) {
+        axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${config.api_key}&language=en-US&query=${req.body.title}&page=1&include_adult=false`)
+            .then(data => {
+                var data = data.data.results;
+                return data;
+            })
+            .then(data => {
+                data.forEach(value => {
+                    if (value.original_title) {
+                        var link = `https://image.tmdb.org/t/p/w500/${value.poster_path}`;
+                        req.body.title = value.title;
+                        req.body.image = link
+                        console.log(req.body.image);
+                        req.body.tmdb_id = value.id;
+                        req.body.author = {};
+                        req.body.author.id = req.user._id;
+                        req.body.author.username = req.user.username;
+                        console.log(req.body);
+                        return Review.create(req.body)
+
+                    }
+                    if (value.original_name) {
+                        var link = `https://image.tmdb.org/t/p/w500/${value.poster_path}`;
+                        req.body.title = value.name;
+                        req.body.image = link
+                        console.log(req.body.image);
+                        req.body.tmdb_id = value.id;
+                        req.body.author = {};
+                        req.body.author.id = req.user._id;
+                        req.body.author.username = req.user.username;
+                        console.log(req.body);
+                        return Review.create(req.body)
+
+                    }
+                });
+            })
+            .then((review) => {
+                console.log(review);
+                req.flash('success', 'You successfully added a review.')
+                res.redirect("/reviews");
+            })
+            .catch(err => {
                 console.log(err);
-            } else {
-                console.log(MovieInfo);
-            }
-            //redirect to movie review page 
-            res.redirect("/reviews");
-        });
-    })
+                req.flash('error', 'Something went wrong !!!');
+                res.redirect("/");
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    });
 
 
 //Review Form Route

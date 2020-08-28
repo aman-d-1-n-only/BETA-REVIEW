@@ -77,6 +77,6 @@ app.use('/reviews', reviewRouter);
 app.use('/', userRouter);
 app.use('/reviews/:reviewId/comments', commentRouter);
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 8337, function() {
     console.log('Connected to server successfully.');
 });

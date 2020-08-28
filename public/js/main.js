@@ -44,8 +44,8 @@ $(document).ready(function() {
                 $.each(data, function(key, value) {
                     var link = 'https://image.tmdb.org/t/p/w500/';
                     if (value.original_title) {
-                        if (value.original_title.search(expression) != -1) {
-                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '" height="40" width="40" class="img-thumbnail" /> ' + value.original_title);
+                        if (value.title.search(expression) != -1) {
+                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '" height="40" width="40" class="img-thumbnail" /> ' + value.title + ' | <span class="text-muted">' + value.original_title + '</span></li>');
                         }
                     }
                     if (value.original_name) {

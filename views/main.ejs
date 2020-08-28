@@ -31,7 +31,7 @@
             <div class="results">
                 <ul class="list-group" id="result"></ul>
             </div> -->
-            <form class="msf">
+            <form class="msf" action="/reviews" method="POST">
                 <div class="msf-header">
                     <div class="row text-center">
                         <div class="msf-step col-md-4"><i class="film icon"></i><span>Movie & Tv Show</span></div>
@@ -42,13 +42,13 @@
 
                 <div class="msf-content">
                     <div class="msf-view">
-                        <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" />
+                        <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" required/>
                         <div class="results">
                             <ul class="list-group" id="result"></ul>
                         </div>
                     </div>
                     <div class="msf-view">
-                        <textarea name="review" id="review-info" placeholder="Write a review......" cols="10" rows="20"></textarea>
+                        <textarea name="review" id="review-info" placeholder="Write a review......" cols="10" rows="20" required></textarea>
                     </div>
                     <div class="msf-view">
                         <div class="submit-msg">
