@@ -36,6 +36,8 @@ body::-webkit-scrollbar-thumb {
 
 a {
     text-decoration: none;
+    color: #f1f1f1;
+    font-size: 1.5em;
 }
 
 .flash {
@@ -324,6 +326,113 @@ textarea {
 /*.......................*..................Main Css.........................*...........................*/
 
 
+/*........................................Reviews Css...................................................*/
+
+.main-reviews {
+    margin: 2rem auto;
+    display: grid;
+    width: 80vw;
+    grid-template-columns: 80vw;
+    grid-template-rows: 70vh auto;
+}
+
+.main-reviews .upcoming {
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+.news-article {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 60vh;
+}
+
+.news-overlay {
+    backdrop-filter: brightness(40%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    justify-content: space-around;
+}
+
+.news-article span {
+    display: block;
+    font-size: 1.5rem;
+    padding: 2rem;
+    color: white;
+    text-shadow: 1.5px 1.5px 2px #32cd32;
+}
+
+.news-article span p {
+    font-size: 1rem;
+    color: #f1f1f1;
+    text-shadow: none;
+}
+
+.main-reviews .allreviews {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    margin: 0;
+}
+
+.review-post {
+    margin: 5rem auto;
+    width: 60vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.review-post-img {
+    height: 40vh;
+    width: 30vw;
+}
+
+.review-post-img img {
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0, 77% 100%, 0% 100%);
+}
+
+.review-post-info span,
+.review-post-info a {
+    display: block;
+}
+
+.review-post-info {
+    padding: 2rem;
+}
+
+.review-post-btn {
+    padding: 1rem 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #eee;
+    font-size: 1rem;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    text-decoration: none;
+    width: 9rem;
+}
+
+.review-post-title {
+    text-transform: uppercase;
+}
+
+.review-post-btn:hover {
+    background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+}
+
+
+/*.......................*..................Reviews Css.........................*........................*/
+
+
 /*.......................................Authorization Css.............................................*/
 
 .background {
@@ -362,6 +471,40 @@ label {
 /*....................*...................Authorization Css......................*.......................*/
 
 
+/*......................................View Port less than 1024px.........................................*/
+
+@media screen and (max-width: 1024px) {
+    .review-post {
+        width: 60vw;
+        height: 40vh;
+    }
+    .review-post-img {
+        height: 40vh;
+        width: 40vw;
+    }
+}
+
+
+/*.....................*.................View Port less than 1024px.................*........................*/
+
+
+/*......................................View Port less than 900px.........................................*/
+
+@media screen and (max-width: 900px) {
+    .review-post {
+        width: 70vw;
+        height: 40vh;
+    }
+    .review-post-img {
+        height: 40vh;
+        width: 50vw;
+    }
+}
+
+
+/*.....................*.................View Port less than 900px...................*......................*/
+
+
 /*......................................View Port less than 768px.........................................*/
 
 @media screen and (max-width: 768px) {
@@ -395,10 +538,55 @@ label {
         width: 80vw;
         height: 50vh;
     }
+    .news-article span p {
+        display: none;
+    }
+    .review-post {
+        width: 70vw;
+        height: 40vh;
+    }
+    .review-post-img {
+        height: 40vh;
+        width: 40vw;
+    }
+    .review-post-info {
+        padding: 1rem;
+    }
+    .review-post-btn {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .review-post-title {
+        font-size: 1.5rem;
+    }
 }
 
 
 /*.....................*.................View Port less than 768px...................*.....................*/
+
+
+/*......................................View Port less than 750px.........................................*/
+
+@media screen and (max-width: 750px) {
+    .review-post-text {
+        display: none;
+    }
+    .review-post {
+        width: 50vw;
+        height: 70vh;
+        flex-direction: column;
+    }
+    .review-post-img {
+        height: 40vh;
+        width: 50vw;
+    }
+    .review-post-img img {
+        clip-path: none;
+    }
+}
+
+
+/*......................................View Port less than 750px.........................................*/
 
 
 /*......................................View Port less than 610px.........................................*/
@@ -475,6 +663,27 @@ label {
     }
     .review-heading {
         padding: 0.5rem;
+    }
+    .main-reviews {
+        width: 80vw;
+        grid-template-columns: 80vw;
+        grid-template-rows: 40vh auto;
+    }
+    .news-article {
+        height: 30vh;
+    }
+    .news-article span {
+        font-size: 0.7rem;
+        padding: 0.7rem;
+    }
+    .review-post-title {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+    .review-post-btn {
+        font-size: 0.5rem;
+        padding: 0.5rem 0.5rem;
+        width: 7rem;
     }
 }
 

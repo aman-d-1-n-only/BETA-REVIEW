@@ -84,5 +84,12 @@ axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${config.api_key
     .catch(err => {
         console.log(err);
     });
+axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${config.news_api}`)
+    .then(news => {
+        need.entr_news = news.data.articles;
+    })
+    .catch(err => {
+        console.log(err);
+    });
 
 module.exports = need;

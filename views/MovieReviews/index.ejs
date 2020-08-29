@@ -1,40 +1,65 @@
 <%- include("../partials/header") %>
-
-    <div class="container" style="margin-top: 120px; margin-bottom: 100px;">
-        <header class="jumbotron">
-            <div class="container" style="text-align: center;">
-                <h1 style="text-shadow: 2px 4px 7px grey; font-weight: 700; font-size: 4em;">
-                    BETA-REVIEWS
-                </h1>
-                <hr style="border-top: 1px solid black; width: 60%;" />
-                <p style="text-shadow: 1px 1px 3px grey;">
-                    Let know other your view time experience...
-                </p>
-
-                <p>
-                    <a class="btn btn-success" href="/reviews/form">ADD A REVIEW</a>
-                </p>
-            </div>
-        </header>
-        <div class="row d-flex justify-content-start">
-            <%MovieInfo.forEach(function(MovieInfo){%>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card">
-                        <img class="card-img-top" src="<%=MovieInfo.image%>" alt="Card image cap" />
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%=MovieInfo.title%>
-                            </h5>
-                            <p class="card-text">Reviewed by -
-                                <%=MovieInfo.author.username%>
+    <div class="main-reviews">
+        <div class="upcoming">
+            <div class="news-carousel owl-carousel owl-theme">
+                <%articles.forEach( article => {%>
+                    <div class="item">
+                        <div class="news-article" style="background-image:  url('<%=article.urlToImage%>');">
+                            <div class="news-overlay">
+                                <span>
+                            <%=article.title%>
+                              <p>
+                                <%=article.description%><a href="<%=article.url%>">....[Want to know more]</a>
                             </p>
-                            <a href="/reviews/<%=MovieInfo._id%>" class="btn btn-success">REVIEW</a
-          >
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <%})%>
+            </div>
         </div>
-      </div>
-    </div>
-    <% }); %>
-  </div>
-</div>
+        <div class="allreviews">
+            <%MovieInfo.forEach(function(MovieInfo){%>
+                <div class="review-post">
+                    <div class="review-post-img">
+                        <img src="<%=MovieInfo.image%>" alt="review-post-img">
+                    </div>
+                    <div class="review-post-info">
+                        <div class="review-post-date">
+                            <span> <strong> Reviewed by -</strong>
+                            <em><%=MovieInfo.author.username%></em></span>
+                            <span>August 28 2020</span>
+                        </div>
+                        <h1 class="review-post-title">
+                            <%=MovieInfo.title%>
+                        </h1>
+                        <p class="review-post-text">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem illo voluptatum quam incidunt veniam at adipisci ratione commodi amet eos exercitationem corporis in doloremque expedita omnis fuga sequi, ipsa totam.
+                        </p>
+                        <a href="/reviews/<%=MovieInfo._id%>" class="review-post-btn"> SEE REVIEW</a>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
 
-<%- include("../partials/footer") %>
+    </div>
+    <div class="footer">
+        <div class="footer-about">
+            <h1>About Us</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
+        </div>
+        <div class="footer-social-corner">
+            <h1>Follow us</h1>
+            <p>Let us be social</p>
+            <i class="youtube icon"></i>
+            <i class="linkedin icon"></i>
+            <i class="google plus icon"></i>
+            <i class="instagram icon"></i>
+            <i class="github icon"></i>
+            <i class="facebook icon"></i>
+        </div>
+        <div class="footer-cc">
+            <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
+        </div>
+    </div>
+    <%- include("../partials/footer") %>

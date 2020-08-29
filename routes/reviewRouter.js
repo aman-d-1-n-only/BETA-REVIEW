@@ -8,6 +8,7 @@ reviewRouter.use(bodyParser.json());
 var Review = require('../models/review');
 var middleware = require('../middleware/index');
 var config = require('../config');
+var need = require('../need');
 const { default: Axios } = require('axios');
 
 
@@ -18,7 +19,10 @@ reviewRouter.route('/')
             if (err) {
                 console.log(err);
             } else {
-                res.render("MovieReviews/index", { MovieInfo: movieInfo, currentUser: req.user });
+                var articles = need.entr_news.filter(article => {
+                    return article.urlToImage !== null;
+                })
+                res.render("MovieReviews/index", { MovieInfo: movieInfo, currentUser: req.user, articles: articles });
             }
         });
     })
@@ -28,35 +32,32 @@ reviewRouter.route('/')
                 var data = data.data.results;
                 return data;
             })
-            .then(data => {
-                data.forEach(value => {
-                    if (value.original_title) {
-                        var link = `https://image.tmdb.org/t/p/w500/${value.poster_path}`;
-                        req.body.title = value.title;
-                        req.body.image = link
-                        console.log(req.body.image);
-                        req.body.tmdb_id = value.id;
-                        req.body.author = {};
-                        req.body.author.id = req.user._id;
-                        req.body.author.username = req.user.username;
-                        console.log(req.body);
-                        return Review.create(req.body)
+            .then(value => {
+                if (value[0].original_title) {
+                    var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
+                    req.body.title = value[0].title;
+                    req.body.image = link
+                    console.log(req.body.image);
+                    req.body.tmdb_id = value[0].id;
+                    req.body.author = {};
+                    req.body.author.id = req.user._id;
+                    req.body.author.username = req.user.username;
+                    console.log(req.body);
+                    return Review.create(req.body)
 
-                    }
-                    if (value.original_name) {
-                        var link = `https://image.tmdb.org/t/p/w500/${value.poster_path}`;
-                        req.body.title = value.name;
-                        req.body.image = link
-                        console.log(req.body.image);
-                        req.body.tmdb_id = value.id;
-                        req.body.author = {};
-                        req.body.author.id = req.user._id;
-                        req.body.author.username = req.user.username;
-                        console.log(req.body);
-                        return Review.create(req.body)
-
-                    }
-                });
+                }
+                if (value[0].original_name) {
+                    var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
+                    req.body.title = value[0].name;
+                    req.body.image = link
+                    console.log(req.body.image);
+                    req.body.tmdb_id = value[0].id;
+                    req.body.author = {};
+                    req.body.author.id = req.user._id;
+                    req.body.author.username = req.user.username;
+                    console.log(req.body);
+                    return Review.create(req.body)
+                }
             })
             .then((review) => {
                 console.log(review);
@@ -72,12 +73,6 @@ reviewRouter.route('/')
                 console.log(err);
             });
     });
-
-
-//Review Form Route
-reviewRouter.get("/form", middleware.isLoggedIn, (req, res) => {
-    res.render("MovieReviews/new");
-});
 
 //Review Edit Route
 reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) => {

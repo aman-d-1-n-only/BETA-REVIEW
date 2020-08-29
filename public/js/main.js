@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     /*Set up of owl carousel */
-    $('.owl-carousel').owlCarousel({
+    $('.trending-carousel').owlCarousel({
         stagePadding: 50,
         loop: true,
         margin: 20,
@@ -24,11 +24,25 @@ $(document).ready(function() {
         }
     });
 
-    //Movie Dialog
-    $('#more-movie-info').click(() => {
-        $('.ui.modal').modal('show');
-    });
-
+    //Set up carousel for news
+    $('.news-carousel').owlCarousel({
+        stagePadding: 50,
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    })
 
     // Set Up of autocomplete search bar
     $('#search').keyup(function() {
