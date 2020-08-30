@@ -14,15 +14,14 @@ const { default: Axios } = require('axios');
 
 reviewRouter.route('/')
     .get((req, res, next) => {
-
-        Review.find({}, (err, movieInfo) => {
+        Review.find({}, (err, Reviews) => {
             if (err) {
                 console.log(err);
             } else {
                 var articles = need.entr_news.filter(article => {
                     return article.urlToImage !== null;
                 })
-                res.render("MovieReviews/index", { MovieInfo: movieInfo, currentUser: req.user, articles: articles });
+                res.render("MovieReviews/index", { Reviews: Reviews, currentUser: req.user, articles: articles });
             }
         });
     })
@@ -84,18 +83,23 @@ reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) =
 
 reviewRouter.route('/:reviewId')
     .get((req, res) => {
-        Review.findById(req.params.reviewId).populate('comments').exec((err, review) => {
-            if (err) {
+        Review.findById(req.params.reviewId)
+            .populate('comments')
+            .then(review => {
+                axios.get(`https://api.themoviedb.org/3/movie/${review.tmdb_id}?api_key=${config.api_key}&language=en-US`)
+                    .then(shows => {
+                        console.log(shows);
+                        res.render("MovieReviews/show", { review: review, shows: shows.data });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            })
+            .catch(err => {
                 console.log(err);
-            } else {
-                console.log(review)
-                res.render("MovieReviews/show", { MovieInfo: review });
-            }
-        })
-
+            });
     })
     .put(middleware.reviewAuthorization, (req, res) => {
-
         Review.findByIdAndUpdate(req.params.reviewId, req.body.Movie, (err, updatedReview) => {
             if (err) {
                 res.redirect('/reviews')

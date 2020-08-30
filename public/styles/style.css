@@ -401,6 +401,13 @@ textarea {
     clip-path: polygon(0 0, 100% 0, 77% 100%, 0% 100%);
 }
 
+.review-post-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 4rem;
+    width: 40vw;
+}
+
 .review-post-info span,
 .review-post-info a {
     display: block;
@@ -418,7 +425,7 @@ textarea {
     font-size: 1rem;
     background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     text-decoration: none;
-    width: 9rem;
+    width: 10rem;
 }
 
 .review-post-title {
@@ -447,7 +454,7 @@ textarea {
     margin: 0 auto;
 }
 
-.form {
+.auth-form {
     padding: 10px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
@@ -455,7 +462,7 @@ textarea {
     box-shadow: 2px 2px 5px 2.5px #32cd32;
 }
 
-.form span {
+.auth-form span {
     color: red;
 }
 
@@ -463,12 +470,115 @@ label {
     color: #32cd32 !important;
 }
 
-.form p {
+.auth-form p {
     color: #32cd32;
 }
 
 
 /*....................*...................Authorization Css......................*.......................*/
+
+
+/*.......................................Show Css.............................................*/
+
+.show-wrapper {
+    width: 100vw;
+    height: 50vh;
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
+    margin: 10vh 0;
+}
+
+.show-review {
+    width: 80vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: #fff;
+}
+
+.show-review-img {
+    height: 40vh;
+    width: 15vw;
+    border: 10px solid#eee;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.show-description {
+    width: 55vw;
+    padding: 3rem;
+}
+
+.show-description span {
+    display: block;
+    padding: 0rem 0 1.5rem;
+}
+
+.shows-header {
+    font-weight: bolder;
+    color: #32cd32;
+}
+
+.main-focus-review {
+    width: 80vw;
+    margin: 0 auto 10vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 10vh 10vh;
+    background-color: #eee;
+    padding: 2rem;
+}
+
+.focus-review {
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+
+.focus-author {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    text-align: right;
+}
+
+.focus-review-ctrl {
+    grid-row: 3/4;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.main-focus-comment {
+    width: 80vw;
+    max-height: 100vh;
+    overflow: auto;
+    margin: 0 auto 10vh;
+    padding: 2rem;
+    box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
+    border: 10px solid black;
+}
+
+.main-focus-comment .comment-form {
+    border: 1px solid black;
+}
+
+.comment-btn {
+    border-radius: 0;
+}
+
+
+/*.....................*..................Show Css........................*.....................*/
 
 
 /*......................................View Port less than 1024px.........................................*/
@@ -558,6 +668,12 @@ label {
     }
     .review-post-title {
         font-size: 1.5rem;
+    }
+    .show-description {
+        padding: 1rem;
+    }
+    .show-description span {
+        padding: 0rem 0 0.8rem;
     }
 }
 
@@ -685,7 +801,26 @@ label {
         padding: 0.5rem 0.5rem;
         width: 7rem;
     }
+    .show-overview {
+        display: none;
+    }
+    .show-review-img {
+        height: 40vh;
+        width: 30vw;
+    }
+    .show-description {
+        width: 45vw;
+    }
 }
 
 
 /*.....................*.................View Port less than 425px...................*.....................*/
+
+
+/*.....................*.................View Port less than 375px...................*.....................*/
+
+@media screen and (max-width: 376px) {
+    #date {
+        display: none;
+    }
+}

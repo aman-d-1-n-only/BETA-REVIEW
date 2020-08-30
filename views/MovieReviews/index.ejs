@@ -19,24 +19,27 @@
             </div>
         </div>
         <div class="allreviews">
-            <%MovieInfo.forEach(function(MovieInfo){%>
+            <%Reviews.forEach(function(review){%>
                 <div class="review-post">
                     <div class="review-post-img">
-                        <img src="<%=MovieInfo.image%>" alt="review-post-img">
+                        <img src="<%=review.image%>" alt="review-post-img">
                     </div>
                     <div class="review-post-info">
                         <div class="review-post-date">
                             <span> <strong> Reviewed by -</strong>
-                            <em><%=MovieInfo.author.username%></em></span>
-                            <span>August 28 2020</span>
+                            <em><%=review.author.username%></em></span>
+                            <%var datestring =JSON.stringify(review.createdAt);
+                              var dateparsed = JSON.parse(datestring);
+                              var d = datestring.split("T")[0].split('"')[1];%>
+                                <span id="date"><strong> Reviewed On :</strong><%=d%></span>
                         </div>
                         <h1 class="review-post-title">
-                            <%=MovieInfo.title%>
+                            <%=review.title%>
                         </h1>
                         <p class="review-post-text">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem illo voluptatum quam incidunt veniam at adipisci ratione commodi amet eos exercitationem corporis in doloremque expedita omnis fuga sequi, ipsa totam.
+                            <%=review.review%>
                         </p>
-                        <a href="/reviews/<%=MovieInfo._id%>" class="review-post-btn"> SEE REVIEW</a>
+                        <a href="/reviews/<%=review._id%>" class="review-post-btn"> FULL REVIEW</a>
                     </div>
                 </div>
                 <% }); %>
