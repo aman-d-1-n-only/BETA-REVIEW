@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //creating a schema
 const commentSchema = new Schema({
-    text: String,
+    comment: String,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

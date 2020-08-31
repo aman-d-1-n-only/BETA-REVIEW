@@ -27,7 +27,8 @@ commentRouter.post('/', middleware.isLoggedIn, function(req, res) {
             console.log(err)
             res.redirect('/reviews')
         } else {
-            Comment.create(req.body.comment, function(err, comment) {
+            console.log(req.body.comment);
+            Comment.create(req.body, function(err, comment) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -54,7 +55,7 @@ commentRouter.get("/:comment_id/edit", middleware.commentAuthorization, function
         if (err) {
             res.redirect("back");
         } else {
-            res.render('Comments/edit', { MovieInfo_id: req.params.reviewId, comment: foundComment });
+            res.render('Comments/edit', { review_id: req.params.reviewId, comment: foundComment });
         }
     });
 
@@ -62,23 +63,26 @@ commentRouter.get("/:comment_id/edit", middleware.commentAuthorization, function
 
 //Comment Update Route
 commentRouter.put("/:comment_id", middleware.commentAuthorization, function(req, res) {
-    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
-        if (err) {
-            res.redirect('back');
-        } else {
-            res.redirect('/moviereviews/' + req.params.reviewId);
-        }
-    })
+    Comment.findByIdAndUpdate(req.params.comment_id, { $set: req.body }, { new: true })
+        .then(updatedCommen => {
+            req.flash("success", "You successfully edited comment.");
+            res.redirect('/reviews/' + req.params.reviewId);
+        })
+        .catch(err => {
+            req.flash("error", "Something went wrong !!! ");
+            res.redirect('/reviews/' + req.params.reviewId);
+        });
 })
 
 //COMMENT DESTROY ROUTE
 commentRouter.delete("/:comment_id", middleware.commentAuthorization, function(req, res) {
     Comment.findByIdAndRemove(req.params.comment_id, function(err) {
         if (err) {
-            res.redirect('back');
+            req.flash("error", "Something went wrong !!! ");
+            res.redirect('/reviews/' + req.params.reviewId);
         } else {
             req.flash("success", "You successfully deletd comment.")
-            res.redirect('/moviereviews/' + req.params.reviewId);
+            res.redirect('/reviews/' + req.params.reviewId);
         }
     })
 })

@@ -632,14 +632,29 @@ img {
     border: 1px solid black;
 }
 
+.main-focus-comment i {
+    font-size: 1.3rem;
+}
+
 .comment-btn {
     border-radius: 0;
 }
 
 .edit-btn {
-    margin: 1rem;
+    margin: 0 1rem 0 3rem;
     display: inline-block;
     color: black;
+}
+
+.edit-cmnt-form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.edit-cmnt-form button {
+    background-color: transparent;
+    border: none;
 }
 
 .edit-btn:hover {

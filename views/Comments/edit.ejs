@@ -1,18 +1,19 @@
 <%- include("../partials/header") %>
-
-    <div class="container text-center" style="margin-top: 100px; width: 600px;">
-        <h1>EDIT COMMENT</h1>
-
-        <form action="/reviews/<%= MovieInfo_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
-            <div class="container" style="width: 400px;">
-                <div class="row d-flex align-content-around" style="height: 150px;">
-                    <input class="form-control" name="comment[text]" rows="10" value="<%= comment.text %>" />
-                    <input class="form-control btn btn-large btn-success" type="submit" />
-
-                    <a href="/reviews/<%= MovieInfo_id %>" class="form-control btn btn-large btn-success pl-2">Go back</a
-        >
-      </div>
+    <div class="edit-page">
+        <div class="edit-page-overlay">
+            <div class="edit-form-heading">
+                EDITING COMMENT
+            </div>
+            <div class="edit-form">
+                <form action="/reviews/<%=review_id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
+                    <div class="field">
+                        <label>COMMENT :</label>
+                        <textarea class="edit-textarea" name="comment" id="" cols="30" rows="10"><%=comment.comment%></textarea>
+                    </div>
+                    <button class="ui right floated button">Update</button>
+                    <button href="/reviews/<%=review_id%>" class="ui left floated button">Back</button>
+                </form>
+            </div>
+        </div>
     </div>
-  </form>
-</div>
-<%- include("../partials/footer") %>
+    <%- include("../partials/footer") %>

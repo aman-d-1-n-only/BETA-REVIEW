@@ -36,39 +36,29 @@
     <div class="main-focus-comment">
         <div class="ui comments">
             <h3 class="ui dividing header">Comments</h3>
-            <div class="comment">
-                <div class="content">
-                    <a class="author">Matt</a>
-                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
-                    <div class="text">
-                        How artistic!
+            <%review.comments.forEach(function(cmnt){%>
+                <div class="comment">
+                    <div class="content">
+                        <div style="display:inline" class="author">
+                            <i class="user icon"></i>
+                            <%=cmnt.author.username%>
+                        </div>
+                        <a href="/reviews/<%=review._id%>/comments/<%=cmnt._id%>/edit" class="edit-btn"><i class="pencil alternate icon "></i></a>
+                        <form class="edit-cmnt-form" action="/reviews/<%=review._id%>/comments/<%=cmnt._id%>?_method=DELETE" method="POST">
+                            <button><i class="trash icon"></i></button>
+                        </form>
+                        <div class="text">
+                            <%=cmnt.comment%>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="comment">
-                <div class="content">
-                    <a class="author">Elliot Fu</a>
-                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
-                    <div class="text">
-                        <p>This has been very useful for my research. Thanks as well!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="content">
-                    <a class="author">Joe Henderson</a>
-                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
-                    <div class="text">
-                        Dude, this is awesome. Thanks so much
-                    </div>
-                </div>
-            </div>
-            <form class="ui reply form">
-                <div class="field comment-form">
-                    <textarea></textarea>
-                </div>
-                <button href="/reviews/<%=review._id%>/comments" class="ui black button comment-btn"><i class="comment outline icon"></i> Add Comment</button>
-            </form>
+                <% }); %>
+                    <form action="/reviews/<%=review._id%>/comments" method="POST" class="ui reply form">
+                        <div class="field comment-form">
+                            <textarea name="comment"></textarea>
+                        </div>
+                        <button class="ui black button comment-btn"><i class="comment outline icon"></i> Add Comment</button>
+                    </form>
         </div>
     </div>
     <div class="ui modal">
