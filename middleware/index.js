@@ -7,12 +7,14 @@ var middlewareObj = {};
 middlewareObj.reviewAuthorization = function(req, res, next) {
     //is user logged in or not !!!
     if (req.isAuthenticated()) {
-        Review.findById(req.params.id, function(err, editReview) {
+        console.log(req.params.reviewId);
+        Review.findById(req.params.reviewId, function(err, editReview) {
             if (err) {
                 req.flash("error", "Review not found.")
                 res.redirect('back');
             } else {
                 //does user own the review
+                console.log(editReview);
                 if (editReview.author.id.equals(req.user._id)) {
                     next();
                 } else {

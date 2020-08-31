@@ -1,25 +1,19 @@
 <%- include("../partials/header") %>
-
-    <div class="container text-center" style="margin-top: 100px; width: 600px;">
-        <h1>Edit
-            <%=Review.title%>
-        </h1>
-
-        <form action="/reviews/<%=Review._id%>?_method=PUT" method="POST">
-            <div class="container" style="width: 400px;">
-                <div class="row d-flex align-content-around" style="height: 300px;">
-                    <input class="form-control" type="text" name="Movie[title]" value="<%=Review.title%>" />
-
-                    <input class="form-control" type="text" name="Movie[url]" value="<%=Review.image%>" />
-
-                    <input class="form-control" name="Movie[review]" value="<%=Review.review %>" />
-
-                    <input class="form-control btn btn-large btn-info" type="submit" />
-
-                    <a href="/reviews/<%=Review._id%>" class="form-control btn btn-large btn-infopo pl-2">Go back
-        </a>
-                </div>
+    <div class="edit-page">
+        <div class="edit-page-overlay">
+            <div class="edit-form-heading">
+                EDITING REVIEW
             </div>
-        </form>
+            <div class="edit-form">
+                <form action="/reviews/<%=review._id%>?_method=PUT" method="POST">
+                    <div class="field ">
+                        <label>REVIEW :</label>
+                        <textarea class="edit-textarea" name="review" id="" cols="30" rows="10"><%=review.review %></textarea>
+                    </div>
+                    <button class="ui right floated button">Update</button>
+                    <button href="/reviews/<%=review._id%>" class="ui left floated button">Back</button>
+                </form>
+            </div>
+        </div>
     </div>
     <%- include("../partials/footer") %>

@@ -2,8 +2,9 @@ $(document).ready(function() {
 
     /* Method to write toggle menu */
     $('#menu-toggle').click(() => {
-        $('.ui.sidebar').sidebar('toggle');
-    });
+        $('.ui.sidebar')
+            .sidebar('toggle');
+    })
 
     /*Set up of owl carousel */
     $('.trending-carousel').owlCarousel({

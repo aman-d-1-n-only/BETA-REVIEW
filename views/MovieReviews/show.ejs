@@ -25,8 +25,12 @@
             <span><strong> <i class="thumbtack icon"></i> Reviewed by - </strong><em><%=review.author.username%></em></span>
         </div>
         <div class="focus-review-ctrl">
-            <button href="/reviews/<%=review._id%>" class="ui inverted yellow button"> <i class="pencil alternate icon"></i> Edit</button>
-            <button href="/reviews/<%=review._id%>" class="ui inverted red button"> <i class="trash icon"></i> Delete</button>
+            <%if( currentUser && review.author.username === currentUser.username){%>
+                <a href="/reviews/<%=review._id%>/edit" class="ui inverted yellow button edit-review"> <i class="pencil alternate icon"></i> Edit</a>
+                <form action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                    <button class="ui inverted red button"> <i class="trash icon"></i> Delete</button>
+                </form>
+                <%}%>
         </div>
     </div>
     <div class="main-focus-comment">
@@ -35,6 +39,7 @@
             <div class="comment">
                 <div class="content">
                     <a class="author">Matt</a>
+                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
                     <div class="text">
                         How artistic!
                     </div>
@@ -43,6 +48,7 @@
             <div class="comment">
                 <div class="content">
                     <a class="author">Elliot Fu</a>
+                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
                     <div class="text">
                         <p>This has been very useful for my research. Thanks as well!</p>
                     </div>
@@ -51,6 +57,7 @@
             <div class="comment">
                 <div class="content">
                     <a class="author">Joe Henderson</a>
+                    <a href="" class="edit-btn"><i class="pencil alternate icon "></i></a>
                     <div class="text">
                         Dude, this is awesome. Thanks so much
                     </div>
@@ -62,6 +69,31 @@
                 </div>
                 <button href="/reviews/<%=review._id%>/comments" class="ui black button comment-btn"><i class="comment outline icon"></i> Add Comment</button>
             </form>
+        </div>
+    </div>
+    <div class="ui modal">
+        <i class="close icon"></i>
+        <div class="header">
+            Profile Picture
+        </div>
+        <div class="image content">
+            <div class="ui medium image">
+                <img src="/images/avatar/large/chris.jpg">
+            </div>
+            <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Nope
+            </div>
+            <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+            </div>
         </div>
     </div>
 

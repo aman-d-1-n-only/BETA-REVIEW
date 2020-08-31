@@ -76,7 +76,8 @@ reviewRouter.route('/')
 //Review Edit Route
 reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) => {
     Review.findById(req.params.reviewId, (err, editReview) => {
-        res.render("MovieReviews/edit", { Review: editReview });
+        console.log("Hello we found you !!");
+        res.render("MovieReviews/edit", { review: editReview });
     })
 });
 
@@ -88,7 +89,6 @@ reviewRouter.route('/:reviewId')
             .then(review => {
                 axios.get(`https://api.themoviedb.org/3/movie/${review.tmdb_id}?api_key=${config.api_key}&language=en-US`)
                     .then(shows => {
-                        console.log(shows);
                         res.render("MovieReviews/show", { review: review, shows: shows.data });
                     })
                     .catch(err => {
@@ -100,19 +100,24 @@ reviewRouter.route('/:reviewId')
             });
     })
     .put(middleware.reviewAuthorization, (req, res) => {
-        Review.findByIdAndUpdate(req.params.reviewId, req.body.Movie, (err, updatedReview) => {
-            if (err) {
-                res.redirect('/reviews')
-            } else {
+        Review.findByIdAndUpdate(req.params.reviewId, { $set: req.body }, { new: true })
+            .then(updatedReview => {
+                req.flash("success", "You successfully edited review.");
                 res.redirect('/reviews/' + req.params.reviewId)
-            }
-        })
+            })
+            .catch(err => {
+                console.log(err);
+                req.flash("error", "Something went wrong !!! ");
+                res.redirect('/reviews');
+            });
     })
     .delete(middleware.reviewAuthorization, (req, res) => {
         Review.findByIdAndRemove(req.params.reviewId, (err) => {
             if (err) {
+                req.flash("error", "Something went wrong !!! ");
                 res.redirect('/reviews');
             } else {
+                req.flash("success", "You successfully deleted review.");
                 res.redirect('/reviews');
             }
         })
