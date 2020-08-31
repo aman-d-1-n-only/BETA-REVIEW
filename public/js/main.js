@@ -6,6 +6,11 @@ $(document).ready(function() {
             .sidebar('toggle');
     })
 
+    //
+    setTimeout(function() {
+        $(".flash").remove();
+    }, 2000);
+
     /*Set up of owl carousel */
     $('.trending-carousel').owlCarousel({
         stagePadding: 50,
