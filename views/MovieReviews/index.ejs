@@ -22,7 +22,11 @@
             <%Reviews.forEach(function(review){%>
                 <div class="review-post">
                     <div class="review-post-img">
-                        <img src="<%=review.image%>" alt="review-post-img">
+                        <% if(review.image == 'empty' ){%>
+                            <img src="/images/inf.jpg" alt="review-post-img">
+                            <%}else{%>
+                                <img src="<%=review.image%>" alt="review-post-img">
+                                <%}%>
                     </div>
                     <div class="review-post-info">
                         <div class="review-post-date">
@@ -64,5 +68,6 @@
         <div class="footer-cc">
             <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
         </div>
+    </div>
     </div>
     <%- include("../partials/footer") %>

@@ -1,109 +1,110 @@
 <%- include("../partials/header") %>
-    <div class="show-wrapper">
-        <div class="show-review">
-            <div class="show-review-img">
-                <img src="<%=review.image%>" alt="Movie Poster">
-            </div>
-            <div class="show-description">
-                <span class="show-release"> <strong class="shows-header">Released : </strong><%=shows.release_date%></span>
-                <span class="show-language"><strong class="shows-header">Language : </strong><%=shows.original_language%></span>
-                <span class="show-popularity"><strong class="shows-header">Popularity Index : </strong><%=shows.popularity%></span>
-                <p class="show-overview"><strong class="shows-header">Description :</strong>
-                    <%=shows.overview%>
-                </p>
-                <span class="show-thumbs-up"><strong class="shows-header"> <i class="thumbs up icon"></i></strong>
+    <%if( !shows.release_date && !shows.original_language && !shows.popularity && !shows.overview && !shows.vote_average ){%>
+        <div style="display:none" class="show-wrapper">
+            <div class="show-review">
+                <div class="show-review-img">
+                    <img src="<%=review.image%>" alt="Movie Poster">
+                </div>
+                <div class="show-description">
+                    <span class="show-release"> <strong class="shows-header">Released : </strong><%=shows.release_date%></span>
+                    <span class="show-language"><strong class="shows-header">Language : </strong><%=shows.original_language%></span>
+                    <span class="show-popularity"><strong class="shows-header">Popularity Index : </strong><%=shows.popularity%></span>
+                    <p class="show-overview"><strong class="shows-header">Description :</strong>
+                        <%=shows.overview%>
+                    </p>
+                    <span class="show-thumbs-up"><strong class="shows-header"> <i class="thumbs up icon"></i></strong>
                 <%=shows.vote_average*10%>%</span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="main-focus-review">
-        <div class="focus-review">
-            <strong>Review : </strong>
-            <%=review.review%>
-        </div>
-        <div class="focus-author">
-            <span><strong> <i class="thumbtack icon"></i> Reviewed by - </strong><em><%=review.author.username%></em></span>
-        </div>
-        <div class="focus-review-ctrl">
-            <%if( currentUser && review.author.username === currentUser.username){%>
-                <a href="/reviews/<%=review._id%>/edit" class="ui inverted yellow button edit-review"> <i class="pencil alternate icon"></i> Edit</a>
-                <form action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="ui inverted red button"> <i class="trash icon"></i> Delete</button>
-                </form>
-                <%}%>
-        </div>
-    </div>
-    <div class="main-focus-comment">
-        <div class="ui comments">
-            <h3 class="ui dividing header">Comments</h3>
-            <%review.comments.forEach(function(cmnt){%>
-                <div class="comment">
-                    <div class="content">
-                        <div style="display:inline" class="author">
-                            <i class="user icon"></i>
-                            <%=cmnt.author.username%>
-                        </div>
-                        <a href="/reviews/<%=review._id%>/comments/<%=cmnt._id%>/edit" class="edit-btn"><i class="pencil alternate icon "></i></a>
-                        <form class="edit-cmnt-form" action="/reviews/<%=review._id%>/comments/<%=cmnt._id%>?_method=DELETE" method="POST">
-                            <button><i class="trash icon"></i></button>
-                        </form>
-                        <div class="text">
-                            <%=cmnt.comment%>
-                        </div>
+        <%}else{%>
+            <div class="show-wrapper">
+                <div class="show-review">
+                    <div class="show-review-img">
+                        <img src="<%=review.image%>" alt="Movie Poster">
+                    </div>
+                    <div class="show-description">
+                        <span class="show-release"> <strong class="shows-header">Released : </strong><%=shows.release_date%></span>
+                        <span class="show-language"><strong class="shows-header">Language : </strong><%=shows.original_language%></span>
+                        <span class="show-popularity"><strong class="shows-header">Popularity Index : </strong><%=shows.popularity%></span>
+                        <p class="show-overview"><strong class="shows-header">Description :</strong>
+                            <%=shows.overview%>
+                        </p>
+                        <span class="show-thumbs-up"><strong class="shows-header"> <i class="thumbs up icon"></i></strong>
+                <%=shows.vote_average*10%>%</span>
                     </div>
                 </div>
-                <% }); %>
-                    <form action="/reviews/<%=review._id%>/comments" method="POST" class="ui reply form">
-                        <div class="field comment-form">
-                            <textarea name="comment"></textarea>
+            </div>
+            <%}%>
+                <div class="main-focus-review">
+                    <div class="focus-review">
+                        <strong>Review : </strong>
+                        <%=review.review%>
+                    </div>
+                    <div class="focus-author">
+                        <span><strong> <i class="thumbtack icon"></i> Reviewed by - </strong><em><%=review.author.username%></em></span>
+                    </div>
+                    <div class="focus-review-ctrl">
+                        <%if( currentUser && review.author.username === currentUser.username){%>
+                            <a href="/reviews/<%=review._id%>/edit" class="ui inverted yellow button edit-review"> <i class="pencil alternate icon"></i> Edit</a>
+                            <form action="/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                                <button class="ui inverted red button"> <i class="trash icon"></i> Delete</button>
+                            </form>
+                            <%}%>
+                    </div>
+                </div>
+                <div class="main-focus-comment">
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <div class="comment-container">
+                            <%review.comments.forEach(function(cmnt){%>
+                                <div class="comment">
+                                    <div class="content">
+                                        <div style="display:inline" class="author">
+                                            <i class="user icon"></i>
+                                            <span class="user"><%=cmnt.author.username%></span>
+                                        </div>
+                                        <% if(currentUser && cmnt.author.username === currentUser.username) { %>
+                                            <a href="/reviews/<%=review._id%>/comments/<%=cmnt._id%>/edit" class="edit-btn"><i class="pencil alternate icon "></i></a>
+                                            <form class="edit-cmnt-form" action="/reviews/<%=review._id%>/comments/<%=cmnt._id%>?_method=DELETE" method="POST">
+                                                <button><i class="trash icon"></i></button>
+                                            </form>
+                                            <%} %>
+                                                <div class="text">
+                                                    <%=cmnt.comment%>
+                                                </div>
+                                    </div>
+                                </div>
+                                <% }); %>
                         </div>
-                        <button class="ui black button comment-btn"><i class="comment outline icon"></i> Add Comment</button>
-                    </form>
-        </div>
-    </div>
-    <div class="ui modal">
-        <i class="close icon"></i>
-        <div class="header">
-            Profile Picture
-        </div>
-        <div class="image content">
-            <div class="ui medium image">
-                <img src="/images/avatar/large/chris.jpg">
-            </div>
-            <div class="description">
-                <div class="ui header">We've auto-chosen a profile image for you.</div>
-                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-                <p>Is it okay to use this photo?</p>
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui black deny button">
-                Nope
-            </div>
-            <div class="ui positive right labeled icon button">
-                Yep, that's me
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="footer-about">
-            <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
-        </div>
-        <div class="footer-social-corner">
-            <h1>Follow us</h1>
-            <p>Let us be social</p>
-            <i class="youtube icon"></i>
-            <i class="linkedin icon"></i>
-            <i class="google plus icon"></i>
-            <i class="instagram icon"></i>
-            <i class="github icon"></i>
-            <i class="facebook icon"></i>
-        </div>
-        <div class="footer-cc">
-            <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
-        </div>
-    </div>
-    <%- include("../partials/footer") %>
+                        <form action="/reviews/<%=review._id%>/comments" method="POST" class="ui reply form">
+                            <div class="field comment-form">
+                                <textarea name="comment"></textarea>
+                            </div>
+                            <button class="ui black button comment-btn"><i class="comment outline icon"></i> Add Comment</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="footer-about">
+                        <h1>About Us</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus
+                            illo?
+                        </p>
+                    </div>
+                    <div class="footer-social-corner">
+                        <h1>Follow us</h1>
+                        <p>Let us be social</p>
+                        <i class="youtube icon"></i>
+                        <i class="linkedin icon"></i>
+                        <i class="google plus icon"></i>
+                        <i class="instagram icon"></i>
+                        <i class="github icon"></i>
+                        <i class="facebook icon"></i>
+                    </div>
+                    <div class="footer-cc">
+                        <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
+                    </div>
+                </div>
+                </div>
+                <%- include("../partials/footer") %>

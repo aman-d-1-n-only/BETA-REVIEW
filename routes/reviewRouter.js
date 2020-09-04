@@ -6,6 +6,7 @@ var reviewRouter = express.Router();
 reviewRouter.use(bodyParser.json());
 
 var Review = require('../models/review');
+var Comments = require('../models/comment')
 var middleware = require('../middleware/index');
 var config = require('../config');
 var need = require('../need');
@@ -32,30 +33,46 @@ reviewRouter.route('/')
                 return data;
             })
             .then(value => {
-                if (value[0].original_title) {
-                    var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
-                    req.body.title = value[0].title;
-                    req.body.image = link
-                    console.log(req.body.image);
-                    req.body.tmdb_id = value[0].id;
+                console.log(value)
+                if (value.length > 0) {
+                    if (value[0].original_title) {
+                        if (value[0].poster_path == null) {
+                            req.body.image = 'empty';
+                        } else {
+                            var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
+                            req.body.image = link;
+                        }
+                        req.body.title = value[0].title;
+                        console.log(req.body.image);
+                        req.body.tmdb_id = value[0].id;
+                        req.body.author = {};
+                        req.body.author.id = req.user._id;
+                        req.body.author.username = req.user.username;
+                        console.log(req.body);
+                        return Review.create(req.body)
+                    }
+                    if (value[0].original_name) {
+                        if (value[0].poster_path == null) {
+                            req.body.image = 'empty';
+                        } else {
+                            var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
+                            req.body.image = link;
+                        }
+                        req.body.title = value[0].name;
+                        console.log(req.body.image);
+                        req.body.tmdb_id = value[0].id;
+                        req.body.author = {};
+                        req.body.author.id = req.user._id;
+                        req.body.author.username = req.user.username;
+                        console.log(req.body);
+                        return Review.create(req.body)
+                    }
+                } else {
+                    req.body.image = 'empty';
                     req.body.author = {};
                     req.body.author.id = req.user._id;
                     req.body.author.username = req.user.username;
-                    console.log(req.body);
-                    return Review.create(req.body)
-
-                }
-                if (value[0].original_name) {
-                    var link = `https://image.tmdb.org/t/p/w500/${value[0].poster_path}`;
-                    req.body.title = value[0].name;
-                    req.body.image = link
-                    console.log(req.body.image);
-                    req.body.tmdb_id = value[0].id;
-                    req.body.author = {};
-                    req.body.author.id = req.user._id;
-                    req.body.author.username = req.user.username;
-                    console.log(req.body);
-                    return Review.create(req.body)
+                    return Review.create(req.body);
                 }
             })
             .then((review) => {
@@ -67,9 +84,6 @@ reviewRouter.route('/')
                 console.log(err);
                 req.flash('error', 'Something went wrong !!!');
                 res.redirect("/");
-            })
-            .catch(err => {
-                console.log(err);
             });
     });
 
@@ -112,15 +126,25 @@ reviewRouter.route('/:reviewId')
             });
     })
     .delete(middleware.reviewAuthorization, (req, res) => {
-        Review.findByIdAndRemove(req.params.reviewId, (err) => {
-            if (err) {
+        Review.findByIdAndRemove(req.params.reviewId)
+            .then((resp) => {
+                resp.comments.forEach(comment_id => {
+                    console.log(comment_id);
+                    Comments.findByIdAndDelete(comment_id)
+                        .then((resp) => {
+                            req.flash("success", "You successfully deleted review.");
+                            res.redirect('/reviews');
+                        })
+                        .catch(err => {
+                            req.flash("error", "Something went wrong !!! ");
+                            res.redirect('/reviews');
+                        })
+                });
+            })
+            .catch(err => {
                 req.flash("error", "Something went wrong !!! ");
                 res.redirect('/reviews');
-            } else {
-                req.flash("success", "You successfully deleted review.");
-                res.redirect('/reviews');
-            }
-        })
+            });
     });
 
 module.exports = reviewRouter;

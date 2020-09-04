@@ -76,16 +76,51 @@ commentRouter.put("/:comment_id", middleware.commentAuthorization, function(req,
 
 //COMMENT DESTROY ROUTE
 commentRouter.delete("/:comment_id", middleware.commentAuthorization, function(req, res) {
-    Comment.findByIdAndRemove(req.params.comment_id, function(err) {
-        if (err) {
+    Review.findById(req.params.reviewId)
+        .then((review) => {
+            if (review != null) {
+                Comment.findById(req.params.comment_id)
+                    .then(comment => {
+                        console.log(comment);
+                        if (comment != null) {
+                            Comment.findByIdAndRemove(req.params.comment_id)
+                                .then((resp) => {
+                                    let index = review.comments.indexOf(resp._id);
+                                    if (index > -1) {
+                                        review.comments.splice(index, 1)
+                                    }
+                                    review.save();
+                                    req.flash("success", "You successfully deletd comment.")
+                                    res.redirect('/reviews/' + req.params.reviewId);
+                                })
+                                .catch(err => {
+                                    console.log('Hello 1', err);
+                                    req.flash("error", "Something went wrong !!! ");
+                                    res.redirect('/reviews/' + req.params.reviewId);
+                                });
+                        } else {
+                            console.log('Hello 2');
+                            req.flash("error", "Something went wrong !!! ");
+                            res.redirect('/reviews/' + req.params.reviewId);
+                        }
+                    })
+                    .catch(err => {
+                        console.log('Hello 3', err);
+                        req.flash("error", "Something went wrong !!! ");
+                        res.redirect('/reviews/' + req.params.reviewId);
+                    });
+            } else {
+                console.log('Hello 4');
+                req.flash("error", "Something went wrong !!! ");
+                res.redirect('/reviews/' + req.params.reviewId);
+            }
+        })
+        .catch(err => {
+            console.log('Hello 5', err);
             req.flash("error", "Something went wrong !!! ");
             res.redirect('/reviews/' + req.params.reviewId);
-        } else {
-            req.flash("success", "You successfully deletd comment.")
-            res.redirect('/reviews/' + req.params.reviewId);
-        }
-    })
-})
+        });
+});
 
 
 

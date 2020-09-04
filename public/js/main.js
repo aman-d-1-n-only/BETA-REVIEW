@@ -9,7 +9,7 @@ $(document).ready(function() {
     //
     setTimeout(function() {
         $(".flash").remove();
-    }, 2000);
+    }, 3000);
 
     /*Set up of owl carousel */
     $('.trending-carousel').owlCarousel({
@@ -19,10 +19,12 @@ $(document).ready(function() {
         nav: true,
         responsive: {
             0: {
-                items: 1
+                items: 1,
+                dots: false,
             },
             600: {
-                items: 3
+                items: 3,
+                dots: false
             },
             1000: {
                 items: 5
@@ -65,12 +67,12 @@ $(document).ready(function() {
                     var link = 'https://image.tmdb.org/t/p/w500/';
                     if (value.original_title) {
                         if (value.title.search(expression) != -1) {
-                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '" height="40" width="40" class="img-thumbnail" /> ' + value.title + ' | <span class="text-muted">' + value.original_title + '</span></li>');
+                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '" class="img-thumbnail" /> ' + value.title + ' | <span class="text-muted">' + value.original_title + '</span></li>');
                         }
                     }
                     if (value.original_name) {
                         if (value.name.search(expression) != -1)
-                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '" height="40" width="40" class="img-thumbnail" /> ' + value.name + ' | <span class="text-muted">' + value.original_name + '</span></li>');
+                            $('#result').append('<li class="list-group-item link-class"><img src="' + link + value.poster_path + '"class="img-thumbnail" /> ' + value.name + ' | <span class="text-muted">' + value.original_name + '</span></li>');
                     }
                 });
             })

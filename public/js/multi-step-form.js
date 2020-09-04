@@ -3,11 +3,9 @@
     if (typeof define === 'function' && define.amd) {
         // AMD is used - Register as an anonymous module.
         define(['jquery', 'jquery-validation'], factory);
-    }
-    else if (typeof exports === 'object') {
+    } else if (typeof exports === 'object') {
         factory(require('jquery'), require('jquery-validation'));
-    }
-    else {
+    } else {
         // Neither AMD nor CommonJS used. Use global variables.
         if (typeof jQuery === 'undefined') {
             throw 'multi-step-form-js requires jQuery to be loaded first';
@@ -128,7 +126,7 @@
 
                 form.validateView(form.views[currentIndex]);
 
-                if(!settings.hideBackButton)
+                if (!settings.hideBackButton)
                     form.setActiveView(targetIndex);
                 return;
             }
@@ -259,8 +257,7 @@
                     if (index == form.views.length - 1) {
                         form.nextNavButton.hide();
                         form.submitNavButton.show();
-                    }
-                    else {
+                    } else {
                         form.submitNavButton.hide();
                         form.nextNavButton.show();
                     }
@@ -277,11 +274,9 @@
 
                     if ($.data(e.target, msfJqueryData.validated) && $.data(e.target, msfJqueryData.visited)) {
                         form.setStatusCssClass(step, msfCssClasses.statuses.stepComplete);
-                    }
-                    else if ($.data(e.target, msfJqueryData.visited)) {
+                    } else if ($.data(e.target, msfJqueryData.visited)) {
                         form.setStatusCssClass(step, msfCssClasses.statuses.stepIncomplete);
-                    }
-                    else {
+                    } else {
                         form.setStatusCssClass(step, "");
                     }
 
@@ -300,8 +295,7 @@
                 $(form).ready(function() {
                     form.tryNavigateToView(0, settings.activeIndex);
                 });
-            }
-            else {
+            } else {
                 form.setActiveView(0);
             }
 
@@ -314,8 +308,7 @@
                 $.data(view, msfJqueryData.validated, true);
                 form.setStatusCssClass(form.steps[index], msfCssClasses.statuses.stepComplete);
                 return true;
-            }
-            else {
+            } else {
                 $.data(view, msfJqueryData.validated, false);
                 form.setStatusCssClass(form.steps[index], msfCssClasses.statuses.stepIncomplete);
                 return false;
@@ -369,8 +362,7 @@
 
             if (form.validateView(view)) {
                 form.setActiveView(index + 1);
-            }
-            else if (settings.allowUnvalidatedStep) {
+            } else if (settings.allowUnvalidatedStep) {
                 form.setActiveView(index + 1);
             }
         });
