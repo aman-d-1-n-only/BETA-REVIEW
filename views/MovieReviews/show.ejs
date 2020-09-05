@@ -1,13 +1,24 @@
 <%- include("../partials/header") %>
-    <%if(shows){%>
+    <%if( shows &&  (shows.release_date || shows.first_air_date) && shows.original_language && shows.popularity && shows.overview && shows.vote_average ){%>
         <div class="show-wrapper">
             <div class="show-review">
                 <div class="show-review-img">
-                    <% if(review.image == 'empty' ){%>
-                        <img src="/images/inf.jpg" alt="movie-poster">
-                        <%}else{%>
-                            <img src="<%=review.image%>" alt="movie-poster">
-                            <%}%>
+                    <div class="ui move reveal">
+                        <div class="visible content">
+                            <% if(review.image == 'empty' ){%>
+                                <img src="/images/inf.jpg" alt="movie-poster">
+                                <%}else{%>
+                                    <img src="<%=review.image%>" alt="movie-poster">
+                                    <%}%>
+                        </div>
+                        <div class="hidden content">
+                            <div class="tag">
+                                <%shows.genres.forEach( genre=> {%>
+                                    <span class="tags"><%=genre.name%></span>
+                                    <% }); %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="show-description">
                     <span class="show-title"><strong class="shows-header" >Title : </strong> <%=review.title%> </span>
@@ -30,7 +41,7 @@
         <%}%>
             <div class="main-focus-review">
                 <div class="focus-review">
-                    <%if(!shows){%>
+                    <%if(!shows || !shows.release_date || !shows.first_air_date || !shows.original_language || !shows.popularity || !shows.overview || !shows.vote_average){%>
                         <p class="show-title"><strong>Title : </strong>
                             <%=review.title%>
                         </p>

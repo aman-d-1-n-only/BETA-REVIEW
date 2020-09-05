@@ -35,11 +35,11 @@
                             <%var datestring =JSON.stringify(review.createdAt);
                               var dateparsed = JSON.parse(datestring);
                               var d = datestring.split("T")[0].split('"')[1];%>
-                                <span id="date"><strong> Reviewed On :</strong><%=d%></span>
+                                <span id="date"><strong> Reviewed on - </strong><%=d%></span>
                         </div>
-                        <h1 class="review-post-title">
+                        <h2 class="review-post-title">
                             <%=review.title%>
-                        </h1>
+                        </h2>
                         <p class="review-post-text">
                             <%=review.review%>
                         </p>

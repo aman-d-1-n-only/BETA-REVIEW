@@ -11,6 +11,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+const utf8 = require('utf8');
 var axios = require('axios');
 
 //Routes

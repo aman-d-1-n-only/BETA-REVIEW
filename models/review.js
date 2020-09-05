@@ -15,6 +15,10 @@ const reviewSchema = new Schema({
         type: String,
         required: true,
     },
+    media_type: {
+        type: String,
+        default: '',
+    },
     tmdb_id: {
         type: Number
     },
