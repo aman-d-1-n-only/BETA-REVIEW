@@ -731,6 +731,9 @@ img {
     .show-description {
         padding: 1rem;
     }
+    #item2 textarea {
+        height: 50vh;
+    }
 }
 
 
@@ -813,6 +816,11 @@ img {
     }
     .show-description span {
         padding: 0rem 0 0.5rem;
+    }
+    #item2 textarea {
+        width: 60vw;
+        height: 50vh;
+        font-size: 1rem;
     }
 }
 

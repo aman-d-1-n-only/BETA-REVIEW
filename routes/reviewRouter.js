@@ -133,20 +133,25 @@ reviewRouter.route('/:reviewId')
             });
     })
     .delete(middleware.reviewAuthorization, (req, res) => {
-        Review.findByIdAndRemove(req.params.reviewId)
+        Review.findOneAndDelete(req.params.reviewId)
             .then((resp) => {
-                resp.comments.forEach(comment_id => {
-                    console.log(comment_id);
-                    Comments.findByIdAndDelete(comment_id)
-                        .then((resp) => {
-                            req.flash("success", "You successfully deleted review.");
-                            res.redirect('/reviews');
-                        })
-                        .catch(err => {
-                            req.flash("error", "Something went wrong !!! ");
-                            res.redirect('/reviews');
-                        })
-                });
+                if (resp.comments.length > 0) {
+                    resp.comments.forEach(comment_id => {
+                        console.log(comment_id);
+                        Comments.findByIdAndDelete(comment_id)
+                            .then((resp) => {
+                                req.flash("success", "You successfully deleted review.");
+                                res.redirect('/reviews');
+                            })
+                            .catch(err => {
+                                req.flash("error", "Something went wrong !!! ");
+                                res.redirect('/reviews');
+                            })
+                    });
+                } else {
+                    req.flash("success", "You successfully deleted review.");
+                    res.redirect('/reviews');
+                }
             })
             .catch(err => {
                 req.flash("error", "Something went wrong !!! ");
