@@ -615,12 +615,12 @@ img {
 
 .show-description {
     width: 55vw;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 .show-description span {
     display: block;
-    padding: 0rem 0 1.5rem;
+    padding: 0rem 0 0.5rem;
 }
 
 .shows-header {
@@ -725,6 +725,12 @@ img {
         height: 40vh;
         width: 40vw;
     }
+    .show-description span {
+        padding: 0rem 0 0.5rem;
+    }
+    .show-description {
+        padding: 1rem;
+    }
 }
 
 
@@ -803,10 +809,10 @@ img {
         font-size: 1.5rem;
     }
     .show-description {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     .show-description span {
-        padding: 0rem 0 0.8rem;
+        padding: 0rem 0 0.5rem;
     }
 }
 

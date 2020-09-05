@@ -101,13 +101,20 @@ reviewRouter.route('/:reviewId')
         Review.findById(req.params.reviewId)
             .populate('comments')
             .then(review => {
-                axios.get(`https://api.themoviedb.org/3/movie/${review.tmdb_id}?api_key=${config.api_key}&language=en-US`)
-                    .then(shows => {
-                        res.render("MovieReviews/show", { review: review, shows: shows.data });
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
+                console.log(review);
+                if (review.tmdb_id) {
+                    axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${config.api_key}&language=en-US&query=${review.title}&page=1&include_adult=false`)
+                        .then(shows => {
+                            console.log(shows);
+                            res.render("MovieReviews/show", { review: review, shows: shows.data.results[0] });
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                } else {
+                    let shows = null;
+                    res.render("MovieReviews/show", { review: review, shows: shows });
+                }
             })
             .catch(err => {
                 console.log(err);
