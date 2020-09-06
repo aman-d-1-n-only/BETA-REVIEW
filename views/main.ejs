@@ -67,7 +67,7 @@
         </div>
         <section id="add-review-form">
             <div id="item2">
-                <form class="msf" action="/reviews" method="POST">
+                <form class="msf form-disable" action="/reviews" method="POST">
                     <div class="progress">
                         <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                             <span class="sr-only">0% Complete</span>
@@ -83,7 +83,7 @@
 
                     <div class="msf-content">
                         <div class="msf-view">
-                            <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" required/>
+                            <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" autocomplete="off" required/>
                             <div class="results">
                                 <ul class="list-group" id="result"></ul>
                             </div>
@@ -101,7 +101,7 @@
                     <div class="msf-navigation">
                         <button type="button" data-type="back" class="btn btn-outline-dark msf-nav-button"><i class="fa fa-chevron-left"></i> Back </button>
                         <button type="button" data-type="next" class="btn  btn-outline-dark msf-nav-button">Next <i class="fa fa-chevron-right"></i></button>
-                        <button type="submit" data-type="submit" class="btn btn-outline-dark msf-nav-button">Submit</button>
+                        <button id="submission" type="submit" data-type="submit" class="btn btn-outline-dark msf-nav-button">Submit</button>
                     </div>
                 </form>
 

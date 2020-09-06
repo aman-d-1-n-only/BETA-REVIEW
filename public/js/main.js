@@ -84,4 +84,10 @@ $(document).ready(function() {
         $('#search').val($.trim(click_text[0]));
         $("#result").html('');
     });
+
+    $('.form-disable').on('submit', () => {
+        var self = $(this);
+        button = self.find(' button[ type = "submit" ] , #submission ');
+        button.attr('disabled', 'disabled').val('Please Wait...')
+    });
 });
