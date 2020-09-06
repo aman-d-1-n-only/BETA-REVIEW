@@ -25,7 +25,7 @@ var authenticate = require('./authenticate');
 var need = require('./need');
 
 //Model 
-var MovieInfo = require('./models/review');
+var Review = require('./models/review');
 var Comment = require('./models/comment')
 var User = require('./models/user');
 
@@ -34,10 +34,11 @@ var url = config.mongoUrl;
 var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 connect
-    .then((db) => {
+    .then((client) => {
         console.log("Connected to database");
     })
     .catch(err => console.log(err));
+
 
 var app = express();
 app.use(logger('dev'));
@@ -71,7 +72,13 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('main', { treMovies: need.treMovies, treShows: need.treShows });
+    Review.find().sort({ $natural: -1 }).limit(3)
+        .then(reviews => {
+            res.render('main', { treMovies: need.treMovies, treShows: need.treShows, reviews: reviews });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 app.use('/reviews', reviewRouter);

@@ -4,9 +4,52 @@
             <h1>BETA REVIEW</h1>
             <p>Let other know your watch time experience.</p>
             <p>Sit | Watch | Review</p>
-            <button class="ui inverted green button">Explore <i class="angle right icon"></i></button>
+            <a href="/#latest-reviews" class="ui inverted green button">Explore <i class="angle right icon"></i></a>
         </div>
     </div>
+    <section id="latest-reviews">
+        <div class="latest-reviews">
+            <div class="latest-heading">
+                <h2>Last Three Reviews</h2>
+                <hr>
+            </div>
+            <div class="allreviews">
+                <%reviews.forEach(function(review){%>
+                    <div class="review-post">
+                        <div class="review-post-img">
+                            <% if(review.image == 'empty' ){%>
+                                <img src="/images/inf.jpg" alt="review-post-img">
+                                <%}else{%>
+                                    <img src="<%=review.image%>" alt="review-post-img">
+                                    <%}%>
+                        </div>
+                        <div class="review-post-info">
+                            <div class="review-post-date">
+                                <span> <strong> Reviewed by -</strong>
+                            <em><%=review.author.username%></em></span>
+                                <%var datestring =JSON.stringify(review.createdAt);
+                              var dateparsed = JSON.parse(datestring);
+                              var d = datestring.split("T")[0].split('"')[1];%>
+                                    <span id="date"><strong> Reviewed on - </strong><%=d%></span>
+                            </div>
+                            <h2 class="review-post-title">
+                                <%=review.title%>
+                            </h2>
+                            <p class="review-post-text">
+                                <%=review.review%>
+                            </p>
+                            <a href="/reviews/<%=review._id%>" class="review-post-btn"> FULL REVIEW</a>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+            <div class="latest-btn flex-row">
+                <a href="/reviews" class="review-post-btn">Load More</a>
+                <a href="/#add-review-form" class="review-post-btn">Add Review</a>
+            </div>
+
+        </div>
+    </section>
     <div class="review">
         <div id="item1">
             <div class="jumbotron">

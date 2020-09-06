@@ -41,7 +41,7 @@
         <%}%>
             <div class="main-focus-review">
                 <div class="focus-review">
-                    <%if(!shows || !shows.release_date || !shows.first_air_date || !shows.original_language || !shows.popularity || !shows.overview || !shows.vote_average){%>
+                    <%if(!shows && (!shows.release_date || !shows.first_air_date) && !shows.original_language && !shows.popularity && !shows.overview && !shows.vote_average){%>
                         <p class="show-title"><strong>Title : </strong>
                             <%=review.title%>
                         </p>
