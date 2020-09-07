@@ -26,7 +26,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
-    border-radius: 100px;
 }
 
 .flex-row {
@@ -180,12 +179,12 @@ a {
 }
 
 .review {
-    height: 90vh;
-    margin: 10rem 0;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    height: 100vh;
+    margin-bottom: 10rem;
+    background: black;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 90vh;
+    grid-template-rows: 100vh;
     text-align: center;
 }
 
@@ -196,19 +195,33 @@ a {
 #item1 {
     grid-row: 1/2;
     grid-column: 1/2;
-    background-image: url("../images/popcorn.jpg");
-    background-size: cover;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .jumbotron {
     width: 40vw;
-    margin: 30vh auto;
-    height: 30vh;
+    margin: 25vh auto;
+    height: 50vh;
     padding: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 3fr;
+    background: url("../images/popcorn.jpg");
+    background-size: cover;
+    background-position: 85%;
     text-align: left !important;
+    font-family: var(--Banger);
+}
+
+.jumbotron h1 {
+    font-family: var(--Banger);
+    text-shadow: 2px 2px 2px #eee;
+}
+
+.jumbotron hr {
+    width: 80%;
+    border-top: 2px solid black;
+    box-shadow: 1px 2px 2px 0.5px #eee;
 }
 
 .review-heading {
@@ -253,7 +266,7 @@ a {
 }
 
 .progress {
-    margin: 0;
+    margin-bottom: 5vh;
     padding: 0;
 }
 
@@ -414,7 +427,7 @@ a {
     display: grid;
     width: 80vw;
     grid-template-columns: 80vw;
-    grid-template-rows: 70vh auto;
+    grid-template-rows: 70vh 10vh 6vh auto;
 }
 
 .main-reviews .upcoming {
@@ -446,21 +459,63 @@ a {
     font-size: 1.5rem;
     padding: 2rem;
     color: white;
-    text-shadow: 1.5px 1.5px 2px #32cd32;
+}
+
+.news-article span p:first-child {
+    font-size: 1.5rem;
+    font-family: var(--Anton);
+    text-decoration: underline;
 }
 
 .news-article span p {
     font-size: 1rem;
-    color: #f1f1f1;
+    color: #eee;
     text-shadow: none;
 }
 
-.main-reviews .allreviews {
+.main-reviews .users-reviews {
     grid-row: 2/3;
+    grid-column: 1/2;
+    text-align: right;
+}
+
+#search-review-bar {
+    margin-left: 50vw;
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#search-review-bar input {
+    border-radius: 0;
+}
+
+#search-review-bar button {
+    display: block;
+    width: 10vw !important;
+    background: black;
+    color: #fff;
+    border: none;
+}
+
+.main-reviews .header {
+    grid-row: 3/4;
+    grid-column: 1/2;
+    background-color: black;
+    color: #32cd32;
+    padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.main-reviews .allreviews {
+    grid-row: 4/5;
     grid-column: 1/2;
     margin: 0;
     height: 200vh;
     overflow: auto;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
 }
 
 .review-post {
@@ -664,7 +719,8 @@ label {
 }
 
 .show-review-img img,
-.show-review-img .reveal {
+.show-review-img .reveal,
+.full-vp {
     height: 100%;
     width: 100%;
 }
@@ -708,6 +764,11 @@ label {
     grid-template-rows: auto 10vh 10vh;
     background-color: #eee;
     padding: 2rem;
+}
+
+.show-overview {
+    max-height: 17vh;
+    overflow: auto;
 }
 
 .focus-review {
@@ -836,7 +897,7 @@ label {
         padding: 20px;
     }
     .review {
-        height: 180vh;
+        height: 200vh;
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr;
     }
@@ -862,8 +923,11 @@ label {
         width: 80vw;
         height: 50vh;
     }
-    .news-article span p {
+    .news-article span p:last-of-type {
         display: none;
+    }
+    .news-article span p:first-child {
+        text-decoration: none;
     }
     .review-post {
         width: 70vw;
@@ -893,6 +957,18 @@ label {
         width: 60vw;
         height: 50vh;
         font-size: 1rem;
+    }
+    #search-review-bar {
+        width: 40vw;
+        margin-left: 40vw;
+    }
+    .show-overview {
+        max-height: 18vh;
+        overflow: auto;
+    }
+    .show-review-img {
+        height: 40vh;
+        width: 20vw;
     }
 }
 
@@ -1008,8 +1084,11 @@ label {
         height: 30vh;
     }
     .news-article span {
-        font-size: 0.7rem;
         padding: 0.7rem;
+    }
+    .news-article span p:first-child {
+        text-decoration: none;
+        font-size: 1rem;
     }
     .review-post-title {
         font-size: 1rem;
@@ -1023,9 +1102,12 @@ label {
     .show-overview {
         display: none;
     }
+    .show-review {
+        width: 90vw;
+    }
     .show-review-img {
         height: 40vh;
-        width: 30vw;
+        width: 40vw;
     }
     .show-description {
         width: 45vw;
@@ -1035,6 +1117,10 @@ label {
     }
     .edit-page-overlay #menu-toggle {
         transform: translateY(-95px);
+    }
+    #search-review-bar {
+        width: 60vw;
+        margin-left: 20vw;
     }
 }
 
@@ -1052,5 +1138,8 @@ label {
         flex-direction: column;
         justify-content: space-around;
         align-items: flex-end;
+    }
+    .full-vp .tag {
+        padding: 0;
     }
 }

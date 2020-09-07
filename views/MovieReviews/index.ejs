@@ -3,20 +3,35 @@
         <div class="upcoming">
             <div class="news-carousel owl-carousel owl-theme">
                 <%articles.forEach( article => {%>
-                    <div class="item">
-                        <div class="news-article" style="background-image:  url('<%=article.urlToImage%>');">
-                            <div class="news-overlay">
-                                <span>
-                            <%=article.title%>
+                    <a href="<%=article.url%>">
+                        <div class="item">
+                            <div class="news-article" style="background-image:  url('<%=article.urlToImage%>');">
+                                <div class="news-overlay">
+                                    <span>
+                                <p><%=article.title%></p>
                               <p>
-                                <%=article.description%><a href="<%=article.url%>">....[Want to know more]</a>
+                                <%=article.description%>
                             </p>
                         </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <%})%>
             </div>
+        </div>
+        <div class="users-reviews">
+            <form action="">
+                <div id="search-review-bar" data-tooltip="What your friend reviewed ?">
+                    <input type="text" placeholder="Enter Username..." class="form-control" />
+                    <button type="submit"><i class="search icon"></i></button>
+                </div>
+                <div class="results"></div>
+                <hr>
+            </form>
+        </div>
+        <div class="header">
+            <h2>All Reviews</h2>
         </div>
         <div class="allreviews">
             <%Reviews.forEach(function(review){%>
@@ -56,17 +71,17 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
         </div>
         <div class="footer-social-corner">
-            <h1>Follow us</h1>
+            <h1>Follow Me</h1>
             <p>Let us be social</p>
             <i class="youtube icon"></i>
-            <i class="linkedin icon"></i>
+            <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><i class="linkedin icon"></i></a>
             <i class="google plus icon"></i>
-            <i class="instagram icon"></i>
-            <i class="github icon"></i>
-            <i class="facebook icon"></i>
+            <a href="https://www.instagram.com/aman_d_1_n_only/"><i class="instagram icon"></i></a>
+            <a href="https://github.com/aman-d-1-n-only"><i class="github icon"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100025696298272"><i class="facebook icon"></i></a>
         </div>
         <div class="footer-cc">
-            <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
+            <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><span>aman-d-1-n-only</span></a></h3>
         </div>
     </div>
     </div>

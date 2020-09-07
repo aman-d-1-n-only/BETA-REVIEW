@@ -36,6 +36,8 @@ $(document).ready(function() {
     $('.news-carousel').owlCarousel({
         stagePadding: 50,
         loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
         margin: 10,
         nav: true,
         dots: false,
@@ -88,6 +90,6 @@ $(document).ready(function() {
     $('.form-disable').on('submit', () => {
         var self = $(this);
         button = self.find(' button[ type = "submit" ] , #submission ');
-        button.attr('disabled', 'disabled').val('Please Wait...')
+        button.attr('disabled', 'disabled').text('Please Wait...')
     });
 });

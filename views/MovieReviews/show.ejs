@@ -4,14 +4,14 @@
             <div class="show-review">
                 <div class="show-review-img">
                     <div class="ui move reveal">
-                        <div class="visible content">
+                        <div class="full-vp visible content">
                             <% if(review.image == 'empty' ){%>
                                 <img src="/images/inf.jpg" alt="movie-poster">
                                 <%}else{%>
                                     <img src="<%=review.image%>" alt="movie-poster">
                                     <%}%>
                         </div>
-                        <div class="hidden content">
+                        <div class="full-vp hidden content">
                             <div class="tag">
                                 <%shows.genres.forEach( genre=> {%>
                                     <span class="tags"><%=genre.name%></span>
@@ -41,7 +41,7 @@
         <%}%>
             <div class="main-focus-review">
                 <div class="focus-review">
-                    <%if(!shows && (!shows.release_date || !shows.first_air_date) && !shows.original_language && !shows.popularity && !shows.overview && !shows.vote_average){%>
+                    <%if(!shows ){%>
                         <p class="show-title"><strong>Title : </strong>
                             <%=review.title%>
                         </p>
@@ -96,21 +96,20 @@
             <div class="footer">
                 <div class="footer-about">
                     <h1>About Us</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?
-                    </p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
                 </div>
                 <div class="footer-social-corner">
-                    <h1>Follow us</h1>
+                    <h1>Follow Me</h1>
                     <p>Let us be social</p>
                     <i class="youtube icon"></i>
-                    <i class="linkedin icon"></i>
+                    <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><i class="linkedin icon"></i></a>
                     <i class="google plus icon"></i>
-                    <i class="instagram icon"></i>
-                    <i class="github icon"></i>
-                    <i class="facebook icon"></i>
+                    <a href="https://www.instagram.com/aman_d_1_n_only/"><i class="instagram icon"></i></a>
+                    <a href="https://github.com/aman-d-1-n-only"><i class="github icon"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100025696298272"><i class="facebook icon"></i></a>
                 </div>
                 <div class="footer-cc">
-                    <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <span>aman-d-1-n-only</span></h3>
+                    <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><span>aman-d-1-n-only</span></a></h3>
                 </div>
             </div>
             </div>
