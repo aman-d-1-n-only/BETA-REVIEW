@@ -9,7 +9,7 @@ reviewRouter.use(bodyParser.json());
 var Review = require('../models/review');
 var Comments = require('../models/comment')
 var middleware = require('../middleware/index');
-var config = require('../config');
+require('dotenv').config();
 var need = require('../need');
 const { default: Axios } = require('axios');
 
@@ -28,7 +28,7 @@ reviewRouter.route('/')
         });
     })
     .post(middleware.isLoggedIn, (req, res) => {
-        axios.get(utf8.encode(`https://api.themoviedb.org/3/search/multi?api_key=${config.api_key}&language=en-US&query=${req.body.title}&page=1&include_adult=false`))
+        axios.get(utf8.encode(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.body.title}&page=1&include_adult=false`))
             .then(data => {
                 var data = data.data.results;
                 return data;
@@ -117,7 +117,7 @@ reviewRouter.route('/:reviewId')
                 console.log(review);
                 if (review.tmdb_id) {
                     if (review.media_type == 'movie') {
-                        axios.get(`https://api.themoviedb.org/3/movie/${review.tmdb_id}?api_key=${config.api_key}&language=en-US`)
+                        axios.get(`https://api.themoviedb.org/3/movie/${review.tmdb_id}?api_key=${process.env.MOVIE_API_KEY}&language=en-US`)
                             .then(shows => {
                                 console.log(shows);
                                 res.render("MovieReviews/show", { review: review, shows: shows.data });
@@ -127,7 +127,7 @@ reviewRouter.route('/:reviewId')
                             });
                     }
                     if (review.media_type == 'tv') {
-                        axios.get(`https://api.themoviedb.org/3/tv/${review.tmdb_id}?api_key=${config.api_key}&language=en-US`)
+                        axios.get(`https://api.themoviedb.org/3/tv/${review.tmdb_id}?api_key=${process.env.MOVIE_API_KEY}&language=en-US`)
                             .then(shows => {
                                 console.log(shows);
                                 res.render("MovieReviews/show", { review: review, shows: shows.data });

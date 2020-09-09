@@ -427,7 +427,7 @@ a {
     display: grid;
     width: 80vw;
     grid-template-columns: 80vw;
-    grid-template-rows: 70vh 10vh 6vh auto;
+    grid-template-rows: 70vh auto 6vh 200vh;
 }
 
 .main-reviews .upcoming {
@@ -489,6 +489,10 @@ a {
 
 #search-review-bar input {
     border-radius: 0;
+}
+
+.user-review-close {
+    display: none !important;
 }
 
 #search-review-bar button {

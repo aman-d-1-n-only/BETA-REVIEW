@@ -13,6 +13,7 @@ var methodOverride = require('method-override');
 var flash = require('connect-flash');
 const utf8 = require('utf8');
 var axios = require('axios');
+require('dotenv').config();
 
 //Routes
 var reviewRouter = require("./routes/reviewRouter");
@@ -20,7 +21,6 @@ var commentRouter = require("./routes/commentRouter");
 var userRouter = require("./routes/userRouter");
 
 //Dependencies File
-var config = require('./config');
 var authenticate = require('./authenticate');
 var need = require('./need');
 
@@ -30,7 +30,7 @@ var Comment = require('./models/comment')
 var User = require('./models/user');
 
 //mongoose connection
-var url = config.mongoUrl;
+var url = process.env.MONGO_URL;
 var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 connect
@@ -51,7 +51,7 @@ app.set('view engine', 'ejs');
 
 app.use(session({
     name: 'session-id',
-    secret: config.secretKey,
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     // store: new FileStore()
@@ -80,6 +80,19 @@ app.get('/', (req, res) => {
             console.log(err);
         });
 });
+
+app.get('/filter/:query', (req, res, next) => {
+    Review.find({ "author.username": req.params.query }, function(err, docs) {
+        if (err) {
+            console.log('err');
+        }
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(docs);
+    })
+});
+
+
 
 app.use('/reviews', reviewRouter);
 app.use('/', userRouter);

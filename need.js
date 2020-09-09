@@ -1,5 +1,6 @@
 var axios = require('axios');
-var config = require('./config');
+require('dotenv').config();
+var Review = require('./models/review');
 
 var need = {};
 
@@ -46,7 +47,7 @@ var movieGenres = {
 };
 
 
-axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${config.api_key}`)
+axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.MOVIE_API_KEY}`)
     .then(data => {
         Movies = data.data.results;
         Movies.forEach(movie => {
@@ -66,7 +67,7 @@ axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${config.api_
         console.log(err);
     });
 
-axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${config.api_key}`)
+axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.MOVIE_API_KEY}`)
     .then(data => {
         Shows = data.data.results;
         Shows.forEach(show => {
@@ -84,7 +85,7 @@ axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${config.api_key
     .catch(err => {
         console.log(err);
     });
-axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${config.news_api}`)
+axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
     .then(news => {
         need.entr_news = news.data.articles;
     })

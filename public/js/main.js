@@ -92,4 +92,75 @@ $(document).ready(function() {
         button = self.find(' button[ type = "submit" ] , #submission ');
         button.attr('disabled', 'disabled').text('Please Wait...')
     });
+
+    $('#user-review-btn').on('click', (e) => {
+        $('#user-review-btn').addClass("ui disabled button");
+        ('button #close-btn').removeClass("user-review-close");
+        var query = $('#user-review-search').val();
+        axios.get(`http://localhost:3000/filter/${query}`)
+            .then(docs => {
+                docs.data.forEach(value => {
+                    if (value.image == 'empty') {
+                        value.image = '/images/inf.jpg';
+                    }
+                    var datestring = JSON.stringify(value.createdAt);
+                    var dateparsed = JSON.parse(datestring);
+                    var d = datestring.split("T")[0].split('"')[1];
+                    $('#carousel').append(`
+                    <div class = "item">
+                        <div class = "review-post" >
+                            <div class = "review-post-img" >
+                                <img src = "${value.image}" alt = "review-post-img" >
+                            </div> 
+                            <div style = "text-align : left" class = "review-post-info" >
+                                <div class = "review-post-date" >
+                                    <span> <strong> Reviewed by - </strong> <em> ${value.author.username} </em></span >
+                                    <span id = "date" > <strong> Reviewed on - </strong>${d}</span >
+                                </div> 
+                                <h2 class = "review-post-title">${value.title} </h2> 
+                                <p class = "review-post-text" >${value.review} </p> 
+                                <a href = "/reviews/${value._id}" class = "review-post-btn" > FULL REVIEW </a> </div> 
+                            </div> 
+                        </div>
+                    </div>`);
+                });
+            })
+
+    });
+
+    $('#user-review-search').on('keypress', (e) => {
+        // console.log(e);
+        $(' button #close-btn').removeClass(".user-review-close");
+        if (e.keyCode === 13) {
+            var query = $('#user-review-search').val();
+            axios.get(`http://localhost:3000/filter/${query}`)
+                .then(docs => {
+                    docs.data.forEach(value => {
+                        if (value.image == 'empty') {
+                            value.image = '/images/inf.jpg';
+                        }
+                        var datestring = JSON.stringify(value.createdAt);
+                        var dateparsed = JSON.parse(datestring);
+                        var d = datestring.split("T")[0].split('"')[1];
+                        $('#carousel').append(`
+                    <div class = "item">
+                        <div class = "review-post" >
+                            <div class = "review-post-img" >
+                                <img src = "${value.image}" alt = "review-post-img" >
+                            </div> 
+                            <div style = "text-align : left" class = "review-post-info" >
+                                <div class = "review-post-date" >
+                                    <span> <strong> Reviewed by - </strong> <em> ${value.author.username} </em></span >
+                                    <span id = "date" > <strong> Reviewed on - </strong>${d}</span >
+                                </div> 
+                                <h2 class = "review-post-title">${value.title} </h2> 
+                                <p class = "review-post-text" >${value.review} </p> 
+                                <a href = "/reviews/${value._id}" class = "review-post-btn" > FULL REVIEW </a> </div> 
+                            </div> 
+                        </div>
+                    </div>`);
+                    });
+                })
+        }
+    });
 });
