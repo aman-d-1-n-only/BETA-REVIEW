@@ -18,8 +18,10 @@ userRouter.route('/signup')
                 req.flash("error", err.message);
                 console.log(err.message);
                 return res.redirect('/signup');
+
             }
-            user.region = req.body.region;
+            user.coords.lat = req.body.lat;
+            user.coords.lng = req.body.lng;
             user.save();
             passport.authenticate('local')(req, res, () => {
                 req.flash("success", `Hello ${user.username} | Welcome to Beta Review | Start Reviewing `);

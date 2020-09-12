@@ -8,7 +8,6 @@ reviewRouter.use(bodyParser.json());
 
 var Review = require('../models/review');
 var Comments = require('../models/comment')
-var User = require('../models/user');
 var middleware = require('../middleware/index');
 require('dotenv').config();
 var need = require('../need');
@@ -124,14 +123,9 @@ reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) =
 });
 
 
-reviewRouter.post('/geolocation', middleware.isLoggedIn, (req, res) => {
-    User.findById(req.user._id)
-        .then(user => {
-            console.log(req.body);
-        }).catch(err => {
-            console.log(err);
-        });
-});
+reviewRouter.get('/reviews/geolocation', middleware.reviewAuthorization, )
+    .
+
 
 
 reviewRouter.route('/:reviewId')
