@@ -20,8 +20,7 @@ userRouter.route('/signup')
                 return res.redirect('/signup');
 
             }
-            user.coords.lat = req.body.lat;
-            user.coords.lng = req.body.lng;
+            user.region = req.body.region;
             user.save();
             passport.authenticate('local')(req, res, () => {
                 req.flash("success", `Hello ${user.username} | Welcome to Beta Review | Start Reviewing `);

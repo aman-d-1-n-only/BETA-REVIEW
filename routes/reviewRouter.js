@@ -7,7 +7,8 @@ var reviewRouter = express.Router();
 reviewRouter.use(bodyParser.json());
 
 var Review = require('../models/review');
-var Comments = require('../models/comment')
+var Comments = require('../models/comment');
+var User = require('../models/user');
 var middleware = require('../middleware/index');
 require('dotenv').config();
 var need = require('../need');
@@ -122,10 +123,15 @@ reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) =
     })
 });
 
-
-reviewRouter.get('/reviews/geolocation', middleware.reviewAuthorization, )
-    .
-
+reviewRouter.post('/geolocation', middleware.isLoggedIn, (req, res) => {
+    User.findByIdAndUpdate(req.user._id, { $set: req.body }, { new: true })
+        .then(user => {
+            req.flash("success", "You successfully changed your location.");
+            res.redirect('/reviews')
+        }).catch(err => {
+            console.log(err);
+        })
+});
 
 
 reviewRouter.route('/:reviewId')

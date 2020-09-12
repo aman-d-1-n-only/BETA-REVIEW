@@ -94,30 +94,23 @@ need.geo_based_news = (userId) => {
         if (userId) {
             User.findById(userId)
                 .then(user => {
-                    opencage.geocode({ q: `${user.coords.lat}, ${user.coords.lng}`, language: 'fr' })
-                        .then(data => {
-                            if (data.status.code == 200 && data.results.length > 0) {
-                                axios.get(`http://newsapi.org/v2/top-headlines?country=${data.results[0].components.country_code}&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
-                                    .then(news => {
-                                        resolve(news.data.articles);
-                                    })
-                                    .catch(err => {
-                                        console.log(err);
-                                    });
-                            }
-                        }).catch(error => {
-                            axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
-                                .then(news => {
-                                    resolve(news.data.articles);
-                                })
-                                .catch(err => {
-                                    console.log(err);
-                                });
-                            console.log('error', error.message);
+                    axios.get(`http://newsapi.org/v2/top-headlines?country=${user.region}&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
+                        .then(news => {
+                            resolve(news.data.articles);
+                        })
+                        .catch(err => {
+                            console.log(err);
                         });
                 }).catch(err => {
+                    axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
+                        .then(news => {
+                            resolve(news.data.articles);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
                     console.log(err);
-                });
+                })
         } else {
             axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
                 .then(news => {

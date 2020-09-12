@@ -7,8 +7,11 @@
                     <input type="text" name="username" placeholder="User Name" required>
                 </div>
                 <div class="field">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="password" required>
+                    <label for="password">Password</label>
+                    <div class="ui icon input">
+                        <input id="password" type="password" name="password" placeholder="password" required>
+                        <i id="togglePassword" class="eye link icon"></i>
+                    </div>
                 </div>
                 <div class="flex-row">
                     <button class="ui inverted green button">Log In</button>

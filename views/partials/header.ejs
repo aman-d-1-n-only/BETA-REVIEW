@@ -34,9 +34,9 @@
             <% }else { %>
                 <div class="item">
                     <form class="geo-search-bar" action="/reviews/geolocation" method='POST'>
-                        <div class="field">
+                        <div class="field" data-tooltip="Update Your Country." data-position="top center">
                             <div id="geo-search" class="ui fluid search selection dropdown">
-                                <input type="hidden" name="country">
+                                <input type="hidden" name="region" required>
                                 <i class="dropdown icon"></i>
                                 <div class="default text">Select Country</div>
                                 <div class="menu">
@@ -78,7 +78,7 @@
                                     <div class="item" data-value="ro"><i class="ro flag"></i>Romania</div>
                                     <div class="item" data-value="ru"><i class="ru flag"></i>Russia</div>
                                     <div class="item" data-value="sa"><i class="sa flag"></i>Saudi Arabia</div>
-                                    <div class="item" data-value="cs"><i class="cs flag"></i>Serbia</div>
+                                    <div class="item" data-value="rs"><i class="cs flag"></i>Serbia</div>
                                     <div class="item" data-value="sg"><i class="sg flag"></i>Singapore</div>
                                     <div class="item" data-value="sk"><i class="sk flag"></i>Slovakia</div>
                                     <div class="item" data-value="si"><i class="si flag"></i>Slovenia</div>
@@ -91,7 +91,7 @@
                                     <div class="item" data-value="tr"><i class="tr flag"></i>Turkey</div>
                                     <div class="item" data-value="ae"><i class="ae flag"></i>UAE</div>
                                     <div class="item" data-value="us"><i class="us flag"></i>United States</div>
-                                    <div class="item" data-value="us"><i class="us flag"></i>Ukraine</div>
+                                    <div class="item" data-value="ua"><i class="us flag"></i>Ukraine</div>
                                     <div class="item" data-value="ve"><i class="ve flag"></i>Venezuela</div>
                                 </div>
                             </div>
