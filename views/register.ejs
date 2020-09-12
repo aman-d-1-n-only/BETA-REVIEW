@@ -1,5 +1,11 @@
 <%- include("partials/header") %>
     <div class="background">
+        <div class=" lang-lat alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>Taking  Geolocation !</strong> to provide latest entertainment news of your nation .
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+        </div>
         <div class="foreground">
             <form action="/signup" method="POST" class="ui form auth-form">
                 <div class="field">
@@ -11,9 +17,18 @@
                     <label>Password</label>
                     <input type="password" name="password" placeholder="password">
                 </div>
+                <div class="field">
+                    <label>Latitude</label>
+                    <input type="text" name="lat" placeholder="password" required>
+                </div>
+                <div class="field">
+                    <label>Longitude</label>
+                    <input type="text" name="lng" placeholder="password" required>
+                </div>
                 <div class="flex-row">
                     <button class="ui inverted green button">Sign Up</button>
                 </div>
+
             </form>
         </div>
     </div>

@@ -1,92 +1,104 @@
 <%- include("../partials/header") %>
-    <div class="main-reviews">
-        <div class="upcoming">
-            <div class="news-carousel owl-carousel owl-theme">
-                <%articles.forEach( article => {%>
-                    <a href="<%=article.url%>">
-                        <div class="item">
-                            <div class="news-article" style="background-image:  url('<%=article.urlToImage%>');">
-                                <div class="news-overlay">
-                                    <span>
+    <%if(currentUser){%>
+        <div class="main-reviews">
+            <div class="upcoming">
+                <div class="news-carousel owl-carousel owl-theme">
+                    <%articles.forEach( article => {%>
+                        <a href="<%=article.url%>">
+                            <div class="item">
+                                <div class="news-article" style="background-image:  url('<%=article.urlToImage%>');">
+                                    <div class="news-overlay">
+                                        <span>
                                 <p><%=article.title%></p>
                               <p>
                                 <%=article.description%>
                             </p>
                         </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <%})%>
+                        </a>
+                        <%})%>
+                </div>
             </div>
-        </div>
-        <div class="users-reviews">
-            <div id="search-review-bar" data-tooltip="What your friend reviewed ?">
-                <input id="user-review-search" type="text" placeholder="Enter Username..." class="form-control" />
-                <button id="user-review-btn"><i class="search icon"></i></button>
-            </div>
-            <hr>
-            <button id="close-btn" class="ui icon button user-review-close">
+            <div class="users-reviews">
+                <div id="search-review-bar" data-tooltip="What your friend reviewed ?">
+                    <input id="user-review-search" type="text" placeholder="Enter Username..." class="form-control" />
+                    <button id="user-review-btn"><i class="search icon"></i></button>
+                </div>
+                <hr>
+                <button id="close-btn" class="ui icon button user-review-close">
                <i class="times icon"></i>
             </button>
-            <div id="user-review-results">
-                <div id="carousel" class="news-carousel owl-carousel owl-theme">
+                <div id="user-review-results">
+                    <div id="carousel" class="news-carousel owl-carousel owl-theme">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="header">
-            <h2>All Reviews</h2>
-        </div>
-        <div class="allreviews">
-            <%Reviews.forEach(function(review){%>
-                <div class="review-post">
-                    <div class="review-post-img">
-                        <% if(review.image == 'empty' ){%>
-                            <img src="/images/inf.jpg" alt="review-post-img">
-                            <%}else{%>
-                                <img src="<%=review.image%>" alt="review-post-img">
-                                <%}%>
-                    </div>
-                    <div class="review-post-info">
-                        <div class="review-post-date">
-                            <span> <strong> Reviewed by -</strong>
+        <%}%>
+            <div class="all-reviews-post">
+                <div class="header">
+                    <h2>All Reviews</h2>
+                </div>
+                <div class="allreviews">
+                    <%if(Reviews.length > 0 ){
+                        Reviews.forEach(function(review){%>
+                        <div class="review-post">
+                            <div class="review-post-img">
+                                <% if(review.image == 'empty' ){%>
+                                    <img src="/images/inf.jpg" alt="review-post-img">
+                                    <%}else{%>
+                                        <img src="<%=review.image%>" alt="review-post-img">
+                                        <%}%>
+                            </div>
+                            <div class="review-post-info">
+                                <div class="review-post-date">
+                                    <span> <strong> Reviewed by -</strong>
                             <em><%=review.author.username%></em></span>
-                            <%var datestring =JSON.stringify(review.createdAt);
+                                    <%var datestring =JSON.stringify(review.createdAt);
                               var dateparsed = JSON.parse(datestring);
                               var d = datestring.split("T")[0].split('"')[1];%>
-                                <span id="date"><strong> Reviewed on - </strong><%=d%></span>
+                                        <span id="date"><strong> Reviewed on - </strong><%=d%></span>
+                                </div>
+                                <h2 class="review-post-title">
+                                    <%=review.title%>
+                                </h2>
+                                <p class="review-post-text">
+                                    <%=review.review%>
+                                </p>
+                                <a href="/reviews/<%=review._id%>" class="review-post-btn"> FULL REVIEW</a>
+                            </div>
                         </div>
-                        <h2 class="review-post-title">
-                            <%=review.title%>
-                        </h2>
-                        <p class="review-post-text">
-                            <%=review.review%>
-                        </p>
-                        <a href="/reviews/<%=review._id%>" class="review-post-btn"> FULL REVIEW</a>
-                    </div>
-                </div>
-                <% }); %>
-        </div>
+                        <% }); 
+                    }else{%>
+                            <div class="reviews-not-found">
+                                <h2>No Reviews Found !!!</h2>
+                            </div>
 
-    </div>
-    <div class="footer">
-        <div class="footer-about">
-            <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
-        </div>
-        <div class="footer-social-corner">
-            <h1>Follow Me</h1>
-            <p>Let us be social</p>
-            <i class="youtube icon"></i>
-            <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><i class="linkedin icon"></i></a>
-            <i class="google plus icon"></i>
-            <a href="https://www.instagram.com/aman_d_1_n_only/"><i class="instagram icon"></i></a>
-            <a href="https://github.com/aman-d-1-n-only"><i class="github icon"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100025696298272"><i class="facebook icon"></i></a>
-        </div>
-        <div class="footer-cc">
-            <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><span>aman-d-1-n-only</span></a></h3>
-        </div>
-    </div>
-    </div>
-    <%- include("../partials/footer") %>
+                            <%}%>
+
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-about">
+                    <h1>About Us</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore perferendis, eveniet voluptate iusto soluta eaque repellendus magnam voluptates voluptatibus, atque cupiditate ad expedita vero asperiores et ea voluptatum minus illo?</p>
+                </div>
+                <div class="footer-social-corner">
+                    <h1>Follow Me</h1>
+                    <p>Let us be social</p>
+                    <i class="youtube icon"></i>
+                    <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><i class="linkedin icon"></i></a>
+                    <i class="google plus icon"></i>
+                    <a href="https://www.instagram.com/aman_d_1_n_only/"><i class="instagram icon"></i></a>
+                    <a href="https://github.com/aman-d-1-n-only"><i class="github icon"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100025696298272"><i class="facebook icon"></i></a>
+                </div>
+                <div class="footer-cc">
+                    <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><span>aman-d-1-n-only</span></a></h3>
+                </div>
+            </div>
+            </div>
+            <%- include("../partials/footer") %>

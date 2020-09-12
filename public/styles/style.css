@@ -106,11 +106,32 @@ a {
     border-right: 2px solid grey;
     border-bottom: 2px solid grey;
     position: fixed;
+    z-index: 3;
 }
 
 #menu-toggle i {
     color: #32cd32;
     font-size: 1.5rem !important;
+}
+
+.geo-search-bar {
+    width: 16rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#geo-search {
+    width: 11rem;
+    border-radius: 0 !important;
+    height: 100%;
+}
+
+#geo-search-btn {
+    width: 5rem;
+    background: #eee;
+    border: none;
+    display: block;
 }
 
 
@@ -427,7 +448,7 @@ a {
     display: grid;
     width: 80vw;
     grid-template-columns: 80vw;
-    grid-template-rows: 70vh auto 6vh 200vh;
+    grid-template-rows: 70vh auto;
 }
 
 .main-reviews .upcoming {
@@ -503,23 +524,39 @@ a {
     border: none;
 }
 
-.main-reviews .header {
-    grid-row: 3/4;
+.all-reviews-post {
+    margin: 2rem auto;
+    display: grid;
+    width: 80vw;
+    grid-template-columns: 80vw;
+    grid-template-rows: 6vh auto;
+}
+
+.all-reviews-post .header {
+    grid-row: 1/2;
     grid-column: 1/2;
     background-color: black;
     color: #32cd32;
     padding: 0.5rem 0 0.5rem 1rem;
 }
 
-.main-reviews .allreviews {
-    grid-row: 4/5;
+.all-reviews-post .allreviews {
+    grid-row: 2/3;
     grid-column: 1/2;
     margin: 0;
-    height: 200vh;
+    max-height: 200vh;
     overflow: auto;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 2px solid black;
+}
+
+.reviews-not-found {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 18.3vh 0;
+    background-color: #eee;
 }
 
 .review-post {
@@ -660,12 +697,19 @@ a {
     background-image: url("../images/theater.jpg");
     height: 90vh;
     background-size: cover;
-    padding: 13rem 0;
+    padding: 2rem 0 3rem;
+    margin: 0;
 }
 
 .foreground {
     width: 400px;
     margin: 0 auto;
+}
+
+.lang-lat {
+    width: 80vw;
+    margin: 0 10vw 1rem;
+    text-align: center;
 }
 
 .auth-form {
@@ -686,6 +730,10 @@ label {
 
 .auth-form p {
     color: #32cd32;
+}
+
+#login {
+    margin: 20vh 0;
 }
 
 
@@ -1044,10 +1092,6 @@ label {
 /*......................................View Port less than 425px.........................................*/
 
 @media screen and (max-width: 426px) {
-    .foreground {
-        width: 300px;
-        margin: 0 auto;
-    }
     #item2 .search-bar {
         width: 20rem;
         height: 10rem;
@@ -1126,6 +1170,19 @@ label {
         width: 60vw;
         margin-left: 20vw;
     }
+    .background {
+        height: 90vh;
+    }
+    .foreground {
+        width: 80vw;
+        margin: 0 auto;
+    }
+    .lang-lat {
+        width: 70vw;
+        margin: 0 auto 1rem;
+    }
+    /* 
+  */
 }
 
 

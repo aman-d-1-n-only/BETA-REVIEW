@@ -6,7 +6,11 @@ $(document).ready(function() {
             .sidebar('toggle');
     })
 
-    //
+    //dropdown
+    $('.dropdown')
+        .dropdown();
+
+    //flash timeout
     setTimeout(function() {
         $(".flash").remove();
     }, 3000);
@@ -95,7 +99,6 @@ $(document).ready(function() {
 
     $('#user-review-btn').on('click', (e) => {
         $('#user-review-btn').addClass("ui disabled button");
-        ('button #close-btn').removeClass("user-review-close");
         var query = $('#user-review-search').val();
         axios.get(`http://localhost:3000/filter/${query}`)
             .then(docs => {
@@ -163,4 +166,11 @@ $(document).ready(function() {
                 })
         }
     });
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            $('input[name = "lat"]').val(`${position.coords.latitude}`);
+            $('input[name = "lng"]').val(`${position.coords.longitude}`);
+        })
+    }
 });

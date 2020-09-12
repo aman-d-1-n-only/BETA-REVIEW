@@ -20,10 +20,24 @@ reviewRouter.route('/')
             if (err) {
                 console.log(err);
             } else {
-                var articles = need.entr_news.filter(article => {
-                    return article.urlToImage !== null;
-                })
-                res.render("MovieReviews/index", { Reviews: Reviews, currentUser: req.user, articles: articles });
+                async function display() {
+                    if (req.user) {
+                        var entr_news = await need.geo_based_news(req.user._id);
+                    } else {
+                        var entr_news = await need.geo_based_news();
+                    }
+                    return entr_news;
+                }
+                display()
+                    .then(entr_news => {
+                        var articles = entr_news.filter(article => {
+                            return article.urlToImage !== null;
+                        })
+                        res.render("MovieReviews/index", { Reviews: Reviews, currentUser: req.user, articles: articles });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
         });
     })
@@ -107,6 +121,11 @@ reviewRouter.get('/:reviewId/edit', middleware.reviewAuthorization, (req, res) =
         res.render("MovieReviews/edit", { review: editReview });
     })
 });
+
+
+reviewRouter.get('/reviews/geolocation', middleware.reviewAuthorization, )
+    .
+
 
 
 reviewRouter.route('/:reviewId')

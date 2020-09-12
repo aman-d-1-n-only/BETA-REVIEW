@@ -1,6 +1,8 @@
 var axios = require('axios');
+var opencage = require('opencage-api-client');
 require('dotenv').config();
 var Review = require('./models/review');
+var User = require('./models/user');
 
 var need = {};
 
@@ -85,12 +87,47 @@ axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.MO
     .catch(err => {
         console.log(err);
     });
-axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
-    .then(news => {
-        need.entr_news = news.data.articles;
-    })
-    .catch(err => {
-        console.log(err);
-    });
 
+
+need.geo_based_news = (userId) => {
+    return new Promise((resolve, reject) => {
+        if (userId) {
+            User.findById(userId)
+                .then(user => {
+                    opencage.geocode({ q: `${user.coords.lat}, ${user.coords.lng}`, language: 'fr' })
+                        .then(data => {
+                            if (data.status.code == 200 && data.results.length > 0) {
+                                axios.get(`http://newsapi.org/v2/top-headlines?country=${data.results[0].components.country_code}&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
+                                    .then(news => {
+                                        resolve(news.data.articles);
+                                    })
+                                    .catch(err => {
+                                        console.log(err);
+                                    });
+                            }
+                        }).catch(error => {
+                            axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
+                                .then(news => {
+                                    resolve(news.data.articles);
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                });
+                            console.log('error', error.message);
+                        });
+                }).catch(err => {
+                    console.log(err);
+                });
+        } else {
+            axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
+                .then(news => {
+                    resolve(news.data.articles);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+
+    });
+}
 module.exports = need;
