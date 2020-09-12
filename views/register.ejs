@@ -1,29 +1,81 @@
 <%- include("partials/header") %>
     <div class="background">
-        <div class=" lang-lat alert alert-primary alert-dismissible fade show" role="alert">
-            <strong>Taking  Geolocation !</strong> to provide latest entertainment news of your nation .
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-        </div>
         <div class="foreground">
             <form action="/signup" method="POST" class="ui form auth-form">
                 <div class="field">
                     <label>User Name</label>
-                    <input type="text" name="username" placeholder="User Name">
+                    <input type="text" name="username" placeholder="User Name" required>
                     <p>Hint : <span>This name will be used as your refrence to other.</span></p>
                 </div>
                 <div class="field">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="password">
+                    <label for="password">Password</label>
+                    <div class="ui icon input">
+                        <input id="password" type="password" name="password" placeholder="password" required>
+                        <i id="togglePassword" class="eye icon link "></i>
+                    </div>
                 </div>
-                <div class="field">
-                    <label>Latitude</label>
-                    <input type="text" name="lat" placeholder="password" required>
-                </div>
-                <div class="field">
-                    <label>Longitude</label>
-                    <input type="text" name="lng" placeholder="password" required>
+                <div class="field" data-tooltip="Select your country." data-position="top center">
+                    <div class="ui fluid search selection dropdown">
+                        <input type="hidden" name="region" required>
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Country</div>
+                        <div class="menu">
+                            <div class="item" data-value="ar"><i class="ar flag"></i>Argentina</div>
+                            <div class="item" data-value="au"><i class="au flag"></i>Australia</div>
+                            <div class="item" data-value="at"><i class="at flag"></i>Austria</div>
+                            <div class="item" data-value="be"><i class="be flag"></i>Belgium</div>
+                            <div class="item" data-value="br"><i class="br flag"></i>Brazil</div>
+                            <div class="item" data-value="bg"><i class="bg flag"></i>Bulgaria</div>
+                            <div class="item" data-value="ca"><i class="ca flag"></i>Canada</div>
+                            <div class="item" data-value="cn"><i class="cn flag"></i>China</div>
+                            <div class="item" data-value="co"><i class="co flag"></i>Colombia</div>
+                            <div class="item" data-value="cu"><i class="cu flag"></i>Cuba</div>
+                            <div class="item" data-value="cz"><i class="cz flag"></i>Czech Republic</div>
+                            <div class="item" data-value="eg"><i class="eg flag"></i>Egypt</div>
+                            <div class="item" data-value="fr"><i class="fr flag"></i>France</div>
+                            <div class="item" data-value="de"><i class="de flag"></i>Germany</div>
+                            <div class="item" data-value="gr"><i class="gr flag"></i>Greece</div>
+                            <div class="item" data-value="hk"><i class="hk flag"></i>Hong Kong</div>
+                            <div class="item" data-value="hu"><i class="hu flag"></i>Hungary</div>
+                            <div class="item" data-value="in"><i class="in flag"></i>India</div>
+                            <div class="item" data-value="id"><i class="id flag"></i>Indonesia</div>
+                            <div class="item" data-value="ie"><i class="ie flag"></i>Ireland</div>
+                            <div class="item" data-value="il"><i class="il flag"></i>Israel</div>
+                            <div class="item" data-value="it"><i class="it flag"></i>Italy</div>
+                            <div class="item" data-value="jp"><i class="jp flag"></i>Japan</div>
+                            <div class="item" data-value="lv"><i class="lv flag"></i>Latvia</div>
+                            <div class="item" data-value="lt"><i class="lt flag"></i>Lithuania</div>
+                            <div class="item" data-value="my"><i class="my flag"></i>Malaysia</div>
+                            <div class="item" data-value="mx"><i class="mx flag"></i>Mexico</div>
+                            <div class="item" data-value="ma"><i class="ma flag"></i>Morocco</div>
+                            <div class="item" data-value="nl"><i class="nl flag"></i>Netherlands</div>
+                            <div class="item" data-value="nz"><i class="nz flag"></i>New Zealand</div>
+                            <div class="item" data-value="ng"><i class="ng flag"></i>Nigeria</div>
+                            <div class="item" data-value="no"><i class="no flag"></i>Norway</div>
+                            <div class="item" data-value="ph"><i class="ph flag"></i>Philippines</div>
+                            <div class="item" data-value="pl"><i class="pl flag"></i>Poland</div>
+                            <div class="item" data-value="pt"><i class="pt flag"></i>Portugal</div>
+                            <div class="item" data-value="ro"><i class="ro flag"></i>Romania</div>
+                            <div class="item" data-value="ru"><i class="ru flag"></i>Russia</div>
+                            <div class="item" data-value="sa"><i class="sa flag"></i>Saudi Arabia</div>
+                            <div class="item" data-value="rs"><i class="cs flag"></i>Serbia</div>
+                            <div class="item" data-value="sg"><i class="sg flag"></i>Singapore</div>
+                            <div class="item" data-value="sk"><i class="sk flag"></i>Slovakia</div>
+                            <div class="item" data-value="si"><i class="si flag"></i>Slovenia</div>
+                            <div class="item" data-value="za"><i class="za flag"></i>South Africa</div>
+                            <div class="item" data-value="kr"><i class="kr flag"></i>South Korea</div>
+                            <div class="item" data-value="se"><i class="se flag"></i>Sweden</div>
+                            <div class="item" data-value="ch"><i class="ch flag"></i>Switzerland</div>
+                            <div class="item" data-value="tw"><i class="tw flag"></i>Taiwan</div>
+                            <div class="item" data-value="th"><i class="th flag"></i>Thailand</div>
+                            <div class="item" data-value="tr"><i class="tr flag"></i>Turkey</div>
+                            <div class="item" data-value="ae"><i class="ae flag"></i>UAE</div>
+                            <div class="item" data-value="us"><i class="us flag"></i>United States</div>
+                            <div class="item" data-value="ua"><i class="us flag"></i>Ukraine</div>
+                            <div class="item" data-value="ve"><i class="ve flag"></i>Venezuela</div>
+                        </div>
+                    </div>
+                    <p>Hint : <span>Get trending entertainment news of your selected country.</span></p>
                 </div>
                 <div class="flex-row">
                     <button class="ui inverted green button">Sign Up</button>

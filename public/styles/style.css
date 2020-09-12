@@ -697,19 +697,13 @@ a {
     background-image: url("../images/theater.jpg");
     height: 90vh;
     background-size: cover;
-    padding: 2rem 0 3rem;
+    padding: 18vh 0;
     margin: 0;
 }
 
 .foreground {
     width: 400px;
     margin: 0 auto;
-}
-
-.lang-lat {
-    width: 80vw;
-    margin: 0 10vw 1rem;
-    text-align: center;
 }
 
 .auth-form {
@@ -730,10 +724,6 @@ label {
 
 .auth-form p {
     color: #32cd32;
-}
-
-#login {
-    margin: 20vh 0;
 }
 
 
@@ -1176,10 +1166,6 @@ label {
     .foreground {
         width: 80vw;
         margin: 0 auto;
-    }
-    .lang-lat {
-        width: 70vw;
-        margin: 0 auto 1rem;
     }
     /* 
   */

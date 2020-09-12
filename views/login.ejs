@@ -1,14 +1,17 @@
 <%- include("partials/header") %>
     <div class="background">
         <div class="foreground">
-            <form id="login" action="/login" method="POST" class="ui form auth-form">
+            <form action="/login" method="POST" class="ui form auth-form">
                 <div class="field">
                     <label>User Name</label>
                     <input type="text" name="username" placeholder="User Name" required>
                 </div>
                 <div class="field">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="password" required>
+                    <label for="password">Password</label>
+                    <div class="ui icon input">
+                        <input id="password" type="password" name="password" placeholder="password" required>
+                        <i id="togglePassword" class="eye icon link "></i>
+                    </div>
                 </div>
                 <div class="flex-row">
                     <button class="ui inverted green button">Log In</button>
