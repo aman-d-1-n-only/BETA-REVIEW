@@ -32,7 +32,7 @@ var User = require('./models/user');
 
 //mongoose connection
 var url = process.env.MONGO_URL;
-var connect = mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+var connect = mongoose.connect('mongodb+srv://imdbduster:1234567895@cluster0-sminu.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 connect
     .then((client) => {
