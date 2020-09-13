@@ -127,7 +127,7 @@ $(document).ready(function() {
         $('#user-review-btn').css('background-color', '#32cd32');
         $('#search-review-bar').attr('data-tooltip', 'First click on close button.');
         var query = $('#user-review-search').val();
-        axios.get(`http://localhost:3000/filter/${query}`)
+        axios.get(`https://beta123review.herokuapp.com/filter/${query}`)
             .then(docs => {
                 if (docs.data.length > 0) {
                     docs.data.forEach(value => {
