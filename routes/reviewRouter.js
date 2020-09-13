@@ -17,10 +17,8 @@ const { default: Axios } = require('axios');
 
 reviewRouter.route('/')
     .get((req, res, next) => {
-        Review.find({}, (err, Reviews) => {
-            if (err) {
-                console.log(err);
-            } else {
+        Review.find().sort({ $natural: -1 })
+            .then(reviews => {
                 async function display() {
                     if (req.user) {
                         var entr_news = await need.geo_based_news(req.user._id);
@@ -34,13 +32,15 @@ reviewRouter.route('/')
                         var articles = entr_news.filter(article => {
                             return article.urlToImage !== null;
                         })
-                        res.render("MovieReviews/index", { Reviews: Reviews, currentUser: req.user, articles: articles });
+                        res.render("MovieReviews/index", { Reviews: reviews, currentUser: req.user, articles: articles });
                     })
                     .catch(err => {
                         console.log(err);
                     })
-            }
-        });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     })
     .post(middleware.isLoggedIn, (req, res) => {
         axios.get(utf8.encode(`https://api.themoviedb.org/3/search/multi?api_key=${process.env.MOVIE_API_KEY}&language=en-US&query=${req.body.title}&page=1&include_adult=false`))

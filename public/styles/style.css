@@ -242,7 +242,6 @@ a {
 .jumbotron hr {
     width: 80%;
     border-top: 2px solid black;
-    box-shadow: 1px 2px 2px 0.5px #eee;
 }
 
 .review-heading {
@@ -498,10 +497,11 @@ a {
     grid-row: 2/3;
     grid-column: 1/2;
     text-align: right;
+    border-radius: 50px;
 }
 
 #search-review-bar {
-    margin-left: 50vw;
+    margin-left: auto;
     width: 30vw;
     display: flex;
     flex-direction: row;
@@ -510,10 +510,6 @@ a {
 
 #search-review-bar input {
     border-radius: 0;
-}
-
-.user-review-close {
-    display: none !important;
 }
 
 #search-review-bar button {
@@ -1002,7 +998,7 @@ label {
     }
     #search-review-bar {
         width: 40vw;
-        margin-left: 40vw;
+        margin-left: auto;
     }
     .show-overview {
         max-height: 18vh;
@@ -1158,7 +1154,7 @@ label {
     }
     #search-review-bar {
         width: 60vw;
-        margin-left: 20vw;
+        margin-left: auto;
     }
     .background {
         height: 90vh;
@@ -1166,6 +1162,12 @@ label {
     .foreground {
         width: 80vw;
         margin: 0 auto;
+    }
+    .main {
+        background: linear-gradient( to right, rgba(0, 0, 0, 1) 100%, rgba(255, 255, 255, 0.1)), url("../images/watching1.jpg");
+    }
+    .nav {
+        border-bottom: 1px solid grey;
     }
     /* 
   */

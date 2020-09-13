@@ -7,11 +7,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 <!-- Axios CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- AOS JS CDN -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!--Multi-Step-Form js file -->
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery.validate.unobtrusive.min.js"></script>
 <script src="js/multi-step-form.js"></script>
 <script type="text/javascript">
+    AOS.init();
     $(".msf:first").multiStepForm({
         activeIndex: 0,
         allowClickNavigation: true,

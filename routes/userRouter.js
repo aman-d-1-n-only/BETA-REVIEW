@@ -36,7 +36,7 @@ userRouter.route('/login')
         res.render('login');
     })
     .post(passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/reviews',
         successFlash: { type: 'success', message: 'Welcome Back ! Successfully logged in.' },
         failureRedirect: '/login',
         failureFlash: { type: 'error', message: 'Invalid username or password.' },
@@ -46,7 +46,7 @@ userRouter.route('/login')
 userRouter.get('/logout', (req, res) => {
     req.logout();
     req.flash("success", "Sucessfully logged you out !!");
-    res.redirect('/reviews');
+    res.redirect('/');
 });
 
 

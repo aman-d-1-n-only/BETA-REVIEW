@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+
     /* Method to write toggle menu */
     $('#menu-toggle').click(() => {
         $('.ui.sidebar')
@@ -92,52 +94,42 @@ $(document).ready(function() {
     });
 
     $('.form-disable').on('submit', () => {
-        var self = $(this);
-        button = self.find(' button[ type = "submit" ] , #submission ');
-        button.attr('disabled', 'disabled').text('Please Wait...')
+        $('#submission').attr('disabled', 'disabled').addClass('disabled').text('Wait..')
+    });
+
+    $('.close-btn').hide();
+
+    $('.close-btn').on('click', (e) => {
+        $('.close-btn').hide();
+        $('#carousel').hide().html('');
+        $('#user-review-btn').removeAttr("disabled").removeClass('disabled btn');
+        $('#user-review-search , input ').removeAttr('disabled').val('');
+        var styles = {
+            background: 'none',
+            padding: '0',
+        }
+        $('.users-reviews').css(styles);
+        $('#line').css('color', 'black');
+        $('#user-review-btn').css('background', 'black');
+        $('#search-review-bar').attr('data-tooltip', 'What your friend reviewed ?');
     });
 
     $('#user-review-btn').on('click', (e) => {
-        $('#user-review-btn').addClass("ui disabled button");
+        $('#user-review-btn').attr('disabled', 'disabled').addClass('disabled btn').css('border-radius', '0');
+        $('.close-btn').show();
+        $('#carousel').show();
+        $('#user-review-search , input').attr('disabled', 'disabled');
+        var styles = {
+            background: 'black',
+            padding: '2rem',
+        }
+        $('.users-reviews').css(styles);
+        $('#user-review-btn').css('background-color', '#32cd32');
+        $('#search-review-bar').attr('data-tooltip', 'First click on close button.');
         var query = $('#user-review-search').val();
         axios.get(`http://localhost:3000/filter/${query}`)
             .then(docs => {
-                docs.data.forEach(value => {
-                    if (value.image == 'empty') {
-                        value.image = '/images/inf.jpg';
-                    }
-                    var datestring = JSON.stringify(value.createdAt);
-                    var dateparsed = JSON.parse(datestring);
-                    var d = datestring.split("T")[0].split('"')[1];
-                    $('#carousel').append(`
-                    <div class = "item">
-                        <div class = "review-post" >
-                            <div class = "review-post-img" >
-                                <img src = "${value.image}" alt = "review-post-img" >
-                            </div> 
-                            <div style = "text-align : left" class = "review-post-info" >
-                                <div class = "review-post-date" >
-                                    <span> <strong> Reviewed by - </strong> <em> ${value.author.username} </em></span >
-                                    <span id = "date" > <strong> Reviewed on - </strong>${d}</span >
-                                </div> 
-                                <h2 class = "review-post-title">${value.title} </h2> 
-                                <p class = "review-post-text" >${value.review} </p> 
-                                <a href = "/reviews/${value._id}" class = "review-post-btn" > FULL REVIEW </a> </div> 
-                            </div> 
-                        </div>
-                    </div>`);
-                });
-            })
-
-    });
-
-    $('#user-review-search').on('keypress', (e) => {
-        // console.log(e);
-        $(' button #close-btn').removeClass(".user-review-close");
-        if (e.keyCode === 13) {
-            var query = $('#user-review-search').val();
-            axios.get(`http://localhost:3000/filter/${query}`)
-                .then(docs => {
+                if (docs.data.length > 0) {
                     docs.data.forEach(value => {
                         if (value.image == 'empty') {
                             value.image = '/images/inf.jpg';
@@ -161,11 +153,18 @@ $(document).ready(function() {
                                 <a href = "/reviews/${value._id}" class = "review-post-btn" > FULL REVIEW </a> </div> 
                             </div> 
                         </div>
-                    </div>`);
+                    </div>
+                    `);
                     });
-                })
-        }
+                } else {
+                    $('#carousel').append(`<div style = "margin:1rem auto;text-align:center;width:60vw;" class="alert alert-danger" role="alert">
+                         Please verify user name !!!
+                    </div>`);
+                }
+            });
+
     });
+
 
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
