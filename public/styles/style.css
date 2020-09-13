@@ -150,6 +150,12 @@ a {
 .main-content {
     color: #32cd32;
     padding: 16rem 5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-content h1 {
+    font-family: var(--Banger);
+    letter-spacing: 0.4rem;
 }
 
 .main-content p:first-of-type {
@@ -158,10 +164,10 @@ a {
 
 .latest-reviews {
     width: 100vw;
-    height: 150vh;
+    height: 250vh;
     display: grid;
     grid-template-columns: 80vw;
-    grid-template-rows: 10vh 90vh 10vh;
+    grid-template-rows: 10vh 180vh 10vh;
     grid-gap: 10vh;
     padding: 10vh 10vw;
     box-sizing: border-box;
@@ -498,6 +504,11 @@ a {
     grid-column: 1/2;
     text-align: right;
     border-radius: 50px;
+}
+
+#user-review-results {
+    max-height: 55vh;
+    overflow: auto;
 }
 
 #search-review-bar {
@@ -1032,6 +1043,10 @@ label {
     .review-post-img img {
         clip-path: none;
     }
+    #user-review-results {
+        max-height: 90vh;
+        overflow: auto;
+    }
 }
 
 
@@ -1168,6 +1183,16 @@ label {
     }
     .nav {
         border-bottom: 1px solid grey;
+    }
+    #user-review-results {
+        max-height: 90vh;
+        overflow: auto;
+    }
+    .main-content {
+        font-size: 0.8rem;
+    }
+    .main-content h1 {
+        font-size: 1.5rem;
     }
     /* 
   */

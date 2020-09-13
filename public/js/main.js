@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+    AOS.init();
 
     /* Method to write toggle menu */
     $('#menu-toggle').click(() => {
