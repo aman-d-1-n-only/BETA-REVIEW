@@ -15,6 +15,7 @@
 - Find out what your friend reviewed.
 
 **NOTE :** Create an account to write a review , commenting on other's review , getting latest entertainment news on based of your geolocation and updating your geolocation.
+For entertainment news of different nation [NEWS API](https://newsapi.org/) is used.
 
 ## Previews
 
