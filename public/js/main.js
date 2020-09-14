@@ -1,6 +1,20 @@
-$(document).ready(function() {
+AOS.init();
+if (window.performance) {
+    console.info("window.performance works fine on this browser");
+}
+console.info(performance.navigation.type);
+if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    window.location.hash = 'home-page';
+} else {
+    console.info("This page is not reloaded");
+}
 
-    AOS.init();
+$(document).ready(function() {
+    window.onload = () => {
+        window.location.hash = 'home-page';
+    }
+
+
 
     /* Method to write toggle menu */
     $('#menu-toggle').click(() => {
