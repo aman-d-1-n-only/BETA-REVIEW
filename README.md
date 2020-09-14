@@ -18,7 +18,7 @@
 
 ## Previews
 
----
+
 
 - Trending Movies and TV shows.
   ![](public/images/treMovie.png)
@@ -30,7 +30,7 @@
 
 ## Set Up
 
----
+
 
 First fork and then clone and run on your cmd line :
 
@@ -41,6 +41,6 @@ First fork and then clone and run on your cmd line :
 
 ## License
 
----
+
 
 [MIT](https://choosealicense.com/licenses/mit/)
