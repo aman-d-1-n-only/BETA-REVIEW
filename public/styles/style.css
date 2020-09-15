@@ -45,7 +45,11 @@ a {
     margin: 1rem 10vw;
     text-align: center;
 }
-
+.disclaimer {
+  color: red;
+  text-align: center;
+  display: none;
+}
 
 /*.......................................Navigation Css.............................................*/
 
@@ -1052,7 +1056,18 @@ label {
 
 /*......................................View Port less than 750px.........................................*/
 
-
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  .pusher {
+    display: none;
+  }
+  .disclaimer {
+    padding: 40vh 0;
+    display: block;
+  }
+  .ui .sidebar .inverted .vertical .menu {
+    display: none;
+  }
+}
 /*......................................View Port less than 610px.........................................*/
 
 @media screen and (max-width: 610px) {
