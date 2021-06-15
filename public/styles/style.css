@@ -1,49 +1,49 @@
 html,
 body {
-    margin: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 :root {
-    --Amatic: "Amatic SC", cursive;
-    --Anton: "Anton", sans-serif;
-    --Arch: "Architects Daughter", cursive;
-    --Great: "Great Vibes", cursive;
-    --Kaushan: "Kaushan Script", cursive;
-    --Sacrmento: "Sacramento", cursive;
-    --Banger: "Bangers", cursive;
+  --Amatic: "Amatic SC", cursive;
+  --Anton: "Anton", sans-serif;
+  --Arch: "Architects Daughter", cursive;
+  --Great: "Great Vibes", cursive;
+  --Kaushan: "Kaushan Script", cursive;
+  --Sacrmento: "Sacramento", cursive;
+  --Banger: "Bangers", cursive;
 }
 
 body::-webkit-scrollbar {
-    width: 1rem;
+  width: 1rem;
 }
 
 body::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    outline: 1px solid slategrey;
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 .flex-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 a {
-    text-decoration: none;
-    color: #f1f1f1;
+  text-decoration: none;
+  color: #f1f1f1;
 }
 
 .flash {
-    float: left;
-    width: 80vw;
-    margin: 1rem 10vw;
-    text-align: center;
+  float: left;
+  width: 80vw;
+  margin: 1rem 10vw;
+  text-align: center;
 }
 .disclaimer {
   color: red;
@@ -54,1005 +54,1011 @@ a {
 /*.......................................Navigation Css.............................................*/
 
 .nav {
-    background-color: rgba(0, 0, 0, 1);
-    height: 10vh;
-    width: 100vw;
+  background-color: rgba(0, 0, 0, 1);
+  height: 10vh;
+  width: 100vw;
 }
 
 .nav .nav-content {
-    box-sizing: border-box;
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    padding: 0 2rem 0 0;
-    flex-direction: row;
-    justify-content: space-between;
+  box-sizing: border-box;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  padding: 0 2rem 0 0;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .nav .nav-content .nav-brand {
-    height: 100%;
-    padding: 2rem;
-    font-size: 2rem !important;
-    border-right: 1px solid slategray;
-    font-family: var(--Banger);
-    letter-spacing: 0.2rem;
+  height: 100%;
+  padding: 2rem;
+  font-size: 2rem !important;
+  border-right: 1px solid slategray;
+  font-family: var(--Banger);
+  letter-spacing: 0.2rem;
 }
 
 .nav .nav-content .nav-brand a {
-    color: #32cd32 !important;
+  color: #32cd32 !important;
 }
 
 .sidebar a {
-    font-size: 1rem;
-    color: grey !important;
+  font-size: 1rem;
+  color: grey !important;
 }
 
 .nav .nav-content button {
-    display: block;
-    margin: 1rem;
-    border-radius: 100px;
+  display: block;
+  margin: 1rem;
+  border-radius: 100px;
 }
 
 .nav .nav-content i {
-    margin: 3px !important;
+  margin: 3px !important;
 }
 
 #menu-toggle {
-    display: block;
-    float: left;
-    background: black;
-    border-radius: 0;
-    box-shadow: grey;
-    margin-top: 1rem;
-    border-radius: 0 10px 10px 0;
-    padding-top: 1.2rem;
-    border-top: 2px solid grey;
-    border-right: 2px solid grey;
-    border-bottom: 2px solid grey;
-    position: fixed;
-    z-index: 3;
+  display: block;
+  float: left;
+  background: black;
+  border-radius: 0;
+  box-shadow: grey;
+  margin-top: 1rem;
+  border-radius: 0 10px 10px 0;
+  padding-top: 1.2rem;
+  border-top: 2px solid grey;
+  border-right: 2px solid grey;
+  border-bottom: 2px solid grey;
+  position: fixed;
+  z-index: 3;
 }
 
 #menu-toggle i {
-    color: #32cd32;
-    font-size: 1.5rem !important;
+  color: #32cd32;
+  font-size: 1.5rem !important;
 }
 
 .geo-search-bar {
-    width: 16rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  width: 16rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 #geo-search {
-    width: 11rem;
-    border-radius: 0 !important;
-    height: 100%;
+  width: 11rem;
+  border-radius: 0 !important;
+  height: 100%;
 }
 
 #geo-search-btn {
-    width: 5rem;
-    background: #eee;
-    border: none;
-    display: block;
+  width: 5rem;
+  background: #eee;
+  border: none;
+  display: block;
 }
 
-
 /*......................*.................Navigation Css....................*.........................*/
-
 
 /*.........................................Main Css....................................................*/
 
 .main {
-    background: linear-gradient( to right, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0.1)), url("../images/watching1.jpg");
-    height: 90vh;
-    background-size: cover;
-    background-position: 40% 70%;
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 1),
+      rgba(255, 255, 255, 0.1)
+    ),
+    url("../images/watching1.jpg");
+  height: 90vh;
+  background-size: cover;
+  background-position: 40% 70%;
 }
 
 .main-content {
-    color: #32cd32;
-    padding: 16rem 5rem;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #32cd32;
+  padding: 16rem 5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .main-content h1 {
-    font-family: var(--Banger);
-    letter-spacing: 0.4rem;
+  font-family: var(--Banger);
+  letter-spacing: 0.4rem;
 }
 
 .main-content p:first-of-type {
-    color: grey;
+  color: grey;
 }
 
 .latest-reviews {
-    width: 100vw;
-    height: 250vh;
-    display: grid;
-    grid-template-columns: 80vw;
-    grid-template-rows: 10vh 180vh 10vh;
-    grid-gap: 10vh;
-    padding: 10vh 10vw;
-    box-sizing: border-box;
-    background: #c9ccd3;
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  width: 100vw;
+  height: 250vh;
+  display: grid;
+  grid-template-columns: 80vw;
+  grid-template-rows: 10vh 180vh 10vh;
+  grid-gap: 10vh;
+  padding: 10vh 10vw;
+  box-sizing: border-box;
+  background: #c9ccd3;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .latest-reviews .latest-heading {
-    grid-row: 1/2;
-    grid-column: 1/2;
+  grid-row: 1/2;
+  grid-column: 1/2;
 }
 
 .latest-reviews .allreviews {
-    grid-row: 2/3;
-    grid-column: 1/2;
-    overflow: auto;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  overflow: auto;
 }
 
 .latest-reviews .latest-btn {
-    grid-row: 3/4;
-    grid-column: 1/2;
-    align-items: center;
+  grid-row: 3/4;
+  grid-column: 1/2;
+  align-items: center;
 }
 
 .latest-reviews .latest-btn a {
-    height: 7vh;
-    border: none;
-    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient( at top center, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.4) 120%) #989898;
-    background-blend-mode: multiply, multiply;
+  height: 7vh;
+  border: none;
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    radial-gradient(
+        at top center,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(0, 0, 0, 0.4) 120%
+      )
+      #989898;
+  background-blend-mode: multiply, multiply;
 }
 
 .latest-reviews .latest-btn a:hover {
-    color: white;
-    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(255, 255, 255, 0.15) 100%), radial-gradient( at top center, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.4) 120%) #989898;
-    background-blend-mode: multiply, multiply;
+  color: white;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(255, 255, 255, 0.15) 100%
+    ),
+    radial-gradient(
+        at top center,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(255, 255, 255, 0.4) 120%
+      )
+      #989898;
+  background-blend-mode: multiply, multiply;
 }
 
 .review {
-    height: 100vh;
-    margin-bottom: 10rem;
-    background: black;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100vh;
-    text-align: center;
+  height: 100vh;
+  margin-bottom: 10rem;
+  background: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100vh;
+  text-align: center;
 }
 
 .review h1 {
-    text-shadow: 1px 1px 2px slategray;
+  text-shadow: 1px 1px 2px slategray;
 }
 
 #item1 {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  grid-row: 1/2;
+  grid-column: 1/2;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .jumbotron {
-    width: 40vw;
-    margin: 25vh auto;
-    height: 50vh;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 3fr;
-    background: url("../images/popcorn.jpg");
-    background-size: cover;
-    background-position: 85%;
-    text-align: left !important;
-    font-family: var(--Banger);
+  width: 40vw;
+  margin: 25vh auto;
+  height: 50vh;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  background: url("../images/popcorn.jpg");
+  background-size: cover;
+  background-position: 85%;
+  text-align: left !important;
+  font-family: var(--Banger);
 }
 
 .jumbotron h1 {
-    font-family: var(--Banger);
-    text-shadow: 2px 2px 2px #eee;
+  font-family: var(--Banger);
+  text-shadow: 2px 2px 2px #eee;
 }
 
 .jumbotron hr {
-    width: 80%;
-    border-top: 2px solid black;
+  width: 80%;
+  border-top: 2px solid black;
 }
 
 .review-heading {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    text-align: center;
-    padding: 1rem;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  text-align: center;
+  padding: 1rem;
 }
 
 .review-instruction {
-    grid-row: 2/3;
-    grid-column: 1/2;
+  grid-row: 2/3;
+  grid-column: 1/2;
 }
 
 .review-instruction ul {
-    display: block;
-    margin: 1rem;
-    list-style-type: circle;
-    font-size: 1.5rem;
-    line-height: 2rem;
+  display: block;
+  margin: 1rem;
+  list-style-type: circle;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 #item2 {
-    grid-row: 1/2;
-    grid-column: 2/3;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
+  grid-row: 1/2;
+  grid-column: 2/3;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
 }
 
 .msf-header {
-    grid-column: 1/1;
-    grid-row: 1/2;
-    padding: 0 auto;
-    text-align: center !important;
+  grid-column: 1/1;
+  grid-row: 1/2;
+  padding: 0 auto;
+  text-align: center !important;
 }
 
 .msf-content {
-    grid-column: 1/1;
-    grid-row: 2/3;
+  grid-column: 1/1;
+  grid-row: 2/3;
 }
 
 .progress {
-    margin-bottom: 5vh;
-    padding: 0;
+  margin-bottom: 5vh;
+  padding: 0;
 }
 
 .msf-navigation {
-    grid-column: 1/1;
-    grid-row: 3/4;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
+  grid-column: 1/1;
+  grid-row: 3/4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
 }
 
 .msf-navigation button {
-    display: block;
-    border-radius: 100px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 1rem 1rem;
-    width: 7rem;
-    border: none;
+  display: block;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem 1rem;
+  width: 7rem;
+  border: none;
 }
 
 #item2 #search {
-    border-radius: 100px;
-    height: 3rem;
-    width: 35vw;
-    margin: 0 auto;
-    border: none;
+  border-radius: 100px;
+  height: 3rem;
+  width: 35vw;
+  margin: 0 auto;
+  border: none;
 }
 
 #result {
-    width: 35vw;
-    cursor: pointer;
-    overflow-y: auto;
-    max-height: 40vh;
-    box-sizing: border-box;
-    margin: 3vh auto;
-    border-radius: 10px;
+  width: 35vw;
+  cursor: pointer;
+  overflow-y: auto;
+  max-height: 40vh;
+  box-sizing: border-box;
+  margin: 3vh auto;
+  border-radius: 10px;
 }
 
 #result img {
-    height: 60px;
-    width: 50px !important;
+  height: 60px;
+  width: 50px !important;
 }
 
 .link-class:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 #item2 textarea {
-    outline: none;
-    padding: 1rem;
-    box-shadow: 2px 2px 4px 3px grey;
-    margin: 0 auto;
-    width: 40vw;
-    height: 60vh;
-    border: none !important;
-    font-size: 1.5rem;
-    font-family: var(--Anton);
+  outline: none;
+  padding: 1rem;
+  box-shadow: 2px 2px 4px 3px grey;
+  margin: 0 auto;
+  width: 40vw;
+  height: 60vh;
+  border: none !important;
+  font-size: 1.5rem;
+  font-family: var(--Anton);
 }
 
 .submit-msg {
-    height: 40vh;
-    padding: 17vh 0;
-    font-size: 2rem;
-    text-align: center;
+  height: 40vh;
+  padding: 17vh 0;
+  font-size: 2rem;
+  text-align: center;
 }
 
 #post {
-    width: 80vw;
-    margin: 0 auto;
-    margin-bottom: 10rem;
-    text-align: center;
-    box-shadow: 2px 2px 3px 2px grey;
-    border-radius: 5px;
-    background-color: white;
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+  text-align: center;
+  box-shadow: 2px 2px 3px 2px grey;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .overview {
-    height: 100%;
-    padding: 1rem;
-    overflow: auto !important;
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  height: 100%;
+  padding: 1rem;
+  overflow: auto !important;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
 .overview #def {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 .overview .tag {
-    text-align: center;
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .overview .tag .tags {
-    color: whitesmoke;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 0.4rem 1rem;
-    margin: 0.4rem 0.6rem;
-    border-radius: 3rem;
+  color: whitesmoke;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.4rem 1rem;
+  margin: 0.4rem 0.6rem;
+  border-radius: 3rem;
 }
 
 .post-heading {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 .footer {
-    background: black;
-    color: grey;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 60% 40%;
+  background: black;
+  color: grey;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 60% 40%;
 }
 
 .footer h1 {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .footer span {
-    color: white;
+  color: white;
 }
 
 .footer-about {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    padding: 2rem;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  padding: 2rem;
 }
 
 .footer-social-corner {
-    grid-row: 1/2;
-    grid-column: 2/3;
-    padding: 2rem;
-    font-size: 20px;
+  grid-row: 1/2;
+  grid-column: 2/3;
+  padding: 2rem;
+  font-size: 20px;
 }
 
 .footer-cc {
-    grid-row: 2/3;
-    grid-column: 1/3;
-    text-align: center;
-    padding: 2rem 0;
+  grid-row: 2/3;
+  grid-column: 1/3;
+  text-align: center;
+  padding: 2rem 0;
 }
 
 .footer-cc {
-    display: block;
+  display: block;
 }
-
 
 /*.......................*..................Main Css.........................*...........................*/
-
 
 /*........................................Reviews Css...................................................*/
 
 .main-reviews {
-    margin: 2rem auto;
-    display: grid;
-    width: 80vw;
-    grid-template-columns: 80vw;
-    grid-template-rows: 70vh auto;
+  margin: 2rem auto;
+  display: grid;
+  width: 80vw;
+  grid-template-columns: 80vw;
+  grid-template-rows: 70vh auto;
 }
 
 .main-reviews .upcoming {
-    grid-row: 1/2;
-    grid-column: 1/2;
+  grid-row: 1/2;
+  grid-column: 1/2;
 }
 
 .news-article {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 60vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 60vh;
 }
 
 .news-overlay {
-    backdrop-filter: brightness(40%);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    justify-content: space-around;
+  backdrop-filter: brightness(40%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: space-around;
 }
 
 .news-article span {
-    display: block;
-    font-size: 1.5rem;
-    padding: 2rem;
-    color: white;
+  display: block;
+  font-size: 1.5rem;
+  padding: 2rem;
+  color: white;
 }
 
 .news-article span p:first-child {
-    font-size: 1.5rem;
-    font-family: var(--Anton);
-    text-decoration: underline;
+  font-size: 1.5rem;
+  font-family: var(--Anton);
+  text-decoration: underline;
 }
 
 .news-article span p {
-    font-size: 1rem;
-    color: #eee;
-    text-shadow: none;
+  font-size: 1rem;
+  color: #eee;
+  text-shadow: none;
 }
 
 .main-reviews .users-reviews {
-    grid-row: 2/3;
-    grid-column: 1/2;
-    text-align: right;
-    border-radius: 50px;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  text-align: right;
+  border-radius: 50px;
 }
 
 #user-review-results {
-    max-height: 55vh;
-    overflow: auto;
+  max-height: 55vh;
+  overflow: auto;
 }
 
 #search-review-bar {
-    margin-left: auto;
-    width: 30vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  margin-left: auto;
+  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #search-review-bar input {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 #search-review-bar button {
-    display: block;
-    width: 10vw !important;
-    background: black;
-    color: #fff;
-    border: none;
+  display: block;
+  width: 10vw !important;
+  background: black;
+  color: #fff;
+  border: none;
 }
 
 .all-reviews-post {
-    margin: 2rem auto;
-    display: grid;
-    width: 80vw;
-    grid-template-columns: 80vw;
-    grid-template-rows: 6vh auto;
+  margin: 2rem auto;
+  display: grid;
+  width: 80vw;
+  grid-template-columns: 80vw;
+  grid-template-rows: 6vh auto;
 }
 
 .all-reviews-post .header {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    background-color: black;
-    color: #32cd32;
-    padding: 0.5rem 0 0.5rem 1rem;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  background-color: black;
+  color: #32cd32;
+  padding: 0.5rem 0 0.5rem 1rem;
 }
 
 .all-reviews-post .allreviews {
-    grid-row: 2/3;
-    grid-column: 1/2;
-    margin: 0;
-    max-height: 200vh;
-    overflow: auto;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  margin: 0;
+  max-height: 200vh;
+  overflow: auto;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
 }
 
 .reviews-not-found {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    padding: 18.3vh 0;
-    background-color: #eee;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 18.3vh 0;
+  background-color: #eee;
 }
 
 .review-post {
-    margin: 5rem auto;
-    width: 60vw;
-    height: 40vh;
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
-    box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
+  margin: 5rem auto;
+  width: 60vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
 }
 
 .review-post-img {
-    height: 40vh;
-    width: 30vw;
+  height: 40vh;
+  width: 30vw;
 }
 
 .review-post-img img {
-    height: 100%;
-    width: 100%;
-    clip-path: polygon(0 0, 100% 0, 77% 100%, 0% 100%);
-    transition: transform 1.5s, clip-path 1s 1.5s;
+  height: 100%;
+  width: 100%;
+  clip-path: polygon(0 0, 100% 0, 77% 100%, 0% 100%);
+  transition: transform 1.5s, clip-path 1s 1.5s;
 }
 
 .review-post-img img:hover {
-    transform: scale(1.2);
-    clip-path: none;
-    border: 1px double black;
+  transform: scale(1.2);
+  clip-path: none;
+  border: 1px double black;
 }
 
 .review-post-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height: 2.4rem;
-    width: 40vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.4rem;
+  width: 40vw;
 }
 
 .review-post-info span,
 .review-post-info a {
-    display: block;
+  display: block;
 }
 
 .review-post-info {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 .review-post-btn {
-    padding: 1rem 1rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #eee;
-    font-size: 1rem;
-    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    text-decoration: none;
-    width: 10rem;
+  padding: 1rem 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #eee;
+  font-size: 1rem;
+  background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+  text-decoration: none;
+  width: 10rem;
 }
 
 .review-post-title {
-    text-transform: capitalize;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .review-post-btn:hover {
-    background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+  background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
 }
 
-
 /*.......................*..................Reviews Css.........................*........................*/
-
 
 /*.........................................Edit Css.................................................*/
 
 .edit-page {
-    width: 100vw;
-    height: 90vh;
-    background: url("../images/streaming\ services.jpg");
-    background-size: cover;
-    background-position: center center;
+  width: 100vw;
+  height: 90vh;
+  background: url("../images/streaming\ services.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
 .edit-page-overlay {
-    height: 100%;
-    width: 100%;
-    backdrop-filter: brightness(40%) blur(5px);
-    padding: 10vh 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: brightness(40%) blur(5px);
+  padding: 10vh 0;
 }
 
 .edit-page-overlay #menu-toggle {
-    transform: translateY(-75px);
+  transform: translateY(-75px);
 }
 
 .edit-form-heading {
-    height: 10vh;
-    width: 80vw;
-    margin: 0 auto;
-    border: 1px solid #eee;
-    text-align: center;
-    font-size: 2.5rem;
-    padding: 1.8rem 0;
-    background-color: #eee;
-    text-shadow: 2px 2px 2px grey;
-    letter-spacing: 0.3rem;
+  height: 10vh;
+  width: 80vw;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 1.8rem 0;
+  background-color: #eee;
+  text-shadow: 2px 2px 2px grey;
+  letter-spacing: 0.3rem;
 }
 
 .edit-form {
-    height: 60vh;
-    width: 80vw;
-    margin: 0 auto;
-    border: 1px solid #eee;
-    padding: 5vh;
+  height: 60vh;
+  width: 80vw;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  padding: 5vh;
 }
 
 .edit-textarea {
-    width: 100%;
-    height: 40vh;
-    background: transparent;
-    margin-bottom: 0.5rem;
-    color: #32cd32;
-    outline: none;
-    border: 1px solid #eee;
-    padding: 1rem;
+  width: 100%;
+  height: 40vh;
+  background: transparent;
+  margin-bottom: 0.5rem;
+  color: #32cd32;
+  outline: none;
+  border: 1px solid #eee;
+  padding: 1rem;
 }
 
 .edit-form label {
-    color: #eee !important;
-    font-size: 1rem;
+  color: #eee !important;
+  font-size: 1rem;
 }
 
-
 /*.......................*..................Edit Css.........................*........................*/
-
 
 /*.......................................Authorization Css.............................................*/
 
 .background {
-    background-image: url("../images/theater.jpg");
-    height: 90vh;
-    background-size: cover;
-    padding: 20vh 0;
-    margin: 0;
+  background-image: url("../images/theater.jpg");
+  height: 90vh;
+  background-size: cover;
+  padding: 20vh 0;
+  margin: 0;
 }
 
 .foreground {
-    width: 400px;
-    margin: 0 auto;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .auth-form {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px 2.5px #32cd32;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 2.5px #32cd32;
 }
 
 .auth-form span {
-    color: red;
+  color: red;
 }
 
 label {
-    color: #32cd32 !important;
+  color: #32cd32 !important;
 }
 
 .auth-form p {
-    color: #32cd32;
+  color: #32cd32;
 }
 
-
 /*....................*...................Authorization Css......................*.......................*/
-
 
 /*.......................................Show Css.............................................*/
 
 .show-wrapper {
-    width: 100vw;
-    height: 50vh;
-    background-color: black;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    color: black;
-    margin: 10vh 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: black;
+  margin: 10vh 0;
 }
 
 .show-review {
-    width: 80vw;
-    height: 40vh;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: #fff;
+  width: 80vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #fff;
 }
 
 .show-review-img {
-    height: 40vh;
-    width: 15vw;
-    border: 10px solid#eee;
+  height: 40vh;
+  width: 15vw;
+  border: 10px solid#eee;
 }
 
 .show-review-img img,
 .show-review-img .reveal,
 .full-vp {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .show-review-img .tag {
-    text-align: center;
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .show-review-img .tag .tags {
-    color: whitesmoke;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 0.4rem 1rem;
-    margin: 0.4rem 0.6rem;
-    border-radius: 3rem;
+  color: whitesmoke;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.4rem 1rem;
+  margin: 0.4rem 0.6rem;
+  border-radius: 3rem;
 }
 
 .show-description {
-    width: 55vw;
-    padding: 1rem;
+  width: 55vw;
+  padding: 1rem;
 }
 
 .show-description span {
-    display: block;
-    padding: 0rem 0 0.5rem;
+  display: block;
+  padding: 0rem 0 0.5rem;
 }
 
 .shows-header {
-    font-weight: bolder;
-    color: #32cd32;
+  font-weight: bolder;
+  color: #32cd32;
 }
 
 .main-focus-review {
-    width: 80vw;
-    margin: 0 auto 10vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 10vh 10vh;
-    background-color: #eee;
-    padding: 2rem;
+  width: 80vw;
+  margin: 0 auto 10vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 10vh 10vh;
+  background-color: #eee;
+  padding: 2rem;
 }
 
 .show-overview {
-    max-height: 17vh;
-    overflow: auto;
+  max-height: 17vh;
+  overflow: auto;
 }
 
 .focus-review {
-    grid-row: 1/2;
-    grid-column: 1/2;
+  grid-row: 1/2;
+  grid-column: 1/2;
 }
 
 .focus-author {
-    grid-row: 2/3;
-    grid-column: 1/2;
-    text-align: right;
-    padding: 1rem 0;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  text-align: right;
+  padding: 1rem 0;
 }
 
 .focus-review-ctrl {
-    grid-row: 3/4;
-    grid-column: 1/2;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem;
+  grid-row: 3/4;
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .main-focus-comment {
-    width: 80vw;
-    margin: 0 auto 10vh;
-    padding: 2rem;
-    box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
-    border: 10px solid black;
+  width: 80vw;
+  margin: 0 auto 10vh;
+  padding: 2rem;
+  box-shadow: 0 1.4rem 5rem rgba(0, 0, 0, 0.2);
+  border: 10px solid black;
 }
 
 .main-focus-comment .comment-form {
-    border: 1px solid black;
+  border: 1px solid black;
 }
 
 .main-focus-comment i {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 
 .comment-container {
-    max-height: 100vh;
-    overflow: auto;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .comment-btn {
-    border-radius: 0;
+  border-radius: 0;
 }
 
 .edit-btn {
-    margin: 0 1rem 0 2rem;
-    display: inline-block;
-    color: black;
+  margin: 0 1rem 0 2rem;
+  display: inline-block;
+  color: black;
 }
 
 .author span {
-    color: #4facfe !important;
+  color: #4facfe !important;
 }
 
 .edit-cmnt-form {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 .edit-cmnt-form button {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .edit-btn:hover {
-    color: black;
+  color: black;
 }
 
-
 /*.....................*..................Show Css........................*.....................*/
-
 
 /*......................................View Port less than 1024px.........................................*/
 
 @media screen and (max-width: 1024px) {
-    .review-post {
-        width: 60vw;
-        height: 40vh;
-    }
-    .review-post-img {
-        height: 40vh;
-        width: 40vw;
-    }
-    .show-description span {
-        padding: 0rem 0 0.5rem;
-    }
-    .show-description {
-        padding: 1rem;
-    }
-    #item2 textarea {
-        height: 50vh;
-    }
+  .review-post {
+    width: 60vw;
+    height: 40vh;
+  }
+  .review-post-img {
+    height: 40vh;
+    width: 40vw;
+  }
+  .show-description span {
+    padding: 0rem 0 0.5rem;
+  }
+  .show-description {
+    padding: 1rem;
+  }
+  #item2 textarea {
+    height: 50vh;
+  }
 }
 
-
 /*.....................*.................View Port less than 1024px.................*........................*/
-
 
 /*......................................View Port less than 900px.........................................*/
 
 @media screen and (max-width: 900px) {
-    .review-post {
-        width: 70vw;
-        height: 40vh;
-    }
-    .review-post-img {
-        height: 40vh;
-        width: 50vw;
-    }
+  .review-post {
+    width: 70vw;
+    height: 40vh;
+  }
+  .review-post-img {
+    height: 40vh;
+    width: 50vw;
+  }
 }
 
-
 /*.....................*.................View Port less than 900px...................*......................*/
-
 
 /*......................................View Port less than 768px.........................................*/
 
 @media screen and (max-width: 768px) {
-    .nav .nav-content .nav-brand {
-        padding: 20px;
-    }
-    .review {
-        height: 200vh;
-        grid-template-columns: 100%;
-        grid-template-rows: 1fr 1fr;
-    }
-    #item1 {
-        grid-row: 1/2;
-        grid-column: 1/2;
-        background-position: center center;
-    }
-    #item2 {
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-    #item2 #search {
-        width: 60vw;
-    }
-    #result {
-        width: 60vw;
-    }
-    .jumbotron {
-        width: 60vw;
-    }
-    textarea {
-        width: 80vw;
-        height: 50vh;
-    }
-    .news-article span p:last-of-type {
-        display: none;
-    }
-    .news-article span p:first-child {
-        text-decoration: none;
-    }
-    .review-post {
-        width: 70vw;
-        height: 40vh;
-    }
-    .review-post-img {
-        height: 40vh;
-        width: 40vw;
-    }
-    .review-post-info {
-        padding: 1rem;
-    }
-    .review-post-btn {
-        font-size: 0.7rem;
-        padding: 0.5rem 0.8rem;
-    }
-    .review-post-title {
-        font-size: 1.5rem;
-    }
-    .show-description {
-        padding: 0.5rem;
-    }
-    .show-description span {
-        padding: 0rem 0 0.5rem;
-    }
-    #item2 textarea {
-        width: 60vw;
-        height: 50vh;
-        font-size: 1rem;
-    }
-    #search-review-bar {
-        width: 40vw;
-        margin-left: auto;
-    }
-    .show-overview {
-        max-height: 18vh;
-        overflow: auto;
-    }
-    .show-review-img {
-        height: 40vh;
-        width: 20vw;
-    }
+  .nav .nav-content .nav-brand {
+    padding: 20px;
+  }
+  .review {
+    height: 200vh;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+  }
+  #item1 {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    background-position: center center;
+  }
+  #item2 {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  #item2 #search {
+    width: 60vw;
+  }
+  #result {
+    width: 60vw;
+  }
+  .jumbotron {
+    width: 60vw;
+  }
+  textarea {
+    width: 80vw;
+    height: 50vh;
+  }
+  .news-article span p:last-of-type {
+    display: none;
+  }
+  .news-article span p:first-child {
+    text-decoration: none;
+  }
+  .review-post {
+    width: 70vw;
+    height: 40vh;
+  }
+  .review-post-img {
+    height: 40vh;
+    width: 40vw;
+  }
+  .review-post-info {
+    padding: 1rem;
+  }
+  .review-post-btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .review-post-title {
+    font-size: 1.5rem;
+  }
+  .show-description {
+    padding: 0.5rem;
+  }
+  .show-description span {
+    padding: 0rem 0 0.5rem;
+  }
+  #item2 textarea {
+    width: 60vw;
+    height: 50vh;
+    font-size: 1rem;
+  }
+  #search-review-bar {
+    width: 40vw;
+    margin-left: auto;
+  }
+  .show-overview {
+    max-height: 18vh;
+    overflow: auto;
+  }
+  .show-review-img {
+    height: 40vh;
+    width: 20vw;
+  }
 }
 
-
 /*.....................*.................View Port less than 768px...................*.....................*/
-
 
 /*......................................View Port less than 750px.........................................*/
 
 @media screen and (max-width: 750px) {
-    .review-post-text {
-        display: none;
-    }
-    .review-post {
-        width: 50vw;
-        height: 70vh;
-        flex-direction: column;
-    }
-    .review-post-img {
-        height: 40vh;
-        width: 50vw;
-    }
-    .review-post-img img {
-        clip-path: none;
-    }
-    #user-review-results {
-        max-height: 90vh;
-        overflow: auto;
-    }
+  .review-post-text {
+    display: none;
+  }
+  .review-post {
+    width: 50vw;
+    height: 70vh;
+    flex-direction: column;
+  }
+  .review-post-img {
+    height: 40vh;
+    width: 50vw;
+  }
+  .review-post-img img {
+    clip-path: none;
+  }
+  #user-review-results {
+    max-height: 90vh;
+    overflow: auto;
+  }
 }
-
 
 /*......................................View Port less than 750px.........................................*/
 
@@ -1071,164 +1077,165 @@ label {
 /*......................................View Port less than 610px.........................................*/
 
 @media screen and (max-width: 610px) {
-    .footer {
-        grid-template-columns: 1fr;
-        grid-template-rows: 50% 30% 20%;
-    }
-    .footer-about {
-        grid-column: 1/2;
-        grid-row: 1/2;
-    }
-    .footer-social-corner {
-        grid-column: 1/2;
-        grid-row: 2/3;
-    }
-    .footer-cc {
-        grid-column: 1/2;
-        grid-row: 3/4;
-    }
-    #item2 .search-bar {
-        width: 26rem;
-    }
-    #item2 #search {
-        width: 60vw;
-    }
-    #result {
-        width: 60vw;
-    }
-    .submit-msg {
-        font-size: 1rem;
-    }
+  .footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50% 30% 20%;
+  }
+  .footer-about {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .footer-social-corner {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .footer-cc {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+  #item2 .search-bar {
+    width: 26rem;
+  }
+  #item2 #search {
+    width: 60vw;
+  }
+  #result {
+    width: 60vw;
+  }
+  .submit-msg {
+    font-size: 1rem;
+  }
 }
 
-
 /*.....................*.................View Port less than 610px......................*...................*/
-
 
 /*......................................View Port less than 425px.........................................*/
 
 @media screen and (max-width: 426px) {
-    #item2 .search-bar {
-        width: 20rem;
-        height: 10rem;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: center;
-        margin: 1rem auto;
-    }
-    #item2 #search {
-        width: 80vw;
-    }
-    #result {
-        width: 80vw;
-        margin: 3vh auto;
-    }
-    .nav .nav-content .nav-brand {
-        font-size: 1rem;
-    }
-    .nav .nav-content i {
-        margin: 0.5px !important;
-    }
-    .jumbotron {
-        width: 80vw;
-    }
-    .review-instruction ul {
-        font-size: 1.3rem;
-        line-height: 1.5rem;
-    }
-    .review-heading {
-        padding: 0.5rem;
-    }
-    .main-reviews {
-        width: 80vw;
-        grid-template-columns: 80vw;
-        grid-template-rows: 40vh auto;
-    }
-    .news-article {
-        height: 30vh;
-    }
-    .news-article span {
-        padding: 0.7rem;
-    }
-    .news-article span p:first-child {
-        text-decoration: none;
-        font-size: 1rem;
-    }
-    .review-post-title {
-        font-size: 1rem;
-        font-weight: bold;
-    }
-    .review-post-btn {
-        font-size: 0.5rem;
-        padding: 0.5rem 0.5rem;
-        width: 7rem;
-    }
-    .show-overview {
-        display: none;
-    }
-    .show-review {
-        width: 90vw;
-    }
-    .show-review-img {
-        height: 40vh;
-        width: 40vw;
-    }
-    .show-description {
-        width: 45vw;
-    }
-    .edit-form-heading {
-        font-size: 1rem;
-    }
-    .edit-page-overlay #menu-toggle {
-        transform: translateY(-95px);
-    }
-    #search-review-bar {
-        width: 60vw;
-        margin-left: auto;
-    }
-    .background {
-        height: 90vh;
-    }
-    .foreground {
-        width: 80vw;
-        margin: 0 auto;
-    }
-    .main {
-        background: linear-gradient( to right, rgba(0, 0, 0, 1) 100%, rgba(255, 255, 255, 0.1)), url("../images/watching1.jpg");
-    }
-    .nav {
-        border-bottom: 1px solid grey;
-    }
-    #user-review-results {
-        max-height: 90vh;
-        overflow: auto;
-    }
-    .main-content {
-        font-size: 0.8rem;
-    }
-    .main-content h1 {
-        font-size: 1.5rem;
-    }
-    /* 
+  #item2 .search-bar {
+    width: 20rem;
+    height: 10rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    margin: 1rem auto;
+  }
+  #item2 #search {
+    width: 80vw;
+  }
+  #result {
+    width: 80vw;
+    margin: 3vh auto;
+  }
+  .nav .nav-content .nav-brand {
+    font-size: 1rem;
+  }
+  .nav .nav-content i {
+    margin: 0.5px !important;
+  }
+  .jumbotron {
+    width: 80vw;
+  }
+  .review-instruction ul {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+  .review-heading {
+    padding: 0.5rem;
+  }
+  .main-reviews {
+    width: 80vw;
+    grid-template-columns: 80vw;
+    grid-template-rows: 40vh auto;
+  }
+  .news-article {
+    height: 30vh;
+  }
+  .news-article span {
+    padding: 0.7rem;
+  }
+  .news-article span p:first-child {
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  .review-post-title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .review-post-btn {
+    font-size: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    width: 7rem;
+  }
+  .show-overview {
+    display: none;
+  }
+  .show-review {
+    width: 90vw;
+  }
+  .show-review-img {
+    height: 40vh;
+    width: 40vw;
+  }
+  .show-description {
+    width: 45vw;
+  }
+  .edit-form-heading {
+    font-size: 1rem;
+  }
+  .edit-page-overlay #menu-toggle {
+    transform: translateY(-95px);
+  }
+  #search-review-bar {
+    width: 60vw;
+    margin-left: auto;
+  }
+  .background {
+    height: 90vh;
+  }
+  .foreground {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .main {
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 1) 100%,
+        rgba(255, 255, 255, 0.1)
+      ),
+      url("../images/watching1.jpg");
+  }
+  .nav {
+    border-bottom: 1px solid grey;
+  }
+  #user-review-results {
+    max-height: 90vh;
+    overflow: auto;
+  }
+  .main-content {
+    font-size: 0.8rem;
+  }
+  .main-content h1 {
+    font-size: 1.5rem;
+  }
+  /* 
   */
 }
 
-
 /*.....................*.................View Port less than 425px...................*.....................*/
-
 
 /*.....................*.................View Port less than 375px...................*.....................*/
 
 @media screen and (max-width: 376px) {
-    #date {
-        display: none;
-    }
-    .focus-review-ctrl {
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-end;
-    }
-    .full-vp .tag {
-        padding: 0;
-    }
+  #date {
+    display: none;
+  }
+  .focus-review-ctrl {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .full-vp .tag {
+    padding: 0;
+  }
 }

@@ -47,7 +47,6 @@
                 <a href="/reviews" class="review-post-btn">Load More</a>
                 <a href="/#add-review-form" class="review-post-btn">Add Review</a>
             </div>
-
         </div>
     </section>
     <div class="review">
@@ -106,7 +105,6 @@
                         <button id="submission" type="submit" data-type="submit" class="btn btn-outline-dark msf-nav-button">Submit</button>
                     </div>
                 </form>
-
             </div>
         </section>
     </div>
@@ -141,9 +139,15 @@
 
                             </div>
                             <div class="content">
-                                <a class="header" id="more-movie-info">
+                                <%if( movie.trailer_link ){%>
+                                    <a href = "<%=movie.trailer_link%>" id = "play-trailer" class="ui secondary button">
+                                        <i class="play icon"></i>
+                                        Play Trailer
+                                    </a>
+                                <%}%>     
+                                <h3 class="header" id="more-movie-info">
                                     <%=movie.title%>
-                                </a>
+                                </h3>
                                 <div class="meta">
                                     <span class="date">Released  :<%=movie.release_date%></span>
                                 </div>
@@ -187,9 +191,15 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <a class="header" id="more-info">
+                                <%if( show.trailer_link ){%>
+                                    <a href = "<%=show.trailer_link%>" id = "play-trailer" class="ui secondary button">
+                                        <i class="play icon"></i>
+                                        Play Trailer
+                                    </a>
+                                <%}%>   
+                                <h3 class="header" id="more-info">
                                     <%=show.original_name%>
-                                </a>
+                                </h3>
                                 <div class="meta">
                                     <span class="date">First Aired On : <%=show.first_air_date%></span>
                                 </div>

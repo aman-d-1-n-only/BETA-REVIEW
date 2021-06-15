@@ -53,40 +53,59 @@ axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env
     .then(data => {
         Movies = data.data.results;
         Movies.forEach(movie => {
-            var movies_genres = [];
-            movie.genre_ids.forEach(genre => {
-                movies_genres.push(movieGenres[genre]);
-            });
-            movie.genre_ids = [];
-            for (var i = 0; i < movies_genres.length; i++) {
-                movie.genre_ids.push(movies_genres[i]);
+            for (var i = 0; i < movie.genre_ids.length; i++) {
+                movie.genre_ids[i] = movieGenres[movie.genre_ids[i]];
             };
+            movie.trailer_link = null ;
+            axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=a4cfca64067fb7977096ad4e3a1f1f8b&language=en-US`)
+                .then(data => {
+                    var Videos = data.data.results;
+                    if (Videos.length > 0) {
+                        for (var i = 0; i < Videos.length; i++) {
+                            if (movie.trailer_link) break;
+                            var video = Videos[i];
+                            if (video.type === "Trailer") {
+                                if (video.site === "YouTube") 
+                                    movie.trailer_link = `https://www.youtube.com/watch?v=${video.key}`;
+                                if (video.site === "Vimeo")
+                                    movie.trailer_link = ` https://vimeo.com/${video.key}`;
+                            }
+                        };
+                    }
+                    need.treMovies = Movies;
+                })
+                .catch( err => console.log(err) )
         });
-        need.treMovies = Movies;
-
     })
-    .catch(err => {
-        console.log(err);
-    });
+    .catch(err => console.log(err) );
 
 axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.MOVIE_API_KEY}`)
     .then(data => {
         Shows = data.data.results;
         Shows.forEach(show => {
-            var shows_genres = [];
-            show.genre_ids.forEach(genre => {
-                shows_genres.push(tvGenres[genre]);
-            });
-            show.genre_ids = [];
-            for (var i = 0; i < shows_genres.length; i++) {
-                show.genre_ids.push(shows_genres[i]);
+            for (var i = 0; i < show.genre_ids.length; i++) {
+                show.genre_ids[i] =  tvGenres[show.genre_ids[i]]
             };
+            show.trailer_link = null;
+            axios.get(`https://api.themoviedb.org/3/tv/${show.id}/videos?api_key=a4cfca64067fb7977096ad4e3a1f1f8b&language=en-US`)
+                .then(data => {
+                    var Videos = data.data.results;
+                    if (Videos.length > 0) {
+                        for (var i = 0; i < Videos.length; i++) {
+                            if (show.trailer_link) break;
+                            var video = Videos[i];
+                            if (video.type === "Trailer") {
+                                if (video.site === "YouTube") 
+                                    show.trailer_link = `https://www.youtube.com/watch?v=${video.key}`;
+                                if (video.site === "Vimeo")
+                                    show.trailer_link = ` https://vimeo.com/${video.key}`;
+                            }
+                        };
+                    }
+                    need.treShows = Shows;
+                }).catch( err => console.log(err) )
         });
-        need.treShows = Shows;
-    })
-    .catch(err => {
-        console.log(err);
-    });
+    }).catch( err => console.log(err) );
 
 
 need.geo_based_news = (userId) => {
@@ -97,30 +116,21 @@ need.geo_based_news = (userId) => {
                     axios.get(`http://newsapi.org/v2/top-headlines?country=${user.region}&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
                         .then(news => {
                             resolve(news.data.articles);
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
+                        }).catch(err =>  console.log(err) );
                 }).catch(err => {
                     axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
                         .then(news => {
                             resolve(news.data.articles);
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        });
+                        }).catch(err => console.log(err) );
                     console.log(err);
                 })
         } else {
             axios.get(`http://newsapi.org/v2/top-headlines?country=in&category=entertainment&apiKey=${process.env.NEWS_API_KEY}`)
                 .then(news => {
                     resolve(news.data.articles);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+                }).catch(err => console.log(err) );
         }
-
     });
 }
+
 module.exports = need;
