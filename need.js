@@ -66,9 +66,9 @@ axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env
                             var video = Videos[i];
                             if (video.type === "Trailer") {
                                 if (video.site === "YouTube") 
-                                    movie.trailer_link = `https://www.youtube.com/watch?v=${video.key}`;
+                                    movie.trailer_link = `https://www.youtube.com/embed/${video.key}?autoplay=0&controls=1&loop=1&picture-in-picture=1`;
                                 if (video.site === "Vimeo")
-                                    movie.trailer_link = ` https://vimeo.com/${video.key}`;
+                                    movie.trailer_link = `https://player.vimeo.com/video/${video.key}`;
                             }
                         };
                     }
@@ -96,9 +96,9 @@ axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${process.env.MO
                             var video = Videos[i];
                             if (video.type === "Trailer") {
                                 if (video.site === "YouTube") 
-                                    show.trailer_link = `https://www.youtube.com/watch?v=${video.key}`;
+                                    show.trailer_link = `https://www.youtube.com/embed/${video.key}?autoplay=0&controls=1&loop=1&picture-in-picture=1`;;
                                 if (video.site === "Vimeo")
-                                    show.trailer_link = ` https://vimeo.com/${video.key}`;
+                                    show.trailer_link = `https://player.vimeo.com/video/${video.key}`;
                             }
                         };
                     }

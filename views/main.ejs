@@ -139,12 +139,6 @@
 
                             </div>
                             <div class="content">
-                                <%if( movie.trailer_link ){%>
-                                    <a href = "<%=movie.trailer_link%>" id = "play-trailer" class="ui secondary button">
-                                        <i class="play icon"></i>
-                                        Play Trailer
-                                    </a>
-                                <%}%>     
                                 <h3 class="header" id="more-movie-info">
                                     <%=movie.title%>
                                 </h3>
@@ -153,9 +147,13 @@
                                 </div>
                             </div>
                             <div class="extra content">
-                                <i class="thumbs up icon"></i>
-                                <%=movie.vote_average*10%>%
+                                <%if( movie.trailer_link ){%>
+                                    <button id = "play-btn" onclick="playVideo( `<%=movie.trailer_link%>` )" class="ui secondary button" >Trailer</button>
+                                <%}else{%> 
+                                    <span><i class="exclamation triangle icon"></i>Trailer</span>
+                                <%}%>  
                             </div>
+                             
                         </div>
                     </div>
                     <% }); %>
@@ -191,12 +189,6 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <%if( show.trailer_link ){%>
-                                    <a href = "<%=show.trailer_link%>" id = "play-trailer" class="ui secondary button">
-                                        <i class="play icon"></i>
-                                        Play Trailer
-                                    </a>
-                                <%}%>   
                                 <h3 class="header" id="more-info">
                                     <%=show.original_name%>
                                 </h3>
@@ -205,9 +197,12 @@
                                 </div>
                             </div>
                             <div class="extra content">
-                                <i class="thumbs up icon"></i>
-                                <%=show.vote_average*10%>%
-                            </div>
+                                <%if( show.trailer_link ){%>
+                                    <button id = "play-btn" onclick="playVideo(`<%=show.trailer_link%>` )" class="ui secondary button" >Trailer</button>
+                                <%}else{%> 
+                                    <span><i class="exclamation triangle icon"></i>Trailer</span>
+                                <%}%>  
+                            </div> 
                         </div>
                     </div>
                     <% }); %>
@@ -215,6 +210,18 @@
         </div>
     </div>
 
+    <div id="video-player">
+        <div id="player-title" class="container">
+            <div class="row" style="height: 100%;">
+                <div class="col-lg-9 col-sm-9 " id="player-header"><i class="play icon"></i> Play Trailer </div>
+                <div class="col-lg-3 col-sm-3" id="close-btn" >
+                    <i class="arrow alternate circle right icon"></i> <span>Back</span>
+                </div>
+            </div>
+        </div>
+        <iframe id="video" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
     <div class="footer">
         <div class="footer-about">
             <h1>About Us</h1>
@@ -234,5 +241,4 @@
             <h3> <i class="creative commons icon"></i> Copyright 2020 All rights are reserved | made by <a href="https://www.linkedin.com/in/aman-chauhan-65b726199/"><span>aman-d-1-n-only</span></a></h3>
         </div>
     </div>
-    </div>
-    <%- include("partials/footer") %>
+<%- include("partials/footer") %>

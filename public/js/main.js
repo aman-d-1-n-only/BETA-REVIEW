@@ -10,12 +10,6 @@ if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
 }
 
 $(document).ready(function() {
-    window.onload = () => {
-        window.location.hash = 'home-page';
-    }
-
-
-
     /* Method to write toggle menu */
     $('#menu-toggle').click(() => {
         $('.ui.sidebar')

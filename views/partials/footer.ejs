@@ -1,3 +1,4 @@
+</div>
 <!-- jquery CDN -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -28,10 +29,23 @@
             }
         }
     });
+
     $(document).on("msf:viewChanged", function(event, data) {
         var progress = Math.round((data.currentIndex / data.totalSteps) * 100);
         $(".progress-bar").css("width", progress + "%").attr('aria-valuenow', progress);
     });
+
+    function playVideo(link){
+        $('#video-player').css( 'display' , 'block');
+        $('iframe').attr('src' , link );
+        $('body').style('opacity' , '0.5' );
+    };
+
+    $('#close-btn').on( 'click' , () => {
+        $('#video-player').css( 'display' , 'none');
+        $('iframe').attr('src' , 'mute' );
+    });
+
 </script>
 <!-- Owl Carousel Js -->
 <script src="js/owl.carousel.min.js"></script>
