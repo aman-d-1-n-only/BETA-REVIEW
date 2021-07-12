@@ -27,7 +27,10 @@
 
 </head>
 
-<body>
+<body onload="() => { window.location.hash = 'home-page'; } ">
+    <div class="disclaimer">
+        <h1> <span>Warning : </span> <span style=" color : black">Not available in landscape mode.Switch back to portrait mode.</span> </h1>
+    </div>
     <div class="ui sidebar inverted vertical menu">
         <a href="/" class="item"> <i class="home icon"></i> Home</a>
         <a href="/reviews" class="item"> <i class="comments icon"></i> Reviews</a>
@@ -140,3 +143,4 @@
                 </div>
             <%}%>
         </div>
+
