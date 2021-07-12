@@ -102,7 +102,7 @@ $(document).ready(function() {
     });
 
     $('.form-disable').on('submit', () => {
-        $('#submission').attr('disabled', 'disabled').addClass('disabled').text('Wait..')
+        $('#submit-1').attr('disabled', 'disabled').addClass('disabled').text('Wait..')
     });
 
     $('.close-btn').hide();

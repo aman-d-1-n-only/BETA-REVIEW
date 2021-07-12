@@ -49,8 +49,44 @@
             </div>
         </div>
     </section>
-    <div class="review">
-        <div id="item1">
+    <div  id="add-review-form" class="add-review">
+        <div class="add-review-filter">
+            <div class="add-review-header">
+                <h2><i class="plus square icon"></i> ADD REVIEWS  </h2>
+            </div>
+            <div class="add-review-form">
+                <div class="main-form">
+                    <form class="form-disable" action="/reviews" method="POST">
+                        <div class="" id="form-1">
+                            <h3> <i class="search icon"></i> Search Movie </h3>
+                            <input type="text" name="title" id="search" placeholder="Search movies,tv shows" class="form-control" autocomplete="off" required/>
+                            <p id="search-error"></p>
+                            <div class="results">
+                                <ul class="list-group" id="result"></ul>
+                            </div>
+                            <div class="btn-box">
+                                <button type="button" id="next-1">Next <i class="angle right icon"></i></button>
+                            </div>
+                        </div>    
+                        <div class="" id="form-2">
+                            <h3> <i class="pencil alternate icon"></i> Write Review </h3>
+                           <textarea name="review" id="review-info" placeholder="Write a review......" cols="10" rows="20" required></textarea>
+                           <p id="review-error"></p>
+                            <div class="btn-box">
+                                <button type="button" id="back-1"><i class="angle left icon"></i>Back</button>
+                                <button type="submit" id="submit-1">Submit <i class="paper plane icon"></i></button>
+                            </div>
+                        </div>
+                    </form>          
+                    <div class="step-row">
+                        <div id="progress"></div>
+                        <div class="step-col">Step-1</div>
+                        <div class="step-col">Step-2</div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+        <!-- <div id="item1">
             <div class="jumbotron">
                 <div class="review-heading">
                     <h1>Adding Reviews....
@@ -106,7 +142,7 @@
                     </div>
                 </form>
             </div>
-        </section>
+        </section> -->
     </div>
     <div class="post-collection">
         <div id="post">

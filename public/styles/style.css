@@ -233,129 +233,66 @@ a {
   background-blend-mode: multiply, multiply;
 }
 
-.review {
+.add-review {
   height: 100vh;
+  width: 100%;
   margin-bottom: 10rem;
-  background: black;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100vh;
-  text-align: center;
-}
-
-.review h1 {
-  text-shadow: 1px 1px 2px slategray;
-}
-
-#item1 {
-  grid-row: 1/2;
-  grid-column: 1/2;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.jumbotron {
-  width: 40vw;
-  margin: 25vh auto;
-  height: 50vh;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 3fr;
-  background: url("../images/popcorn.jpg");
+  background-image: url("../images/addReview.jpg");
   background-size: cover;
-  background-position: 85%;
-  text-align: left !important;
-  font-family: var(--Banger);
+  background-position: center;
 }
 
-.jumbotron h1 {
-  font-family: var(--Banger);
-  text-shadow: 2px 2px 2px #eee;
+.add-review-filter {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(2px);
 }
 
-.jumbotron hr {
-  width: 80%;
-  border-top: 2px solid black;
-}
-
-.review-heading {
-  grid-row: 1/2;
-  grid-column: 1/2;
+.add-review-header {
+  height: 10vh;
+  width: 100%;
+  color: #32cd32;
   text-align: center;
-  padding: 1rem;
+  border-bottom: 1px solid #32cd32;
+  padding: 3vh;
 }
 
-.review-instruction {
-  grid-row: 2/3;
-  grid-column: 1/2;
-}
-
-.review-instruction ul {
-  display: block;
-  margin: 1rem;
-  list-style-type: circle;
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-#item2 {
-  grid-row: 1/2;
-  grid-column: 2/3;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 1fr;
-}
-
-.msf-header {
-  grid-column: 1/1;
-  grid-row: 1/2;
-  padding: 0 auto;
-  text-align: center !important;
-}
-
-.msf-content {
-  grid-column: 1/1;
-  grid-row: 2/3;
-}
-
-.progress {
-  margin-bottom: 5vh;
-  padding: 0;
-}
-
-.msf-navigation {
-  grid-column: 1/1;
-  grid-row: 3/4;
+.add-review-form {
+  height: 90vh;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 1rem;
 }
 
-.msf-navigation button {
-  display: block;
-  border-radius: 100px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 1rem 1rem;
-  width: 7rem;
-  border: none;
+.main-form {
+  width: 90%;
+  height: 80vh;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-#item2 #search {
-  border-radius: 100px;
-  height: 3rem;
-  width: 35vw;
-  margin: 0 auto;
-  border: none;
+h3,
+h4 {
+  text-align: center;
+}
+
+.main-form #form-1,
+.main-form #form-2 {
+  width: 90%;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  transition: 0.8s;
 }
 
 #result {
-  width: 35vw;
+  width: 80%;
+  max-height: 40vh;
   cursor: pointer;
   overflow-y: auto;
-  max-height: 40vh;
   box-sizing: border-box;
   margin: 3vh auto;
   border-radius: 10px;
@@ -366,27 +303,85 @@ a {
   width: 50px !important;
 }
 
-.link-class:hover {
-  background-color: #f1f1f1;
+.main-form form input {
+  width: 100%;
+  padding: 10px 5px;
+  margin: 5px 0;
+  border: 0;
+  border-bottom: 1px solid #999;
+  outline: none;
+  background: transparent;
 }
 
-#item2 textarea {
+#form-2 textarea {
   outline: none;
   padding: 1rem;
   box-shadow: 2px 2px 4px 3px grey;
-  margin: 0 auto;
-  width: 40vw;
-  height: 60vh;
+  width: 100%;
+  height: 50vh;
   border: none !important;
   font-size: 1.5rem;
   font-family: var(--Anton);
 }
 
-.submit-msg {
-  height: 40vh;
-  padding: 17vh 0;
-  font-size: 2rem;
+.btn-box {
+  width: 100%;
+  margin: 30px auto;
   text-align: center;
+}
+
+.main-form form button {
+  width: 110px;
+  height: 35px;
+  margin: 0 10px;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  border-radius: 30px;
+  outline: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main-form #form-2 {
+  left: 120%;
+}
+
+.step-row {
+  width: 100%;
+  height: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 -1px 5px #000;
+  position: relative;
+}
+
+.step-col {
+  width: 50%;
+  text-align: center;
+  color: #333;
+  position: relative;
+}
+
+#progress {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  border-radius: 0.5rem 0 0 0;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  transition: 0.8s;
+}
+
+#progress::after {
+  content: "";
+  height: 0;
+  width: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  position: absolute;
+  right: -20px;
+  top: 0;
+  border-left: 20px solid #96e6a1;
 }
 
 #post {
@@ -975,9 +970,6 @@ label {
   .show-description {
     padding: 1rem;
   }
-  #item2 textarea {
-    height: 50vh;
-  }
 }
 
 /*.....................*.................View Port less than 1024px.................*........................*/
@@ -1002,33 +994,6 @@ label {
 @media screen and (max-width: 768px) {
   .nav .nav-content .nav-brand {
     padding: 20px;
-  }
-  .review {
-    height: 200vh;
-    grid-template-columns: 100%;
-    grid-template-rows: 1fr 1fr;
-  }
-  #item1 {
-    grid-row: 1/2;
-    grid-column: 1/2;
-    background-position: center center;
-  }
-  #item2 {
-    grid-column: 1/2;
-    grid-row: 2/3;
-  }
-  #item2 #search {
-    width: 60vw;
-  }
-  #result {
-    width: 60vw;
-  }
-  .jumbotron {
-    width: 60vw;
-  }
-  textarea {
-    width: 80vw;
-    height: 50vh;
   }
   .news-article span p:last-of-type {
     display: none;
@@ -1059,11 +1024,6 @@ label {
   }
   .show-description span {
     padding: 0rem 0 0.5rem;
-  }
-  #item2 textarea {
-    width: 60vw;
-    height: 50vh;
-    font-size: 1rem;
   }
   #search-review-bar {
     width: 40vw;
@@ -1098,6 +1058,9 @@ label {
   #close-btn {
     font-size: 1rem;
     padding: 5px;
+  }
+  #form-2 textarea {
+    font-size: 1rem;
   }
 }
 
@@ -1176,15 +1139,6 @@ label {
     grid-column: 1/2;
     grid-row: 3/4;
   }
-  #item2 .search-bar {
-    width: 26rem;
-  }
-  #item2 #search {
-    width: 60vw;
-  }
-  #result {
-    width: 60vw;
-  }
   .submit-msg {
     font-size: 1rem;
   }
@@ -1195,21 +1149,6 @@ label {
 /*......................................View Port less than 425px.........................................*/
 
 @media screen and (max-width: 426px) {
-  #item2 .search-bar {
-    width: 20rem;
-    height: 10rem;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
-    margin: 1rem auto;
-  }
-  #item2 #search {
-    width: 80vw;
-  }
-  #result {
-    width: 80vw;
-    margin: 3vh auto;
-  }
   .nav .nav-content .nav-brand {
     font-size: 1rem;
   }
@@ -1281,12 +1220,8 @@ label {
     margin: 0 auto;
   }
   .main {
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 1) 100%,
-        rgba(255, 255, 255, 0.1)
-      ),
-      url("../images/watching1.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../images/main.jpg");
   }
   .nav {
     border-bottom: 1px solid grey;
@@ -1321,6 +1256,21 @@ label {
 
   #player-header {
     display: none;
+  }
+
+  .main-form form button {
+    width: 100px;
+    height: 35px;
+    margin: 0 5px;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    border-radius: 30px;
+    outline: none;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+  }
+  #form-2 textarea {
+    height: 40vh;
   }
 }
 

@@ -14,26 +14,57 @@
 <script src="js/multi-step-form.js"></script>
 <script type="text/javascript">
     AOS.init();
-    $(".msf:first").multiStepForm({
-        activeIndex: 0,
-        allowClickNavigation: true,
-        allowUnvalidatedStep: false,
-        hideBackButton: false,
-        validate: {
-            rules: {
-                name: "required",
-                email: {
-                    required: true,
-                    email: true
-                }
-            }
-        }
+    // $(".msf:first").multiStepForm({
+    //     activeIndex: 0,
+    //     allowClickNavigation: true,
+    //     allowUnvalidatedStep: false,
+    //     hideBackButton: false,
+    //     validate: {
+    //         rules: {
+    //             name: "required",
+    //             email: {
+    //                 required: true,
+    //                 email: true
+    //             }
+    //         }
+    //     }
+    // });
+
+    // $(document).on("msf:viewChanged", function(event, data) {
+    //     var progress = Math.round((data.currentIndex / data.totalSteps) * 100);
+    //     $(".progress-bar").css("width", progress + "%").attr('aria-valuenow', progress);
+    // });
+
+    $('#next-1').on('click' , function(e){
+        var movie = $('#search').val();
+        if( movie.length == 0 ){
+            $('#search-error').html('<h4>**This field must be filled.**</h4>');
+            $('#search-error').css('color' , 'red' );
+            return false ;
+        }else{
+            $('#search-error').html('');
+        } 
+        $('#form-1').css("left" , "-120%");
+        $('#form-2').css("left" , "5%");
+        $('#progress').css("width" , "100%");
     });
 
-    $(document).on("msf:viewChanged", function(event, data) {
-        var progress = Math.round((data.currentIndex / data.totalSteps) * 100);
-        $(".progress-bar").css("width", progress + "%").attr('aria-valuenow', progress);
+    $('#back-1').on('click' , function(){
+        $('#form-1').css("left" , "5%");
+        $('#form-2').css("left" , "120%");
+        $('#progress').css("width" , "50%");
     });
+
+    $('#submit-1').on('click', function(){
+        var review = $('#review-info').val();
+        if( review.length <= 10 ){
+            $('#review-error').html('<h4>** Review is too short! **</h4>');
+            $('#review-error').css('color' , 'red' );
+            return false ;
+        }else{
+            $('#review-error').html('');
+        }  
+    })
 
     function playVideo(link){
         $('#video-player').css( 'display' , 'block');
