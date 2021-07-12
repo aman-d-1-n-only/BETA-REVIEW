@@ -192,6 +192,7 @@ a {
   grid-row: 2/3;
   grid-column: 1/2;
   overflow: auto;
+  scrollbar-width: thin;
 }
 
 .latest-reviews .latest-btn {
@@ -1141,6 +1142,10 @@ label {
   }
   .submit-msg {
     font-size: 1rem;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0.2rem;
   }
 }
 
