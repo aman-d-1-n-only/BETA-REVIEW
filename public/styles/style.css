@@ -45,6 +45,7 @@ a {
   margin: 1rem 10vw;
   text-align: center;
 }
+
 .disclaimer {
   color: red;
   text-align: center;
@@ -701,7 +702,6 @@ a {
 .review-post-btn:hover {
   background: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
 }
-
 /*.......................*..................Reviews Css.........................*........................*/
 
 /*.........................................Edit Css.................................................*/
@@ -1126,7 +1126,6 @@ label {
     overflow: auto;
   }
 }
-
 /*......................................View Port less than 750px.........................................*/
 
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
@@ -1141,6 +1140,23 @@ label {
     display: none;
   }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1000px) and (orientation: landscape) {
+  body {
+    background-color: #eee;
+  }
+  .pusher {
+    display: none;
+  }
+  .disclaimer {
+    padding: 40vh 5vw;
+    display: block;
+  }
+  .ui .sidebar .inverted .vertical .menu {
+    display: none;
+  }
+}
+
 /*......................................View Port less than 610px.........................................*/
 
 @media screen and (max-width: 610px) {
